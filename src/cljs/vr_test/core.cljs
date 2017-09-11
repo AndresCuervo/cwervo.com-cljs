@@ -91,7 +91,6 @@
                                   (-> (fn [event]
                                         (js/console.log "bound \"this\"from CLJS! " (.-el this) event)
                                         ;; (js/console.log (aget (.-el this) "object3D"))
-                                        ;; (js/console.log (.getAttribute (.-el this) "position"))
                                         (let [position (.getAttribute (.-el this) "position")
                                               x (js/parseInt (.-x position))
                                               y (js/parseInt (.-y position))
