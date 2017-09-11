@@ -1,12 +1,16 @@
 (ns vr-test.core
   (:require-macros [hiccups.core :as hiccups :refer [html]])
-  (:require [reagent.core :as reagent :refer [atom]]
+  (:require [cljsjs.aframe :as aframe]
+            [reagent.core :as reagent :refer [atom]]
             [secretary.core :as secretary :include-macros true]
             [clojure.string :as string]
             [hiccups.runtime :as hiccupsrt]
             [accountant.core :as accountant]))
 
 (enable-console-print!)
+
+;; (println "aframe" aframe)
+;; (js/console.log"js/AFRAME" (js* "AFRAME.scenes"))
 
 ;; -------------------------
 ;; Views
@@ -169,7 +173,7 @@
 
     ;; (register-inc-on-click)
     ;; (register-thing)
-    ;; (register-color-on-click)
+    (register-color-on-click)
 
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
                                                        [:a-box#lilBox {:dynamic-body ""

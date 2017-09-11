@@ -13,6 +13,7 @@
                  [compojure "1.6.0"]
                  [hiccup "1.0.5"]
                  [hiccups "0.3.0"]
+                 [cljsjs/aframe "0.6.1-0"] ;; testing out the local aframe CLJSJS package
                  [sablono "0.8.0"]
                  [yogthos/config "0.9"]
                  [org.clojure/clojurescript "1.9.908"
