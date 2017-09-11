@@ -47,15 +47,16 @@
      #js {
           "schema" #js {:axis #js {:default "z"}}
           "init" (fn [] (this-as this
-                                 (let [listener-function (fn [event]
-                                                          (println "oof" (.-detail event))
-                                                          (.setAttribute (.-el this) "material" "color" (rand-nth colors)) )]
-                                   (js/console.log "woweee" (.-el this))
-                                 (js/console.log "listenerssss: " (clj->js @event-listeners))
-                                 (js/document.addEventListener
-                                          "click"
-                                          (-> listener-function
-                                              (.bind this)))
+                                 (let [listener-function (clj->js
+                                                           (fn [event]
+                                                             (println "oof" (.-detail event))
+                                                             (.setAttribute (.-el this) "material" "color" (rand-nth colors)) ))]
+                                   #_(js/console.log "color on click" (.-el this))
+                                   (js/console.log "listenerssss (from color-on-click component): " (clj->js @event-listeners))
+                                   (cljs->js (js/document.addEventListener
+                                               "click"
+                                               (-> listener-function
+                                                   (.bind this))))
                                  ;; TODO hmmmmmmmmm, figure out how to remove
                                  ;; event listeners dynamically --- store
                                  ;; lists of name/function pairs and remove on
@@ -106,8 +107,8 @@
 
 (def responsive-header
     [:div.responsive-header
-     [:img.logo {:src "/images/big-logo.png"
-            :alt "IMAGE"}]
+     [:img.logo {:src "images/big-logo.png"
+            :alt "LOGO"}]
      [:div.nameContainer
       [:span.nameLine "Andres"]
       [:span.nameLine "Cuervo"]]
@@ -131,12 +132,12 @@
 
    [:div
     #_[:span#topnote
-       "Go to " [:a {:href "/about"} "the about page!"]]
+       "Go to " [:a {:href "about"} "the about page!"]]
     [:div.floating-page
      responsive-header
      [:div
       "Some contentttttt"
-      [:div [:a {:href "/about"} "go to the about page"]]
+      [:div [:a {:href "about"} "go to the about page"]]
       "Hello, my name is Andres Cuervo!"]
      [:ul.card-list
        (for [card [{:title "VR"
@@ -145,7 +146,7 @@
                    {:title "AR"
                     :url "/ar/"
                     :description "A collection of links a few of my AR projects/demos"
-                    :image {:href "/images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}]
+                    :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}]
              :let [title (:title card)
                    image (:image card)]]
            [:li {:key (str "thing-" title)}
@@ -172,7 +173,7 @@
     ;; but can tell movement is happening :) ---
 
     ;; (register-inc-on-click)
-    ;; (register-thing)
+    (register-thing)
     (register-color-on-click)
 
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
