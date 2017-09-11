@@ -43,26 +43,38 @@
 
 (defn register-color-on-click []
   (register-component
-     "change-color-on-click"
-     #js {
-          "schema" #js {:axis #js {:default "z"}}
-          "init" (fn [] (this-as this
-                                 (let [listener-function (clj->js
-                                                           (fn [event]
-                                                             (println "oof" (.-detail event))
-                                                             (.setAttribute (.-el this) "material" "color" (rand-nth colors)) ))]
-                                   #_(js/console.log "color on click" (.-el this))
-                                   (js/console.log "listenerssss (from color-on-click component): " (clj->js @event-listeners))
-                                   (cljs->js (js/document.addEventListener
-                                               "click"
-                                               (-> listener-function
-                                                   (.bind this))))
-                                 ;; TODO hmmmmmmmmm, figure out how to remove
-                                 ;; event listeners dynamically --- store
-                                 ;; lists of name/function pairs and remove on
-                                 ;; reload or mount-root maybe???
-                                 #_(swap! event-listeners conj  x))))
-          }))
+    "change-color-on-click"
+    #js {
+         "schema" #js {:axis #js {:default "z"}}
+         "init" (js* "function () {
+                        document.addEventListener('click', function (evt) {
+                            console.log('oof', evt.detail)
+                            this['el'].setAttribute('material', 'color', '#'+(Math.random()*0xFFFFFF<<0).toString(16))
+                        }.bind(this))
+                     }")
+         ;; Commenting out the function, rewriting it above as js might work??
+         #_(fn [] (this-as this
+                                (let []
+                                  #_(js/console.log "color on click" (.-el this))
+                                  (js/console.log "listenerssss (from color-on-click component): " (clj->js @event-listeners))
+                                  (js/document.addEventListener
+                                    "click"
+                                    (-> #_listener-function
+                                        (fn [event]
+                                          (println "oof" (.-detail event))
+                                          ;; TODO figure out how to get this to execute when compiled to CLJSJS :/
+                                          ;; Get compilation minification errors rn
+
+                                          ;; For now, generate a random color via the JS string :/
+                                          (js* (str "this.el.setAttribute('material', 'color', '#'+(Math.random()*0xFFFFFF<<0).toString(16))"))
+                                          #_(.setAttribute (.-el this) "material" "color" (cljs->js (rand-nth colors))) )
+                                        (.bind this)))
+                                  ;; TODO hmmmmmmmmm, figure out how to remove
+                                  ;; event listeners dynamically --- store
+                                  ;; lists of name/function pairs and remove on
+                                  ;; reload or mount-root maybe???
+                                  #_(swap! event-listeners conj  x))))
+         }))
 
 (defn register-inc-on-click []
   (let [component-name "increase-position-on-click"]
@@ -100,10 +112,16 @@
 (defn register-thing []
   (register-component
     "my-component"
-    #js {
-     "init" (fn [] (println "-- hello from CLJS --"))
-     ;; "tick" (fn [] (println (mod (js* "parseInt(performance.now())") 60)))
-     }))
+    (js* "{
+         init : function () {
+         console.log('-- hello from CLJS ! -- ')
+         }
+         }")
+    ;; #js {
+    ;;  "init" (fn [] (println "-- hello from CLJS --"))
+    ;;  ;; "tick" (fn [] (println (mod (js* "parseInt(performance.now())") 60)))
+    ;;  }
+    ))
 
 (def responsive-header
     [:div.responsive-header
@@ -172,7 +190,7 @@
     ;; use either your mouse to rotate or on a phone you always see some interesting part of the shader
     ;; but can tell movement is happening :) ---
 
-    ;; (register-inc-on-click)
+    (register-inc-on-click)
     (register-thing)
     (register-color-on-click)
 
