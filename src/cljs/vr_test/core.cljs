@@ -188,7 +188,6 @@
    ;; (js/console.log
    ;;   (js/document.head.appendChild script))
 
-   ((load-script) "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js" #())
    [:div
     #_[:span#topnote
        "Go to " [:a {:href "/about"} "the about page!"]]
@@ -231,6 +230,9 @@
     ;; use either your mouse to rotate or on a phone you always see some interesting part of the shader
     ;; but can tell movement is happening :) ---
 
+
+    ((load-script) "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js" #())
+    ((load-script) "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js" #())
     (register-inc-on-click)
     (register-thing)
     (register-color-on-click)
@@ -241,6 +243,7 @@
                                                                        :increase-position-on-click ""
                                                                        :my-component ""
                                                                        :position "-2 0 -4"} ""]
+                                                       ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
                                                        [:a-box {:color "black"
                                                                 :my-component ""
                                                                 :position "1 0 -4"
@@ -258,9 +261,27 @@
 
 (defn about-page []
   [:div
-   responsive-header
-   [:div [:h2 "About vr_test"]
-   [:div [:a {:href "/"} "go to the home page"]]]])
+    [:span#topnote
+       "Go to " [:a {:href "/"} "the home page!"]]
+
+    ((load-script) "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js" #())
+    (register-inc-on-click)
+    (register-thing)
+    (register-color-on-click)
+
+    [:a-scene {:dangerouslySetInnerHTML {:__html (html
+                                                       [:a-entity {:position "0 2.25 -15"
+                                                                   :particle-system "preset: snow; color: #EF0000,#44CC00"} ""]
+                                                       [:a-box {:color "black"
+                                                                :my-component ""
+                                                                :position "1 0 -4"
+                                                                :scale "0.5 2 0"
+                                                                :change-color-on-click ""
+                                                                :increase-position-on-click "axis: y;"
+                                                                } ""]
+                                                       [:a-camera
+                                                        [:a-cursor]]
+                                                       [:a-sky {:color "#2EAFAC"} ""])}}]])
 
 (defn hsl-test-page []
     [:div
