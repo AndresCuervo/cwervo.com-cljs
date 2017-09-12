@@ -101,7 +101,7 @@
                                         ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
 
                                         ;; (js/console.log (aget (.-el this) "object3D"))
-                                        (let [position (js* "this.el.getAttribute('position')")
+                                        (let [position (js* "this['el'].getAttribute('position')")
                                               x (js/parseInt (.-x position))
                                               y (js/parseInt (.-y position))
                                               z (js/parseInt (.-z position))
@@ -144,6 +144,37 @@
 (def c [:0 :1 :2 :3 :4 :5 :6 :7 :8 :9 :A :B :C :D :E :F])
 (defn random-hex [] (str "#" (string/join (map name (repeatedly 6 #(rand-nth c))))))
 
+(defn load-script []
+  ;; JS that checks if the script's been attached to the head already
+  ;;
+  ;; Checking was too cumbersone in CLJS
+  (js* "function loadScript(url, callback){
+
+       if (document.querySelectorAll(`[src='${url}']`).length > 0) {
+       return
+       }
+           var script = document.createElement('script')
+           script.type = 'text/javascript';
+
+           if (script.readyState){  //IE
+           script.onreadystatechange = function(){
+           if (script.readyState == 'loaded' ||
+           script.readyState == 'complete'){
+           script.onreadystatechange = null;
+           callback();
+           }
+           };
+           } else {  //Others
+           script.onload = function(){
+           callback();
+           };
+           }
+
+           script.src = url;
+           console.log('loaded ' + url )
+           document.getElementsByTagName('head')[0].appendChild(script);
+           }"))
+
 (defn home-page []
    ;; TODO maybe attach libraries like this? Also gotta remove them on mount-root tho!
    ;;
@@ -157,6 +188,7 @@
    ;; (js/console.log
    ;;   (js/document.head.appendChild script))
 
+   ((load-script) "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js" #())
    [:div
     #_[:span#topnote
        "Go to " [:a {:href "/about"} "the about page!"]]
