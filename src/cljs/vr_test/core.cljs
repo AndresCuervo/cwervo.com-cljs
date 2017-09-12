@@ -90,8 +90,18 @@
                                   "click"
                                   (-> (fn [event]
                                         (js/console.log "bound \"this\"from CLJS! " (.-el this) event)
+
+                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
+                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
+
+                                        ;; This is a niche issue, you should just rewrite this method in JS* and move
+                                        ;; on to porting over the cube and mouse follow and the other pages :)
+                                        ;;
+                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
+                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
+
                                         ;; (js/console.log (aget (.-el this) "object3D"))
-                                        (let [position (.getAttribute (.-el this) "position")
+                                        (let [position (js* "this.el.getAttribute('position')")
                                               x (js/parseInt (.-x position))
                                               y (js/parseInt (.-y position))
                                               z (js/parseInt (.-z position))
@@ -149,12 +159,12 @@
 
    [:div
     #_[:span#topnote
-       "Go to " [:a {:href "about"} "the about page!"]]
+       "Go to " [:a {:href "/about"} "the about page!"]]
     [:div.floating-page
      responsive-header
      [:div
       "Some contentttttt"
-      [:div [:a {:href "about"} "go to the about page"]]
+      [:div [:a {:href "/about"} "go to the about page"]]
       "Hello, my name is Andres Cuervo!"]
      [:ul.card-list
        (for [card [{:title "VR"
