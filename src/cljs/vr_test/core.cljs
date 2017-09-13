@@ -221,6 +221,16 @@
       [:div [:a {:href "/about"} "go to the about page"]]
       "Hello, my name is Andres Cuervo!"]
      [:ul.card-list
+
+      ;;  ------------ TODO --------------
+      ;; This is almost identical to the otehr card
+      ;; for loop - just make this a method.  Better yet, you can pass in a
+      ;; base CLJS value and then each card in the list can make a CSS linear
+      ;; gradient (with backgroundColor first, as a fall back) from the initial
+      ;; HSL to a slightly slightly higher hue + darker saturation (+ 10, 15?
+      ;; play around with this number)
+      ;;  ------------ TODO --------------
+
        (for [card [{:title "Virtual Reality"
                     :url "/vr"
                     :description "A collection of links a few of my VR projects/demos"}
@@ -243,11 +253,6 @@
              [:div.card-description (:description card)]
              ]]])]
      ]
-    ;; [:script {:src "/js/my-component.js"}]
-    ;; [:script {:src "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"}]
-    ;; TODO figure out how to load extenal libraries, also 😬
-    ;; (.appendChild
-    ;; ;; (js* "document.addEventListener('click', function () {console.log('clicked!')})")
 
     ;; TODO : --- Bring back the a-scene below, make it a box, so that you can
     ;; use either your mouse to rotate or on a phone you always see some interesting part of the shader
