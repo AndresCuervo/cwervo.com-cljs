@@ -1,17 +1,7 @@
-/* .body-container { */
-/*     font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif; */
-/*     max-width: 600px; */
-/*     margin: 0 auto; */
-/*     padding-top: 72px; */
-/*     -webkit-font-smoothing: antialiased; */
-/*     font-size: 1.125em; */
-/*     color: #333; */
-/*     line-height: 1.5em; */
-/* } */
-
-h1, h2, h3 {
-    color: #000;
+body {
+    font-family: 'Work Sans', sans-serif;
 }
+
 h1 {
     font-size: 2.5em
 }
@@ -43,7 +33,7 @@ a:hover {
 .floating-page {
     position: absolute;
     z-index: 1;
-    background-color: rgba(100, 100, 100, 0.5);
+    background-color: #2EAFAC;
 
     color: black;
     /* position: absolute; */
@@ -60,6 +50,10 @@ a:hover {
     width: 101.25%;
 }
 
+.floating-page.home-page {
+    background-color: hsla(0, 100%, 100%, 0.3);
+}
+
 .responsive-header {
     display: flex;
     flex-direction: row;
@@ -68,8 +62,15 @@ a:hover {
     color: black;
 }
 
+.responsive-header a {
+    color: black;
+    display: flex;
+}
+
 .responsive-header:hover * {
     text-decoration: none;
+    cursor: pointer;
+    color: #333;
 }
 
 .logo {
@@ -83,11 +84,11 @@ a:hover {
 .nameContainer {
     display: flex;
     flex-direction: column;
-    font-size: 5vw;
+    font-size: 4.25vw;
 }
 
 .nameLine {
-    font-family: monospace;
+    font-family: 'Space Mono', monospace;
 }
 
 
@@ -97,7 +98,7 @@ a:hover {
         width: 8vw;
     }
     .nameContainer {
-        font-size: 4vw;
+        font-size: 3.3vw;
     }
 
     .responsive-header {
@@ -135,7 +136,7 @@ a:hover {
 }
 
 .card {
-    padding: 6px 4px;
+    padding: 8px 12px;
 }
 
 .card:hover {
@@ -143,9 +144,21 @@ a:hover {
 }
 
 .title {
-    transition: letter-spacing 0.25s;
+    transition: letter-spacing 0.5s,
+                padding-bottom 0.5s;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
 }
 
 .card:hover .title {
-    letter-spacing: 0.5em;
+    /* padding-bottom: 0; */
+}
+
+.card.subtle:hover {
+    /* letter-spacing: 0.0125em; */
+}
+
+.title-type {
+    background-color: rgba(255, 255, 255, 0.25);
+    margin-right: 0.5em;
 }

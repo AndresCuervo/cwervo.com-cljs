@@ -47,10 +47,12 @@
     #js {
          "schema" #js {:axis #js {:default "z"}}
          "init" (js* "function () {
-                        document.addEventListener('click', function (evt) {
+                     let clickFn = function (evt) {
                             console.log('oof', evt.detail)
                             this['el'].setAttribute('material', 'color', '#'+(Math.random()*0xFFFFFF<<0).toString(16))
-                        }.bind(this))
+                        }.bind(this)
+                        document.addEventListener('click', clickFn)
+                        document.addEventListener('touchend', clickFn)
                      }")
          ;; Commenting out the function, rewriting it above as js might work??
          #_(fn [] (this-as this
@@ -84,8 +86,28 @@
     (js/AFRAME.registerComponent
       component-name
       #js {
-         "schema" #js {:axis #js {:default "z"}}
-         "init" (fn [] (this-as this
+         "schema" #js {:axis #js {:default "z"}
+                       :increment #js {:default "1"
+                                       :type "number"}}
+         "init" (js* "function () {
+                     let clickFn = function (evt) {
+                     let {x,y,z}= this.el.getAttribute('position')
+
+                     let newPos = {x,y,z}
+                     for (let i in newPos) {
+                     if (i === this.data.axis) {
+                     newPos[i] += this.data.increment
+                     }
+
+                     this.el.setAttribute('position', newPos)
+                     }
+                        }.bind(this)
+
+                        document.addEventListener('click', clickFn)
+                        document.addEventListener('touchend', clickFn)
+                     }")
+         #_(fn []
+                  (this-as this
                                 (js/document.addEventListener
                                   "click"
                                   (-> (fn [event]
@@ -134,11 +156,12 @@
 
 (def responsive-header
     [:div.responsive-header
-     [:img.logo {:src "images/big-logo.png"
-            :alt "LOGO"}]
-     [:div.nameContainer
-      [:span.nameLine "Andres"]
-      [:span.nameLine "Cuervo"]]
+     [:a {:href "/"}
+      [:img.logo {:src "images/big-logo.png"
+                  :alt "LOGO"}]
+      [:div.nameContainer
+       [:span.nameLine "Andres"]
+       [:span.nameLine "Cuervo"]]]
      ])
 
 (def c [:0 :1 :2 :3 :4 :5 :6 :7 :8 :9 :A :B :C :D :E :F])
@@ -150,7 +173,7 @@
   ;; Checking was too cumbersone in CLJS
   (js* "function loadScript(url, callback){
 
-       if (document.querySelectorAll(`[src='${url}']`).length > 0) {
+       if (document.querySelectorAll('[src=\"' + url + '\"]').length > 0) {
        return
        }
            var script = document.createElement('script')
@@ -198,11 +221,11 @@
       [:div [:a {:href "/about"} "go to the about page"]]
       "Hello, my name is Andres Cuervo!"]
      [:ul.card-list
-       (for [card [{:title "VR"
-                    :url "/vr/"
+       (for [card [{:title "Virtual Reality"
+                    :url "/vr"
                     :description "A collection of links a few of my VR projects/demos"}
-                   {:title "AR"
-                    :url "/ar/"
+                   {:title "Augmented Reality"
+                    :url "/ar"
                     :description "A collection of links a few of my AR projects/demos"
                     :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}]
              :let [title (:title card)
@@ -240,7 +263,7 @@
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
                                                        [:a-box#lilBox {:dynamic-body ""
                                                                        :change-color-on-click ""
-                                                                       :increase-position-on-click ""
+                                                                       :increase-position-on-click "increment: 2; axis: x"
                                                                        :my-component ""
                                                                        :position "-2 0 -4"} ""]
                                                        ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
@@ -290,6 +313,49 @@
            [:li.test-hsl-box {:key n
                  :style #js {"backgroundColor" (str "hsl(" n ", 80%, 80%)")}}])]])
 
+(defn thoughts-notice [thoughts-url]
+    [:div
+     thoughts-url])
+
+(defn vr-page []
+   [:div
+    [:div.floating-page
+     responsive-header
+     [:ul.card-list
+       (for [card [{:title "Imagine Trees Like These"
+                    :type "Project"
+                    :url "https://vr.cwervo.com/scenes/itlt/"
+                    :description "This was my creative writing capstone project at Oberlin College. I
+                                 wanted to explore an abstract immersive narrative about nature using VR."
+                    :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}
+                   {:title "Imagine Trees Like These"
+                    :type "Presentation"
+                    :url "https://www.youtube.com/watch?v=Ca6quGC_hUk"
+                    :description "I gave an in-depth, 16 minute talk about my capstone project."
+                    :image {:href "images/sun-detail.png" :alt "Sun detail"}}
+                   {:title "A-Frame Workshop"
+                    :type "Presentation"
+                    :url "stefie.github.io/aframe-workshop-berlin/"
+                    :description "Stefanie Doll & I organized the first Web XR Meetup in Berlin, at Mozilla's offices.
+                                 During this meetup we taught an 2-hour introductory workshop on A-Frame."
+                    }
+                   ]
+             :let [title (:title card)
+                   image (:image card)
+                   type (:type card)
+                   ]]
+           [:li {:key (str type title)}
+            [:a.card-link {:href (:url card)}
+             [:div.card.subtle {:style
+                                (if image
+                                  #js {"backgroundImage" (str "url(" (:href image) ")")}
+                                  #js {"backgroundColor" (str "hsl(255," (rand-int 100) "%, 30%)")})
+                                }
+              [:h5.title (when type [:code.title-type "["  type "]"]) title]
+              [:div.card-description (:description card)]
+              ]]])]
+     ]])
+
 ;; -------------------------
 ;; Routes
 
@@ -317,11 +383,24 @@
   (do
     (reset! page #'home-page)))
 
+
+(secretary/defroute "/vr" []
+  (do
+    (reset! page #'vr-page)))
+
 (secretary/defroute "/about" []
   (do
     ;; (delete-components)
     ;; (println "wah" (vec @registered-components))
   (reset! page #'about-page)))
+
+
+(secretary/defroute "/thoughts/*thoughts-url" [thoughts-url]
+  (reset! page #(fn [] (thoughts-notice thoughts-url))))
+
+(secretary/defroute "*" []
+  (do
+    (reset! page (fn [] [:div " womp womp : 404"]))))
 
 (secretary/defroute "/hsl-test-page" []
   (do
