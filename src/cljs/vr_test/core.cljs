@@ -232,7 +232,7 @@
 
 
     ((load-script) "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js" #())
-    ((load-script) "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js" #())
+    ;; ((load-script) "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js" #())
     (register-inc-on-click)
     (register-thing)
     (register-color-on-click)
