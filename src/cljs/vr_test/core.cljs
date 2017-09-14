@@ -53,30 +53,7 @@
                         }.bind(this)
                         document.addEventListener('click', clickFn)
                         document.addEventListener('touchend', clickFn)
-                     }")
-         ;; Commenting out the function, rewriting it above as js might work??
-         #_(fn [] (this-as this
-                                (let []
-                                  #_(js/console.log "color on click" (.-el this))
-                                  (js/console.log "listenerssss (from color-on-click component): " (clj->js @event-listeners))
-                                  (js/document.addEventListener
-                                    "click"
-                                    (-> #_listener-function
-                                        (fn [event]
-                                          (println "oof" (.-detail event))
-                                          ;; TODO figure out how to get this to execute when compiled to CLJSJS :/
-                                          ;; Get compilation minification errors rn
-
-                                          ;; For now, generate a random color via the JS string :/
-                                          (js* (str "this.el.setAttribute('material', 'color', '#'+(Math.random()*0xFFFFFF<<0).toString(16))"))
-                                          #_(.setAttribute (.-el this) "material" "color" (cljs->js (rand-nth colors))) )
-                                        (.bind this)))
-                                  ;; TODO hmmmmmmmmm, figure out how to remove
-                                  ;; event listeners dynamically --- store
-                                  ;; lists of name/function pairs and remove on
-                                  ;; reload or mount-root maybe???
-                                  #_(swap! event-listeners conj  x))))
-         }))
+                     }")}))
 
 (defn register-inc-on-click []
   (let [component-name "increase-position-on-click"]
@@ -107,40 +84,7 @@
 
                         document.addEventListener('click', clickFn)
                         document.addEventListener('touchend', clickFn)
-                     }")
-         #_(fn []
-                  (this-as this
-                                (js/document.addEventListener
-                                  "click"
-                                  (-> (fn [event]
-                                        (js/console.log "bound \"this\"from CLJS! " (.-el this) event)
-
-                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
-                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
-
-                                        ;; This is a niche issue, you should just rewrite this method in JS* and move
-                                        ;; on to porting over the cube and mouse follow and the other pages :)
-                                        ;;
-                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
-                                        ;; TODO ;; TODO ;; TODO ;; TODO ;; TODO
-
-                                        ;; (js/console.log (aget (.-el this) "object3D"))
-                                        (let [position (js* "this['el'].getAttribute('position')")
-                                              x (js/parseInt (.-x position))
-                                              y (js/parseInt (.-y position))
-                                              z (js/parseInt (.-z position))
-                                              axis (-> this
-                                                       .-data
-                                                       .-axis)]
-                                          (.setAttribute (.-el this) "position"
-                                                         (string/join " "
-                                                                      (vec (for [loop-axis (js/Object.keys position)
-                                                                                 :let [this-axis (aget position loop-axis )] ]
-                                                                             (+ this-axis
-                                                                                (if (= loop-axis axis)
-                                                                                  1
-                                                                                  0))))))))
-                                      (.bind this)))))})))
+                     }")})))
 
 (defn register-thing []
   (register-component
@@ -201,8 +145,7 @@
            }"))
 
 (defn make-cards [info]
-  (js/console.log "No cards made because maybe this is messing things up")
-  #_[:ul.card-list (for [card info
+  [:ul.card-list (for [card info
                        :let [title (:title card)
                              image (:image card)
                              cardType (:type card)]]
@@ -217,35 +160,7 @@
                                  }
                       [:h5.title (when cardType [:code.title-type "["  cardType "]"]) title]
                       [:div.card-description (:description card)]
-                      ]]])]
-  #_(map info (fn [card]
-                (let [title (:title card)
-                      image (:image card)
-                      cardType (:type card)]
-                  [:li {:key (str cardType title)}
-                   [:a.card-link {:href (:url card)}
-                    [:div.card {:style
-                                (if image
-                                  #js {"backgroundImage" (str "url(" (:href image) ")")
-                                       "backgroundColor" "black"}
-                                  ;; TODO make this a nice gradient was you go through the map, need an index number though :/
-
-                                  ;;  ------------ TODO --------------
-                                  ;; This is almost identical to the otehr card
-                                  ;; for loop - just make this a method.  Better yet, you can pass in a
-                                  ;; base CLJS value and then each card in the list can make a CSS linear
-                                  ;; gradient (with backgroundColor first, as a fall back) from the initial
-                                  ;; HSL to a slightly slightly higher hue + darker saturation (+ 10, 15?
-                                  ;; play around with this number)
-                                  ;;  ------------ TODO --------------
-
-                                  #js {"backgroundColor" (str "hsl(" (rand-int 255) ", 70%, 80%)")})
-                                }
-                     ;; TODO -- maybe make this header symbol configurable?
-                     ;; Can put title in {:class "title"} and then just pass in the symbol to use, or default it to h5 or h2 or whatever
-                     [:h5.title (when type [:code.title-type "["  type "]"]) title]
-                     [:div.card-description (:description card)]
-                     ]]]))))
+                      ]]])])
 
 (defn home-page []
    ;; TODO maybe attach libraries like this? Also gotta remove them on mount-root tho!
