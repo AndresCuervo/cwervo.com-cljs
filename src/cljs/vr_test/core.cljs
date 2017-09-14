@@ -201,7 +201,8 @@
            }"))
 
 (defn make-cards [info]
-  [:ul.card-list (for [card info
+  (js/console.log "No cards made because maybe this is messing things up")
+  #_[:ul.card-list (for [card info
                        :let [title (:title card)
                              image (:image card)
                              cardType (:type card)]]
@@ -259,9 +260,8 @@
    ;; (js/console.log
    ;;   (js/document.head.appendChild script))
 
+
    [:div
-    #_[:span#topnote
-       "Go to " [:a {:href "/about"} "the about page!"]]
     [:div.floating-page.home-page
      responsive-header
      [:div
