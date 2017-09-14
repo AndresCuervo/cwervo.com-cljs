@@ -198,6 +198,52 @@
            document.getElementsByTagName('head')[0].appendChild(script);
            }"))
 
+(defn make-cards [info]
+  [:ul.card-list (for [card info
+                       :let [title (:title card)
+                             image (:image card)
+                             cardType (:type card)]]
+                   [:li {:key (str cardType title)}
+                    [:a.card-link {:href (:url card)}
+                     [:div.card {:style
+                                 (if image
+                                   #js {"backgroundImage" (str "url(" (:href image) ")")
+                                        "backgroundColor" "black"}
+                                   ;; #js {"backgroundColor" "#2EAFAC"}
+                                   #js {"backgroundColor" (str "hsl(" (rand-int 255) ", 70%, 40%)")})
+                                 }
+                      [:h5.title (when cardType [:code.title-type "["  cardType "]"]) title]
+                      [:div.card-description (:description card)]
+                      ]]])]
+  #_(map info (fn [card]
+                (let [title (:title card)
+                      image (:image card)
+                      cardType (:type card)]
+                  [:li {:key (str cardType title)}
+                   [:a.card-link {:href (:url card)}
+                    [:div.card {:style
+                                (if image
+                                  #js {"backgroundImage" (str "url(" (:href image) ")")
+                                       "backgroundColor" "black"}
+                                  ;; TODO make this a nice gradient was you go through the map, need an index number though :/
+
+                                  ;;  ------------ TODO --------------
+                                  ;; This is almost identical to the otehr card
+                                  ;; for loop - just make this a method.  Better yet, you can pass in a
+                                  ;; base CLJS value and then each card in the list can make a CSS linear
+                                  ;; gradient (with backgroundColor first, as a fall back) from the initial
+                                  ;; HSL to a slightly slightly higher hue + darker saturation (+ 10, 15?
+                                  ;; play around with this number)
+                                  ;;  ------------ TODO --------------
+
+                                  #js {"backgroundColor" (str "hsl(" (rand-int 255) ", 70%, 80%)")})
+                                }
+                     ;; TODO -- maybe make this header symbol configurable?
+                     ;; Can put title in {:class "title"} and then just pass in the symbol to use, or default it to h5 or h2 or whatever
+                     [:h5.title (when type [:code.title-type "["  type "]"]) title]
+                     [:div.card-description (:description card)]
+                     ]]]))))
+
 (defn home-page []
    ;; TODO maybe attach libraries like this? Also gotta remove them on mount-root tho!
    ;;
@@ -214,45 +260,19 @@
    [:div
     #_[:span#topnote
        "Go to " [:a {:href "/about"} "the about page!"]]
-    [:div.floating-page
+    [:div.floating-page.home-page
      responsive-header
      [:div
       "Some contentttttt"
       [:div [:a {:href "/about"} "go to the about page"]]
       "Hello, my name is Andres Cuervo!"]
-     [:ul.card-list
-
-      ;;  ------------ TODO --------------
-      ;; This is almost identical to the otehr card
-      ;; for loop - just make this a method.  Better yet, you can pass in a
-      ;; base CLJS value and then each card in the list can make a CSS linear
-      ;; gradient (with backgroundColor first, as a fall back) from the initial
-      ;; HSL to a slightly slightly higher hue + darker saturation (+ 10, 15?
-      ;; play around with this number)
-      ;;  ------------ TODO --------------
-
-       (for [card [{:title "Virtual Reality"
-                    :url "/vr"
-                    :description "A collection of links a few of my VR projects/demos"}
-                   {:title "Augmented Reality"
-                    :url "/ar"
-                    :description "A collection of links a few of my AR projects/demos"
-                    :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}]
-             :let [title (:title card)
-                   image (:image card)]]
-           [:li {:key (str "thing-" title)}
-            [:a.card-link {:href (:url card)}
-             [:div.card {:style
-                        (if image
-                            #js {"backgroundImage" (str "url(" (:href image) ")")
-                                 "backgroundColor" "black"}
-                            ;; #js {"backgroundColor" "#2EAFAC"}
-                            #js {"backgroundColor" (str "hsl(" (rand-int 255) ", 70%, 80%)")})
-                        }
-             [:h2.title title]
-             [:div.card-description (:description card)]
-             ]]])]
-     ]
+     (make-cards [{:title "Virtual Reality"
+                   :url "/vr"
+                   :description "A collection of links a few of my VR projects/demos"}
+                  {:title "Augmented Reality"
+                   :url "/ar"
+                   :description "A collection of links a few of my AR projects/demos"
+                   :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}])]
 
     ;; TODO : --- Bring back the a-scene below, make it a box, so that you can
     ;; use either your mouse to rotate or on a phone you always see some interesting part of the shader
@@ -265,6 +285,8 @@
     (register-thing)
     (register-color-on-click)
 
+    ;; Write a CLJS macro to do the inserting of the empty strings at the end of vectors, since it isn't ISeqable so it can't
+    ;; pass through the CLJS parser
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
                                                        [:a-box#lilBox {:dynamic-body ""
                                                                        :change-color-on-click ""
@@ -326,40 +348,24 @@
    [:div
     [:div.floating-page
      responsive-header
-     [:ul.card-list
-       (for [card [{:title "Imagine Trees Like These"
-                    :type "Project"
-                    :url "https://vr.cwervo.com/scenes/itlt/"
-                    :description "This was my creative writing capstone project at Oberlin College. I
-                                 wanted to explore an abstract immersive narrative about nature using VR."
-                    :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}
-                   {:title "Imagine Trees Like These"
-                    :type "Presentation"
-                    :url "https://www.youtube.com/watch?v=Ca6quGC_hUk"
-                    :description "I gave an in-depth, 16 minute talk about my capstone project."
-                    :image {:href "images/sun-detail.png" :alt "Sun detail"}}
-                   {:title "A-Frame Workshop"
-                    :type "Presentation"
-                    :url "stefie.github.io/aframe-workshop-berlin/"
-                    :description "Stefanie Doll & I organized the first Web XR Meetup in Berlin, at Mozilla's offices.
-                                 During this meetup we taught an 2-hour introductory workshop on A-Frame."
-                    }
-                   ]
-             :let [title (:title card)
-                   image (:image card)
-                   type (:type card)
-                   ]]
-           [:li {:key (str type title)}
-            [:a.card-link {:href (:url card)}
-             [:div.card.subtle {:style
-                                (if image
-                                  #js {"backgroundImage" (str "url(" (:href image) ")")}
-                                  #js {"backgroundColor" (str "hsl(255," (rand-int 100) "%, 30%)")})
-                                }
-              [:h5.title (when type [:code.title-type "["  type "]"]) title]
-              [:div.card-description (:description card)]
-              ]]])]
-     ]])
+     (make-cards [{:title "Imagine Trees Like These"
+                   :type "Project"
+                   :url "https://vr.cwervo.com/scenes/itlt/"
+                   :description "This was my creative writing capstone project at Oberlin College. I
+                                wanted to explore an abstract immersive narrative about nature using VR."
+                   :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}
+                  {:title "Imagine Trees Like These"
+                   :type "Presentation"
+                   :url "https://www.youtube.com/watch?v=Ca6quGC_hUk"
+                   :description "I gave an in-depth, 16 minute talk about my capstone project."
+                   :image {:href "images/sun-detail.png" :alt "Sun detail"}}
+                  {:title "A-Frame Workshop"
+                   :type "Presentation"
+                   :url "stefie.github.io/aframe-workshop-berlin/"
+                   :description "Stefanie Doll & I organized the first Web XR Meetup in Berlin, at Mozilla's offices.
+                                During this meetup we taught an 2-hour introductory workshop on A-Frame."
+                   }
+                  ])]])
 
 ;; -------------------------
 ;; Routes
