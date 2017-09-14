@@ -322,13 +322,12 @@
     ;; (println "wah" (vec @registered-components))
   (reset! page #'about-page)))
 
-
-(secretary/defroute "/thoughts/*thoughts-url" [thoughts-url]
-  (reset! page #(fn [] (thoughts-notice thoughts-url))))
-
-(secretary/defroute "*" []
-  (do
-    (reset! page (fn [] [:div " womp womp : 404"]))))
+;; (secretary/defroute "/thoughts/*thoughts-url" [thoughts-url]
+;;   (reset! page #(fn [] (thoughts-notice thoughts-url))))
+;;
+;; (secretary/defroute "*" []
+;;   (do
+;;     (reset! page (fn [] [:div " womp womp : 404"]))))
 
 (secretary/defroute "/hsl-test-page" []
   (do
