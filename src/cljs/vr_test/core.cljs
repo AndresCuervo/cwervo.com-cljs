@@ -47,7 +47,7 @@
     #js {
          "schema" #js {:axis #js {:default "z"}}
          "init" (js* "function () {
-                     let clickFn = function (evt) {
+                     var clickFn = function (evt) {
                             console.log('oof', evt.detail)
                             this['el'].setAttribute('material', 'color', '#'+(Math.random()*0xFFFFFF<<0).toString(16))
                         }.bind(this)
@@ -90,11 +90,13 @@
                        :increment #js {:default "1"
                                        :type "number"}}
          "init" (js* "function () {
-                     let clickFn = function (evt) {
-                     let {x,y,z}= this.el.getAttribute('position')
+                     var clickFn = function (evt) {
+                     var x = this.el.getAttribute('position', 'x')
+                     var y = this.el.getAttribute('position', 'y')
+                     var z = this.el.getAttribute('position', 'z')
 
-                     let newPos = {x,y,z}
-                     for (let i in newPos) {
+                     var newPos = {x: x, y: y,z: z}
+                     for (var i in newPos) {
                      if (i === this.data.axis) {
                      newPos[i] += this.data.increment
                      }
