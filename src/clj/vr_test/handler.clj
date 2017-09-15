@@ -38,7 +38,8 @@
   (GET "/about" [] (loading-page))
   (GET "/hsl-test-page" [] (loading-page))
   (GET "/thoughts" [] (loading-page))
-  (GET "/vr" [] (loading-page))
+  (GET "/projects" [] (loading-page))
+  (GET "/projects/vr" [] (loading-page))
 
   (resources "/")
   (not-found "<h1> Not found </h1>

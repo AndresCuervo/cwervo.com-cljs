@@ -9,9 +9,6 @@
 
 (enable-console-print!)
 
-;; (println "aframe" aframe)
-;; (js/console.log"js/AFRAME" (js* "AFRAME.scenes"))
-
 ;; -------------------------
 ;; Views
 
@@ -65,7 +62,7 @@
       #js {
          "schema" #js {:axis #js {:default "z"}
                        :increment #js {:default "1"
-                                       :type "number"}}
+                                       :types "number"}}
          "init" (js* "function () {
                      var clickFn = function (evt) {
                      var x = this.el.getAttribute('position', 'x')
@@ -86,6 +83,95 @@
                         document.addEventListener('touchend', clickFn)
                      }")})))
 
+(defn mouse-camera-rotation []
+  (register-component "mouse-camera-rotation"
+                      #js {
+                           "schema" #js {:color #js {:type "color"}
+                                         :speed #js {:default "0.2"}
+                                         :mouse #js {:type "vec2" :default "0 0"}}
+                           "getSpeed" (js* "function (current, past, speed) {
+                                           return Math.max(Math.min((current - past) * 0.001, speed), - speed)
+                                           }")
+                           "init" (js* "function () {
+                                       document.addEventListener('mousemove', function (e) {
+                                       //this.el.sceneEl.camera.position.x += this.getSpeed(e.clientX, this.data.mouse.x / 100, this.data.speed / 100)
+                                       //this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x / 100, this.data.speed / 100)
+                                       this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed);
+                                       this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x, this.data.speed / 1000);
+                                       this.data.mouse.x = e.clientX;
+                                       this.data.mouse.y = e.clientY;
+                                       }.bind(this))
+                                       }")
+                           })
+  #_(js* "AFRAME.registerComponent('mouse-camera-rotation', {
+  schema: {
+    color: {type: 'color'},
+    speed : { default : 0.2 },
+    mouse : {
+      type : 'vec2',
+      'default' : "0 0"
+    }
+  },
+
+  getSpeed : function (current, past, speed) {
+    return Math.max(Math.min((current - past) * 0.001, speed), - speed)
+  },
+    /**
+     * Creates a new THREE.ShaderMaterial using the two shaders defined
+     * in vertex.glsl and fragment.glsl.
+     */
+    init: function () {
+
+        const data = this.data;
+
+        //this.material  = new THREE.ShaderMaterial({
+            //uniforms: {
+                //time: { value: 0.0 },
+                //color: { value: new THREE.Color(0.8,0,0.7)}
+            //},
+            //vertexShader,
+            //fragmentShader
+        //});
+        this.applyToMesh();
+      this.material.visible = true
+      this.el.addEventListener('model-loaded', () => this.applyToMesh());
+
+      document.addEventListener('mousemove', function (e) {
+        //this.el.sceneEl.camera.position.x += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed)
+        this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed)
+        this.data.mouse.x = e.clientX
+        this.data.mouse.y = e.clientY
+      }.bind(this))
+    },
+    /**
+     * Update the ShaderMaterial when component data changes.
+     */
+    update: function () {
+        this.material.uniforms.color.value.set(this.data.color);
+    },
+
+    /**
+     * Apply the material to the current entity.
+     */
+    applyToMesh: function() {
+        const mesh = this.el.getObject3D('mesh')
+        if (mesh) {
+          var mat = this.material
+          mesh.traverse(function (node) {
+            if (node.isMesh) {
+              node.material = mat
+            }
+          })
+        }
+    },
+    /**
+     * On each frame, update the 'time' uniform in the shaders.
+     */
+    tick: function (t) {
+        this.material.uniforms.time.value = t / 1000;
+    }
+})"))
+
 (defn register-thing []
   (register-component
     "my-component"
@@ -103,7 +189,7 @@
 (def responsive-header
     [:div.responsive-header
      [:a {:href "/"}
-      [:img.logo {:src "images/big-logo.png"
+      [:img.logo {:src "/images/big-logo.png"
                   :alt "LOGO"}]
       [:div.nameContainer
        [:span.nameLine "Andres"]
@@ -144,52 +230,53 @@
            document.getElementsByTagName('head')[0].appendChild(script);
            }"))
 
-(defn make-cards [info]
-  [:ul.card-list (for [card info
-                       :let [title (:title card)
+(defn make-cards [info & {:keys [h-size color] :or {h-size :h3
+                                                    color 220}}]
+  [:ul.card-list (-> (fn [index card]
+                       (let [title (:title card)
                              image (:image card)
-                             cardType (:type card)]]
-                   [:li {:key (str cardType title)}
-                    [:a.card-link {:href (:url card)}
-                     [:div.card {:style
-                                 (if image
-                                   #js {"backgroundImage" (str "url(" (:href image) ")")
-                                        "backgroundColor" "black"}
-                                   ;; #js {"backgroundColor" "#2EAFAC"}
-                                   #js {"backgroundColor" (str "hsl(" (rand-int 255) ", 70%, 40%)")})
-                                 }
-                      [:h5.title (when cardType [:code.title-type "["  cardType "]"]) title]
-                      [:div.card-description (:description card)]
-                      ]]])])
+                             cardType (:types card)]
+                         [:li {:key (str cardType title)}
+                          [:a.card-link {:href (:url card)}
+                           [:div.card {:style
+                                       ;; (if image
+                                       (if false
+                                         #js {"backgroundImage" (str "url(" (:href image) ")")
+                                              "backgroundSize" "100%";
+                                              "backgroundColor" "black"}
+                                         ;; TODO TODO AHHHhhh :) Turn this into a gradient!!!
+                                         (let [color-difference 10
+                                               l1 (- 50 (* color-difference index))
+                                               ;; l2 (- l1 color-difference)
+                                               l2 l1
+                                               color-1 (str "hsl(" color ", 70%, " l1 "%)")
+                                               color-2 (str "hsl(" (+ color color-difference)", 70%, " l2 "%)")]
+                                           #js {#_#_"backgroundColor" color-1
+                                                "background" (str "linear-gradient(180deg, " color-1 ", " color-2 ")")
+                                              #_#_"backgroundColor" (str "hsla(" color ", 70%, " (-  30 (* 5 index)) "%, 0.5)")})
+                                         )
+                                       }
+                            (when cardType [:h6.title-type [:code "["  (string/join ", " cardType )"]"]])
+                            ;; TODO muahAHHAHAHA, use index to make some beautiful stylezzzz
+                            [h-size {:class "title"} (str  title)]
+                            [:div.card-description (:description card)]
+                            ]]]))
+                     (map-indexed info))])
 
 (defn home-page []
-   ;; TODO maybe attach libraries like this? Also gotta remove them on mount-root tho!
-   ;;
-   ;; Hmmmmm, this doesn't seem to be the answer since it's registering everyhing again,
-   ;; AND doesn't seem to load the script into head on first load????
-   ;;
-   ;; (def script (js/document.createElement "script"))
-   ;; (aset script "type" "text/javascript")
-   ;; (aset script "src" "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js")
-   ;; (js/console.log "---WHAT---")
-   ;; (js/console.log
-   ;;   (js/document.head.appendChild script))
-
-
    [:div
     [:div.floating-page.home-page
      responsive-header
-     [:div
-      "Some contentttttt"
-      [:div [:a {:href "/about"} "go to the about page"]]
-      "Hello, my name is Andres Cuervo!"]
-     (make-cards [{:title "Virtual Reality"
-                   :url "/vr"
-                   :description "A collection of links a few of my VR projects/demos"}
-                  {:title "Augmented Reality"
-                   :url "/ar"
-                   :description "A collection of links a few of my AR projects/demos"
-                   :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}])]
+     ;; [:div
+     ;;  "Some contentttttt"
+     ;;  [:div [:a {:href "/about"} "go to the about page"]]
+     ;;  "Hello, my name is Andres Cuervo!"]
+     (make-cards [{:title "Projects 💻🗂✨"
+                   :url "/projects"
+                   :description "A collection of links to my some projects - a resumé/portfolio thing."}
+                  {:title "Contact ☎️📣📬"
+                   :url "/contact"
+                   :description "Say hi on the interwebs!"}])]
 
     ;; TODO : --- Bring back the a-scene below, make it a box, so that you can
     ;; use either your mouse to rotate or on a phone you always see some interesting part of the shader
@@ -201,26 +288,39 @@
     (register-inc-on-click)
     (register-thing)
     (register-color-on-click)
+    (mouse-camera-rotation)
 
     ;; Write a CLJS macro to do the inserting of the empty strings at the end of vectors, since it isn't ISeqable so it can't
     ;; pass through the CLJS parser
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
-                                                       [:a-box#lilBox {:dynamic-body ""
-                                                                       :change-color-on-click ""
-                                                                       :increase-position-on-click "increment: 2; axis: x"
-                                                                       :my-component ""
-                                                                       :position "-2 0 -4"} ""]
-                                                       ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
-                                                       [:a-box {:color "black"
-                                                                :my-component ""
-                                                                :position "1 0 -4"
-                                                                :scale "0.5 2 0"
-                                                                :change-color-on-click ""
-                                                                :increase-position-on-click "axis: y;"
-                                                                } ""]
-                                                       [:a-camera
-                                                        [:a-cursor]]
-                                                       [:a-sky {:color "blue"} ""])}}]])
+                                                   [:a-entity {:mouse-camera-rotation ""}]
+                                                   (let [c "#2EAFAC"
+                                                         distance 0.5
+                                                         base-y 1.6]
+                                                     (map (fn [attrs] [:a-plane attrs ""])
+                                                          [{:position (str "0 " base-y " "(- 0 distance)) :rotation "0 0 0" :color c} ;; front
+                                                           {:position (str "0 " base-y " " distance) :rotation "0 180 0" :color c} ;; back
+                                                           {:position (str distance " " base-y " 0") :rotation "0 -90 0" :color c} ;; right
+                                                           {:position (str (- 0 distance) " " base-y " 0") :rotation "0 90 0" :color c} ;; left
+                                                           {:position (str "0 " (+ base-y distance) " 0") :rotation "90 0 0" :color c} ;; top
+                                                           {:position (str "0 " (- base-y distance) " 0") :rotation "-90 0 0" :color c} ;; bottom
+                                                           ]))
+                                                   ;; [:a-box#lilBox {:dynamic-body ""
+                                                   ;;                 :change-color-on-click ""
+                                                   ;;                 :increase-position-on-click "increment: 2; axis: x"
+                                                   ;;                 :my-component ""
+                                                   ;;                 :position "-2 0 -4"} ""]
+                                                   ;; ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
+                                                   ;; [:a-box {:color "black"
+                                                   ;;          :my-component ""
+                                                   ;;          :position "1 0 -4"
+                                                   ;;          :scale "0.5 2 0"
+                                                   ;;          :change-color-on-click ""
+                                                   ;;          :increase-position-on-click "axis: y;"
+                                                   ;;          } ""]
+                                                   ;; [:a-camera
+                                                   ;;  [:a-cursor]]
+                                                   [:a-sky {:color "blue"} ""])}}]])
 
 ;; (defn home-page []
 ;;   [:div [:h2 "Home page ???"]
@@ -261,28 +361,56 @@
     [:div
      thoughts-url])
 
-(defn vr-page []
+(defn projects-page []
    [:div
     [:div.floating-page
      responsive-header
      (make-cards [{:title "Imagine Trees Like These"
-                   :type "Project"
+                   :types ["Project" "VR"]
                    :url "https://vr.cwervo.com/scenes/itlt/"
                    :description "This was my creative writing capstone project at Oberlin College. I
                                 wanted to explore an abstract immersive narrative about nature using VR."
                    :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}
                   {:title "Imagine Trees Like These"
-                   :type "Presentation"
+                   :types ["Presentation" "VR"]
                    :url "https://www.youtube.com/watch?v=Ca6quGC_hUk"
                    :description "I gave an in-depth, 16 minute talk about my capstone project."
-                   :image {:href "images/sun-detail.png" :alt "Sun detail"}}
+                   :image {:href "images/capstonetalk-head.png" :alt "Sun detail"}}
                   {:title "A-Frame Workshop"
-                   :type "Presentation"
-                   :url "stefie.github.io/aframe-workshop-berlin/"
+                   :types ["Presentation" "Workshop" "VR"]
+                   :url "https://stefie.github.io/aframe-workshop-berlin/"
                    :description "Stefanie Doll & I organized the first Web XR Meetup in Berlin, at Mozilla's offices.
                                 During this meetup we taught an 2-hour introductory workshop on A-Frame."
                    }
+                  {:title "vr.cwervo.com"
+                   :types ["Website" "VR"]
+                   :url "https://vr.cwervo.com"
+                   :description "This is my first (& now defunct) VR portfolio website. Feel free to take a look at my old VR (and some AR) projects!"
+                   }
                   ])]])
+
+(defn vr-page []
+   [:div
+    [:div.floating-page
+     responsive-header
+     (make-cards [{:title "Virtual Reality"}
+                  ])]])
+
+(defn contact-page []
+   [:div
+    [:div.floating-page
+     responsive-header
+     (make-cards [{:title "Twitter 🐦"
+                  :url "https://twitter.com/acwervo/"}
+                  {:title "Instagram 📸"
+                   :url "https://www.instagram.com/cwervo.gif/"}
+                  {:title "E-mail 📩"
+                   :url "mailto:acwervo+vr.cwervo.com@gmail.com"}
+                  {:title "Github ⌨️"
+                   :url "https://github.com/AndresCuervo/"}
+                  ]
+                 :h-size :h2
+                 :color 200)]])
 
 ;; -------------------------
 ;; Routes
@@ -312,9 +440,17 @@
     (reset! page #'home-page)))
 
 
-(secretary/defroute "/vr" []
+(secretary/defroute "/projects/vr" []
   (do
     (reset! page #'vr-page)))
+
+(secretary/defroute "/projects" []
+  (do
+    (reset! page #'projects-page)))
+
+(secretary/defroute "/contact" []
+  (do
+    (reset! page #'contact-page)))
 
 (secretary/defroute "/about" []
   (do

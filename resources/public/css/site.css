@@ -75,7 +75,7 @@ a:hover {
 
 .logo {
     height: 10vw;
-    width: 10vw;
+    width: auto
     display: inline-block;
     margin-right: 2%;
     margin-top: 0.5%;
@@ -94,8 +94,8 @@ a:hover {
 
 @media(min-width: 700px) {
     .logo {
-        height: 8vw;
-        width: 8vw;
+        height: 8.5vw;
+        margin-top: 4%;
     }
     .nameContainer {
         font-size: 3.3vw;
@@ -122,12 +122,12 @@ a:hover {
 
 .card-list {
     list-style-type: none;
+    padding: 0 6%
 }
 
 .card, .card-link {
     color: white;
-    max-width: 75vw;
-    max-height: 75vw;
+    width: 97.8%;
     display: inline-block;
 
     margin: 0.25em 0;
@@ -136,7 +136,11 @@ a:hover {
 }
 
 .card {
-    padding: 8px 12px;
+    padding: 10px 0;
+}
+
+.card > * {
+    padding: 0 12px;
 }
 
 .card:hover {
@@ -144,8 +148,8 @@ a:hover {
 }
 
 .title {
-    transition: letter-spacing 0.5s,
-                padding-bottom 0.5s;
+    /* transition: letter-spacing 0.5s, */
+    /*             padding-bottom 0.5s; */
     padding-bottom: 5px;
     border-bottom: 1px solid white;
 }
@@ -159,6 +163,16 @@ a:hover {
 }
 
 .title-type {
-    background-color: rgba(100, 100, 100, 0.6);
     margin-right: 0.5em;
 }
+
+.card .title-type {
+    margin-bottom: 0;
+    margin-top: 0
+}
+
+.card .title {
+    margin-top: 0
+}
+
+
