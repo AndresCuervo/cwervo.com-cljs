@@ -175,15 +175,16 @@
                                        //this.el.sceneEl.camera.position.x += this.getSpeed(e.clientX, this.data.mouse.x / 100, this.data.speed / 100)
                                        //this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x / 100, this.data.speed / 100)
 
-                                       //this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed);
-                                       //this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x, this.data.speed / 1000);
+                                       this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed);
+                                       this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x, this.data.speed / 1000);
 
-                                       this.el.sceneEl.camera.rotation.y += this.getSpeed(e['clientX'], this['data']['mouse']['x'], this['data']['speed']);
-                                       this.el.sceneEl.camera.rotation.x += this.getSpeed(e['clientY'], this['data']['mouse']['x'], this['data']['speed'] / 1000);
-                                       //this.data.mouse.x = e.clientX;
+                                       //this.el.sceneEl.camera.rotation.y += this.getSpeed(e['clientX'], this['data']['mouse']['x'], this['data']['speed']);
+                                       //this.el.sceneEl.camera.rotation.x += this.getSpeed(e['clientY'], this['data']['mouse']['x'], this['data']['speed'] / 1000);
                                        this['data']['mouse']['x'] = e['clientX']
+                                       //this['data']['mouse']['y'] = e['clientY']
+
+                                       //this.data.mouse.x = e.clientX;
                                        //this.data.mouse.y = e.clientY;
-                                       this['data']['mouse']['y'] = e['clientY']
                                        }.bind(this))
                                        }")
                            })
