@@ -131,7 +131,7 @@
           });
 
           this.applyToMesh();
-          this.el.addEventListener('model-loaded', () => this.applyToMesh());
+          //this.el.addEventListener('model-loaded', () => this.applyToMesh());
         },
 
 
@@ -219,7 +219,7 @@
         //});
         this.applyToMesh();
       this.material.visible = true
-      this.el.addEventListener('model-loaded', () => this.applyToMesh());
+      //this.el.addEventListener('model-loaded', () => this.applyToMesh());
 
       document.addEventListener('mousemove', function (e) {
         //this.el.sceneEl.camera.position.x += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed)
