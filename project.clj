@@ -58,7 +58,7 @@
               :optimizations :advanced
 
               :language-in :ecmascript6
-              :language-out :ecmascript6-strict
+              :language-out :ecmascript5
 
               ;; Wow, okay, this is dope: save whatever variables from being munged
               ;; here, thanks to this great blog post: http://www.lispcast.com/clojurescript-externs
