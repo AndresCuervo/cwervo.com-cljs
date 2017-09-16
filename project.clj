@@ -57,14 +57,19 @@
               :source-map       "target/cljsbuild/public/js/app.js.map"
               :optimizations :advanced
 
-              ;; TODO : Figure out how you can safely use ES6 lol
-              :language-in :es6
-              :language-out :es5
+              :language-in :ecmascript6
+              :language-out :ecmascript6-strict
+
               ;; Wow, okay, this is dope: save whatever variables from being munged
               ;; here, thanks to this great blog post: http://www.lispcast.com/clojurescript-externs
               ;; I wish there was a way to save everything in this.whatever, ya know?
               :externs ["externs/marked.js"]
-              :pretty-print  false}}
+
+              ;; Debugging tip from: https://github.com/clojure/clojurescript/wiki/Advanced-Compilation
+              ;; Set both of these to true to see proper errors!
+              :pseudo-names false
+              :pretty-print false
+              }}
             :app
             {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
              :figwheel {:on-jsload "vr-test.core/mount-root"}
