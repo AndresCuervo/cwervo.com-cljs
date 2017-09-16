@@ -56,6 +56,9 @@
               :output-dir       "target/cljsbuild/public/js"
               :source-map       "target/cljsbuild/public/js/app.js.map"
               :optimizations :advanced
+              ;; TODO : Figure out how you can safely use ES6 lol
+              ;; :language-in  :ecmascript6
+              ;; :language-out  :ecmascript6
               :pretty-print  false}}
             :app
             {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]
