@@ -83,6 +83,84 @@
                         document.addEventListener('touchend', clickFn)
                      }")})))
 
+(defn register-glitch-shader []
+  (js* "function () {var vertexShader = `varying vec2 vUv;
+
+       void main() {
+       vUv = uv;
+       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+       }`;
+       var fragmentShader = `varying vec2 vUv;
+       uniform vec3 color;
+       uniform float time;
+
+       void main() {
+       // Use sin(time), which curves between 0 and 1 over time,
+       // to determine the mix of two colors:
+       //    (a) Dynamic color where 'R' and 'B' channels come
+       //        from a modulus of the UV coordinates.
+       //    (b) Base color.
+       //
+       // The color itself is a vec4 containing RGBA values 0-1.
+       gl_FragColor = mix(
+       //vec4(mod(vUv , 0.05) * 20.0, 1.0, 1.0),
+       vec4(mod(vUv , 0.05) * 21.0, 0.25, 0.25),
+       //vec4(mod(vUv , 0.45) * 30.0, 1.0, 1.0),
+       vec4(color, 1.0),
+       cos(time)
+       );
+       }`;
+
+      AFRAME.registerComponent('material-grid-glitch', {
+        schema: {color: {type: 'color'}},
+
+        /**
+        * Creates a new THREE.ShaderMaterial using the two shaders defined
+        * in vertex.glsl and fragment.glsl.
+        */
+        init: function () {
+          const data = this.data;
+
+          this.material  = new THREE.ShaderMaterial({
+            uniforms: {
+              time: { value: 0.0 },
+              color: { value: new THREE.Color(data.color) }
+            },
+            vertexShader,
+            fragmentShader
+          });
+
+          this.applyToMesh();
+          this.el.addEventListener('model-loaded', () => this.applyToMesh());
+        },
+
+
+        /**
+        * Update the ShaderMaterial when component data changes.
+        */
+        update: function () {
+          this.material.uniforms.color.value.set(this.data.color);
+        },
+
+        /**
+        * Apply the material to the current entity.
+        */
+        applyToMesh: function() {
+          const mesh = this.el.getObject3D('mesh');
+          if (mesh) {
+            mesh.material = this.material;
+          }
+        },
+
+        /**
+        * On each frame, update the 'time' uniform in the shaders.
+        */
+        tick: function (t) {
+          this.material.uniforms.time.value = t / 1000;
+        }
+
+      })}()"))
+
 (defn mouse-camera-rotation []
   (register-component "mouse-camera-rotation"
                       #js {
@@ -96,10 +174,16 @@
                                        document.addEventListener('mousemove', function (e) {
                                        //this.el.sceneEl.camera.position.x += this.getSpeed(e.clientX, this.data.mouse.x / 100, this.data.speed / 100)
                                        //this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x / 100, this.data.speed / 100)
-                                       this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed);
-                                       this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x, this.data.speed / 1000);
-                                       this.data.mouse.x = e.clientX;
-                                       this.data.mouse.y = e.clientY;
+
+                                       //this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed);
+                                       //this.el.sceneEl.camera.rotation.x += this.getSpeed(e.clientY, this.data.mouse.x, this.data.speed / 1000);
+
+                                       this.el.sceneEl.camera.rotation.y += this.getSpeed(e['clientX'], this['data']['mouse']['x'], this['data']['speed']);
+                                       this.el.sceneEl.camera.rotation.x += this.getSpeed(e['clientY'], this['data']['mouse']['x'], this['data']['speed'] / 1000);
+                                       //this.data.mouse.x = e.clientX;
+                                       this['data']['mouse']['x'] = e['clientX']
+                                       //this.data.mouse.y = e.clientY;
+                                       this['data']['mouse']['y'] = e['clientY']
                                        }.bind(this))
                                        }")
                            })
@@ -290,6 +374,8 @@
     (register-color-on-click)
     (mouse-camera-rotation)
 
+    (register-glitch-shader)
+
     ;; Write a CLJS macro to do the inserting of the empty strings at the end of vectors, since it isn't ISeqable so it can't
     ;; pass through the CLJS parser
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
@@ -297,13 +383,13 @@
                                                    (let [c "#2EAFAC"
                                                          distance 0.5
                                                          base-y 1.6]
-                                                     (map (fn [attrs] [:a-plane attrs ""])
-                                                          [{:position (str "0 " base-y " "(- 0 distance)) :rotation "0 0 0" :color c} ;; front
-                                                           {:position (str "0 " base-y " " distance) :rotation "0 180 0" :color c} ;; back
-                                                           {:position (str distance " " base-y " 0") :rotation "0 -90 0" :color c} ;; right
-                                                           {:position (str (- 0 distance) " " base-y " 0") :rotation "0 90 0" :color c} ;; left
-                                                           {:position (str "0 " (+ base-y distance) " 0") :rotation "90 0 0" :color c} ;; top
-                                                           {:position (str "0 " (- base-y distance) " 0") :rotation "-90 0 0" :color c} ;; bottom
+                                                     (map (fn [attrs] [:a-plane (merge attrs {:material-grid-glitch "color: blue;" :color "#2EAFAC"}) ""])
+                                                          [{:position (str "0 " base-y " "(- 0 distance)) :rotation "0 0 0"} ;; front
+                                                           {:position (str "0 " base-y " " distance) :rotation "0 180 0"} ;; back
+                                                           {:position (str distance " " base-y " 0") :rotation "0 -90 0"} ;; right
+                                                           {:position (str (- 0 distance) " " base-y " 0") :rotation "0 90 0"} ;; left
+                                                           {:position (str "0 " (+ base-y distance) " 0") :rotation "90 0 0"} ;; top
+                                                           {:position (str "0 " (- base-y distance) " 0") :rotation "-90 0 0"} ;; bottom
                                                            ]))
                                                    ;; [:a-box#lilBox {:dynamic-body ""
                                                    ;;                 :change-color-on-click ""
