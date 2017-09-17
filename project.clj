@@ -58,6 +58,7 @@
               :optimizations :advanced
 
               :language-in :ecmascript6
+              ;; Hmmmmmmm, ecmascript6 & ecmascript6-strict don't seem to work??? RIP
               :language-out :ecmascript5
 
               ;; Wow, okay, this is dope: save whatever variables from being munged

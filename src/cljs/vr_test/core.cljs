@@ -52,6 +52,175 @@
                         document.addEventListener('touchend', clickFn)
                      }")}))
 
+(defn register-glitch-shader []
+  (js* "function () {var vertexShader = `varying vec2 vUv;
+       void main() {
+       vUv = uv;
+       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+       }`;
+       var fragmentShader = `varying vec2 vUv;
+       uniform vec3 color;
+       uniform float time;
+       void main() {
+       // Use sin(time), which curves between 0 and 1 over time,
+       // to determine the mix of two colors:
+       //    (a) Dynamic color where 'R' and 'B' channels come
+       //        from a modulus of the UV coordinates.
+       //    (b) Base color.
+       //
+       // The color itself is a vec4 containing RGBA values 0-1.
+       gl_FragColor = mix(
+       //vec4(mod(vUv , 0.05) * 20.0, 1.0, 1.0),
+       vec4(mod(vUv , 0.05) * 21.0, 0.25, 0.25),
+       //vec4(mod(vUv , 0.45) * 30.0, 1.0, 1.0),
+       vec4(color, 1.0),
+       cos(time)
+       );
+       }`;
+
+
+                    fragmentShader = `uniform vec3 color; uniform float time;
+varying vec2 vUv;
+
+void main(){
+	vec3 c;
+	float l,z = time;
+	for(int i=0;i<3;i++) {
+		vec2 uv,p= -1.0 + 2.0 *vUv;
+		uv=p;
+		p-=.5;
+		p.x*=1.;
+		z+=.07;
+		l=length(p);
+		uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
+		c[i]=.01/length(abs(mod(uv,1.)-.5));
+	}
+	gl_FragColor=vec4(c/l,time);
+}`
+
+      AFRAME.registerComponent('material-grid-glitch', {
+        schema: {color: {type: 'color'}},
+        /**
+        * Creates a new THREE.ShaderMaterial using the two shaders defined
+        * in vertex.glsl and fragment.glsl.
+        */
+        init: function () {
+          const data = this.data;
+          this.material  = new THREE.ShaderMaterial({
+            uniforms: {
+              time: { value: 0.0 },
+              color: { value: new THREE.Color(data.color) }
+            },
+            vertexShader,
+            fragmentShader
+          });
+          this.applyToMesh();
+          //this.el.addEventListener('model-loaded', () => this.applyToMesh());
+        },
+        /**
+        * Update the ShaderMaterial when component data changes.
+        */
+        update: function () {
+          this.material.uniforms.color.value.set(this.data.color);
+        },
+        /**
+        * Apply the material to the current entity.
+        */
+        applyToMesh: function() {
+          const mesh = this.el.getObject3D('mesh');
+          if (mesh) {
+            mesh.material = this.material;
+          }
+        },
+        /**
+        * On each frame, update the 'time' uniform in the shaders.
+        */
+        tick: function (t) {
+          this.material.uniforms.time.value = t / 1000;
+        }
+      })}()"))
+
+#_(defn register-glitch-shader []
+  (register-component
+    "material-grid-glitch"
+    #js {
+         :schema #js {:color #js {:type "color"}}
+         :init (js->clj (js* "function () {
+                    const data = this.data;
+
+                    var vertexShader = `varying vec2 vUv;
+
+                    void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+                    }`;
+
+                    var fragmentShader = `varying vec2 vUv;
+                    uniform vec3 color;
+                    uniform float time;
+
+                    void main() {
+                    // Use sin(time), which curves between 0 and 1 over time,
+                    // to determine the mix of two colors:
+                    //    (a) Dynamic color where 'R' and 'B' channels come
+                    //        from a modulus of the UV coordinates.
+                    //    (b) Base color.
+                    //
+                    // The color itself is a vec4 containing RGBA values 0-1.
+                    gl_FragColor = mix(
+                    vec4(mod(vUv , 0.05) * 5.0, 0.5, 1.0),
+                    //vec4(mod(vUv , 0.05) * 21.0, 0.25, 0.25),
+                    //vec4(mod(vUv , 0.45) * 30.0, 1.0, 1.0),
+                    vec4(color, 0.7),
+                    tan(time)
+                    );
+                    }`;
+
+                    fragmentShader = `uniform vec3 color; uniform float time;
+varying vec2 vUv;
+
+void main(){
+	vec3 c;
+	float l,z = time;
+	for(int i=0;i<3;i++) {
+		vec2 uv,p= -1.0 + 2.0 *vUv;
+		uv=p;
+		p-=.5;
+		p.x*=1.;
+		z+=.07;
+		l=length(p);
+		uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
+		c[i]=.01/length(abs(mod(uv,1.)-.5));
+	}
+	gl_FragColor=vec4(c/l,time);
+}`
+
+                    this.material  = new THREE.ShaderMaterial({
+                    uniforms: {
+                    time: { value: 0.0 },
+                    color: { value: new THREE.Color(data.color) }
+                    },
+                    vertexShader,
+                    fragmentShader
+                    });
+
+                    this.applyToMesh();
+                    //this.el.addEventListener('model-loaded', () => this.applyToMesh());
+                    }"))
+         :update (js* "function () {
+                      this.material.uniforms.color.value.set(this.data.color);
+                      }")
+         :applyToMesh (js* "function() {
+                           const mesh = this.el.getObject3D('mesh');
+                           if (mesh) {
+                           mesh.material = this.material;
+                           }
+                           }" )
+         :tick (js* "function (t) {
+                    this.material.uniforms.time.value = t / 1000;
+                    }")
+         }))
+
 (defn register-inc-on-click []
   (let [component-name "increase-position-on-click"]
     (js-delete (aget js/AFRAME "components") component-name)
@@ -82,84 +251,6 @@
                         document.addEventListener('click', clickFn)
                         document.addEventListener('touchend', clickFn)
                      }")})))
-
-(defn register-glitch-shader []
-  (js* "function () {var vertexShader = `varying vec2 vUv;
-
-       void main() {
-       vUv = uv;
-       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-       }`;
-       var fragmentShader = `varying vec2 vUv;
-       uniform vec3 color;
-       uniform float time;
-
-       void main() {
-       // Use sin(time), which curves between 0 and 1 over time,
-       // to determine the mix of two colors:
-       //    (a) Dynamic color where 'R' and 'B' channels come
-       //        from a modulus of the UV coordinates.
-       //    (b) Base color.
-       //
-       // The color itself is a vec4 containing RGBA values 0-1.
-       gl_FragColor = mix(
-       //vec4(mod(vUv , 0.05) * 20.0, 1.0, 1.0),
-       vec4(mod(vUv , 0.05) * 21.0, 0.25, 0.25),
-       //vec4(mod(vUv , 0.45) * 30.0, 1.0, 1.0),
-       vec4(color, 1.0),
-       cos(time)
-       );
-       }`;
-
-      AFRAME.registerComponent('material-grid-glitch', {
-        schema: {color: {type: 'color'}},
-
-        /**
-        * Creates a new THREE.ShaderMaterial using the two shaders defined
-        * in vertex.glsl and fragment.glsl.
-        */
-        init: function () {
-          const data = this.data;
-
-          this.material  = new THREE.ShaderMaterial({
-            uniforms: {
-              time: { value: 0.0 },
-              color: { value: new THREE.Color(data.color) }
-            },
-            vertexShader,
-            fragmentShader
-          });
-
-          this.applyToMesh();
-          //this.el.addEventListener('model-loaded', () => this.applyToMesh());
-        },
-
-
-        /**
-        * Update the ShaderMaterial when component data changes.
-        */
-        update: function () {
-          this.material.uniforms.color.value.set(this.data.color);
-        },
-
-        /**
-        * Apply the material to the current entity.
-        */
-        applyToMesh: function() {
-          const mesh = this.el.getObject3D('mesh');
-          if (mesh) {
-            mesh.material = this.material;
-          }
-        },
-
-        /**
-        * On each frame, update the 'time' uniform in the shaders.
-        */
-        tick: function (t) {
-          this.material.uniforms.time.value = t / 1000;
-        }
-
-      })}()"))
 
 (defn mouse-camera-rotation []
   (register-component "mouse-camera-rotation"
@@ -384,7 +475,7 @@
                                                    (let [c "#2EAFAC"
                                                          distance 0.5
                                                          base-y 1.6]
-                                                     (map (fn [attrs] [:a-plane (merge attrs {:material-grid-glitch "color: blue;" :color "#2EAFAC"}) ""])
+                                                     (map (fn [attrs] [:a-plane (merge attrs {:material-grid-glitch "color: red;" :color "#2EAFAC"}) ""])
                                                           [{:position (str "0 " base-y " "(- 0 distance)) :rotation "0 0 0"} ;; front
                                                            {:position (str "0 " base-y " " distance) :rotation "0 180 0"} ;; back
                                                            {:position (str distance " " base-y " 0") :rotation "0 -90 0"} ;; right
