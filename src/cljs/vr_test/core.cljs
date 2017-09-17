@@ -52,7 +52,7 @@
                         document.addEventListener('touchend', clickFn)
                      }")}))
 
-(defn register-glitch-shader []
+#_(defn register-home-page-shader []
   (js* "function () {var vertexShader = `varying vec2 vUv;
        void main() {
        vUv = uv;
@@ -79,26 +79,27 @@
        }`;
 
 
-                    fragmentShader = `uniform vec3 color; uniform float time;
-varying vec2 vUv;
+       // Redefiniing fragment shader with this converted shadertoyyy
+       fragmentShader = `uniform vec3 color; uniform float time;
+       varying vec2 vUv;
 
-void main(){
-	vec3 c;
-	float l,z = time;
-	for(int i=0;i<3;i++) {
-		vec2 uv,p= -1.0 + 2.0 *vUv;
-		uv=p;
-		p-=.5;
-		p.x*=1.;
-		z+=.07;
-		l=length(p);
-		uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
-		c[i]=.01/length(abs(mod(uv,1.)-.5));
-	}
-	gl_FragColor=vec4(c/l,time);
-}`
+       void main(){
+       vec3 c;
+       float l,z = time;
+       for(int i=0;i<3;i++) {
+       vec2 uv,p= -1.0 + 2.0 *vUv;
+       uv=p;
+       p-=.5;
+       p.x*=1.;
+       z+=.07;
+       l=length(p);
+       uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
+       c[i]=.01/length(abs(mod(uv,1.)-.5));
+       }
+       gl_FragColor=vec4(c/l,time);
+       }`
 
-      AFRAME.registerComponent('material-grid-glitch', {
+      AFRAME.registerComponent('custom-home-page-shader', {
         schema: {color: {type: 'color'}},
         /**
         * Creates a new THREE.ShaderMaterial using the two shaders defined
@@ -107,6 +108,7 @@ void main(){
         init: function () {
           const data = this.data;
           this.material  = new THREE.ShaderMaterial({
+            side: THREE.BackSide,
             uniforms: {
               time: { value: 0.0 },
               color: { value: new THREE.Color(data.color) }
@@ -140,12 +142,15 @@ void main(){
         }
       })}()"))
 
-#_(defn register-glitch-shader []
+(defn register-home-page-shader []
   (register-component
-    "material-grid-glitch"
+    "custom-home-page-shader"
     #js {
          :schema #js {:color #js {:type "color"}}
-         :init (js->clj (js* "function () {
+         ;; NOTE: The Google Closure compiler complains about a global use of this
+         ;; but it's actual nestesed in this object, it just can't tell that it is,
+         ;; so idk lol
+         :init (js* "function () {
                     const data = this.data;
 
                     var vertexShader = `varying vec2 vUv;
@@ -177,25 +182,26 @@ void main(){
                     }`;
 
                     fragmentShader = `uniform vec3 color; uniform float time;
-varying vec2 vUv;
+                    varying vec2 vUv;
 
-void main(){
-	vec3 c;
-	float l,z = time;
-	for(int i=0;i<3;i++) {
-		vec2 uv,p= -1.0 + 2.0 *vUv;
-		uv=p;
-		p-=.5;
-		p.x*=1.;
-		z+=.07;
-		l=length(p);
-		uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
-		c[i]=.01/length(abs(mod(uv,1.)-.5));
-	}
-	gl_FragColor=vec4(c/l,time);
-}`
+                    void main(){
+                        vec3 c;
+                        float l,z = time;
+                        for(int i=0;i<3;i++) {
+                            vec2 uv,p= -1.0 + 2.0 *vUv;
+                            uv=p;
+                            //p-=.5;
+                            //p.x*=0.5;
+                            z+=.07;
+                            l=length(p);
+                            uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
+                            c[i]=.01/length(abs(mod(uv,1.)-.5));
+                        }
+                        gl_FragColor=vec4(c/l,time);
+                    }`
 
                     this.material  = new THREE.ShaderMaterial({
+                             side: THREE.BackSide,
                     uniforms: {
                     time: { value: 0.0 },
                     color: { value: new THREE.Color(data.color) }
@@ -206,7 +212,7 @@ void main(){
 
                     this.applyToMesh();
                     //this.el.addEventListener('model-loaded', () => this.applyToMesh());
-                    }"))
+                    }")
          :update (js* "function () {
                       this.material.uniforms.color.value.set(this.data.color);
                       }")
@@ -439,14 +445,30 @@ void main(){
                             ]]]))
                      (map-indexed info))])
 
+(defn toggle-VR []
+  ;; (js* "console.log(document.querySelector('.floating-page').style)")
+  (js/console.log (js/document.querySelector ".floating-page"))
+  (js/console.log (-> (js/document.querySelector ".floating-page")
+                      .-style
+                      .-visibility))
+  ;; TODO Hmmmmmmm, write this method with JS interop, figure out how to style CSS
+  ;; lolol
+  (let [style (aget (js/document.querySelector ".floating-page") "style")
+        v (aget style "visibility")]
+    ;; (println v)
+    (aset style "visibility" (condp = v
+                               "hidden" "visible"
+                               "visible" "hidden"
+                               "" "hidden"))))
+
+(def page-toggle-button [:button.eye-button {:title "Show VR mode and make page content transparent"
+                                           :onClick toggle-VR} "◉"])
+
 (defn home-page []
    [:div
+    page-toggle-button
     [:div.floating-page.home-page
      responsive-header
-     ;; [:div
-     ;;  "Some contentttttt"
-     ;;  [:div [:a {:href "/about"} "go to the about page"]]
-     ;;  "Hello, my name is Andres Cuervo!"]
      (make-cards [{:title "Projects 💻🗂✨"
                    :url "/projects"
                    :description "A collection of links to my some projects - a resumé/portfolio thing."}
@@ -466,16 +488,16 @@ void main(){
     (register-color-on-click)
     (mouse-camera-rotation)
 
-    (register-glitch-shader)
+    (register-home-page-shader)
 
     ;; Write a CLJS macro to do the inserting of the empty strings at the end of vectors, since it isn't ISeqable so it can't
     ;; pass through the CLJS parser
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
                                                    [:a-entity {:mouse-camera-rotation ""}]
-                                                   (let [c "#2EAFAC"
+                                                   #_(let [c "#2EAFAC"
                                                          distance 0.5
                                                          base-y 1.6]
-                                                     (map (fn [attrs] [:a-plane (merge attrs {:material-grid-glitch "color: red;" :color "#2EAFAC"}) ""])
+                                                     (map (fn [attrs] [:a-plane (merge attrs {:custom-home-page-shader "color: red;" :color "#2EAFAC"}) ""])
                                                           [{:position (str "0 " base-y " "(- 0 distance)) :rotation "0 0 0"} ;; front
                                                            {:position (str "0 " base-y " " distance) :rotation "0 180 0"} ;; back
                                                            {:position (str distance " " base-y " 0") :rotation "0 -90 0"} ;; right
@@ -483,11 +505,14 @@ void main(){
                                                            {:position (str "0 " (+ base-y distance) " 0") :rotation "90 0 0"} ;; top
                                                            {:position (str "0 " (- base-y distance) " 0") :rotation "-90 0 0"} ;; bottom
                                                            ]))
-                                                   ;; [:a-box#lilBox {:dynamic-body ""
-                                                   ;;                 :change-color-on-click ""
-                                                   ;;                 :increase-position-on-click "increment: 2; axis: x"
-                                                   ;;                 :my-component ""
-                                                   ;;                 :position "-2 0 -4"} ""]
+                                                   [:a-sphere {
+                                                                 :custom-home-page-shader "color: red;"
+                                                                 ;;:dynamic-body ""
+                                                                 ;; :change-color-on-click ""
+                                                                 ;; :increase-position-on-click "increment: 2; axis: x"
+                                                                 ;; :my-component ""
+                                                                 :scale "1 1 1"
+                                                                 :position "0 1.6 0"} ""]
                                                    ;; ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
                                                    ;; [:a-box {:color "black"
                                                    ;;          :my-component ""
@@ -541,6 +566,7 @@ void main(){
 
 (defn projects-page []
    [:div
+    page-toggle-button
     [:div.floating-page
      responsive-header
      (make-cards [{:title "Imagine Trees Like These"

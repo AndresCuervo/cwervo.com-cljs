@@ -50,8 +50,19 @@ a:hover {
     width: 101.25%;
 }
 
+/* Fix the react nested div MESS*/
+/* #app, #app > [data-reactroot], #app > [data-reactroot] div { */
+/*     height: 100%; */
+/*      width: 100%; */
+/* } */
+
+a-scene {
+    height: 100vh !important;
+    width: 100vw !important;
+}
 .floating-page.home-page {
     background-color: hsla(0, 100%, 100%, 0.3);
+    background-color: transparent;
 }
 
 .responsive-header {
@@ -175,4 +186,26 @@ a:hover {
     margin-top: 0
 }
 
+.eye-button {
+    color: hsla(0, 100%, 100%, 0.7);
+    background-color: transparent;
 
+    min-width: 50px;
+    min-height: 30px;
+    /* padding-right: 5%; */
+    /* padding-top: 4%; */
+    font-size: 1em;
+    position: absolute;
+    left: 0.25em;
+    bottom: 0.25em;
+    z-index: 2;
+
+    transition: color 0.5s, background-color 0.5s;
+
+}
+
+.eye-button:hover {
+    color: hsla(0, 100%, 100%, 1);
+    background-color: hsla(0, 100%, 100%, 0.1);
+    cursor: pointer;
+}
