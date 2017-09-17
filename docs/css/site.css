@@ -51,15 +51,10 @@ a:hover {
 }
 
 /* Fix the react nested div MESS*/
-/* #app, #app > [data-reactroot], #app > [data-reactroot] div { */
-/*     height: 100%; */
-/*      width: 100%; */
-/* } */
-
-a-scene {
-    height: 100vh !important;
-    width: 100vw !important;
+#app, #app > [data-reactroot], #app > [data-reactroot] > div {
+    height: 100%;
 }
+
 .floating-page.home-page {
     background-color: hsla(0, 100%, 100%, 0.3);
     background-color: transparent;
