@@ -66,10 +66,12 @@
               ;; I wish there was a way to save everything in this.whatever, ya know?
               :externs ["externs/marked.js"]
 
+              :closure-warnings {:global-this :off}
+
               ;; Debugging tip from: https://github.com/clojure/clojurescript/wiki/Advanced-Compilation
               ;; Set both of these to true to see proper errors!
-              :pseudo-names false
-              :pretty-print false
+              :pseudo-names true
+              :pretty-print true
               }}
             :app
             {:source-paths ["src/cljs" "src/cljc" "env/dev/cljs"]

@@ -52,96 +52,6 @@
                         document.addEventListener('touchend', clickFn)
                      }")}))
 
-#_(defn register-home-page-shader []
-  (js* "function () {var vertexShader = `varying vec2 vUv;
-       void main() {
-       vUv = uv;
-       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-       }`;
-       var fragmentShader = `varying vec2 vUv;
-       uniform vec3 color;
-       uniform float time;
-       void main() {
-       // Use sin(time), which curves between 0 and 1 over time,
-       // to determine the mix of two colors:
-       //    (a) Dynamic color where 'R' and 'B' channels come
-       //        from a modulus of the UV coordinates.
-       //    (b) Base color.
-       //
-       // The color itself is a vec4 containing RGBA values 0-1.
-       gl_FragColor = mix(
-       //vec4(mod(vUv , 0.05) * 20.0, 1.0, 1.0),
-       vec4(mod(vUv , 0.05) * 21.0, 0.25, 0.25),
-       //vec4(mod(vUv , 0.45) * 30.0, 1.0, 1.0),
-       vec4(color, 1.0),
-       cos(time)
-       );
-       }`;
-
-
-       // Redefiniing fragment shader with this converted shadertoyyy
-       fragmentShader = `uniform vec3 color; uniform float time;
-       varying vec2 vUv;
-
-       void main(){
-       vec3 c;
-       float l,z = time;
-       for(int i=0;i<3;i++) {
-       vec2 uv,p= -1.0 + 2.0 *vUv;
-       uv=p;
-       p-=.5;
-       p.x*=1.;
-       z+=.07;
-       l=length(p);
-       uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
-       c[i]=.01/length(abs(mod(uv,1.)-.5));
-       }
-       gl_FragColor=vec4(c/l,time);
-       }`
-
-      AFRAME.registerComponent('custom-home-page-shader', {
-        schema: {color: {type: 'color'}},
-        /**
-        * Creates a new THREE.ShaderMaterial using the two shaders defined
-        * in vertex.glsl and fragment.glsl.
-        */
-        init: function () {
-          const data = this.data;
-          this.material  = new THREE.ShaderMaterial({
-            side: THREE.BackSide,
-            uniforms: {
-              time: { value: 0.0 },
-              color: { value: new THREE.Color(data.color) }
-            },
-            vertexShader,
-            fragmentShader
-          });
-          this.applyToMesh();
-          //this.el.addEventListener('model-loaded', () => this.applyToMesh());
-        },
-        /**
-        * Update the ShaderMaterial when component data changes.
-        */
-        update: function () {
-          this.material.uniforms.color.value.set(this.data.color);
-        },
-        /**
-        * Apply the material to the current entity.
-        */
-        applyToMesh: function() {
-          const mesh = this.el.getObject3D('mesh');
-          if (mesh) {
-            mesh.material = this.material;
-          }
-        },
-        /**
-        * On each frame, update the 'time' uniform in the shaders.
-        */
-        tick: function (t) {
-          this.material.uniforms.time.value = t / 1000;
-        }
-      })}()"))
-
 (defn register-home-page-shader []
   (register-component
     "custom-home-page-shader"
@@ -150,6 +60,9 @@
          ;; NOTE: The Google Closure compiler complains about a global use of this
          ;; but it's actual nestesed in this object, it just can't tell that it is,
          ;; so idk lol
+         ;;
+         ;; Actualllllllly, I just turned off the :global-this Closure warning in
+         ;; the project.clj 😬 -- Gotta figure out a better way to get around this tbh
          :init (js* "function () {
                     const data = this.data;
 
@@ -284,75 +197,7 @@
                                        //this.data.mouse.y = e.clientY;
                                        }.bind(this))
                                        }")
-                           })
-  #_(js* "AFRAME.registerComponent('mouse-camera-rotation', {
-  schema: {
-    color: {type: 'color'},
-    speed : { default : 0.2 },
-    mouse : {
-      type : 'vec2',
-      'default' : "0 0"
-    }
-  },
-
-  getSpeed : function (current, past, speed) {
-    return Math.max(Math.min((current - past) * 0.001, speed), - speed)
-  },
-    /**
-     * Creates a new THREE.ShaderMaterial using the two shaders defined
-     * in vertex.glsl and fragment.glsl.
-     */
-    init: function () {
-
-        const data = this.data;
-
-        //this.material  = new THREE.ShaderMaterial({
-            //uniforms: {
-                //time: { value: 0.0 },
-                //color: { value: new THREE.Color(0.8,0,0.7)}
-            //},
-            //vertexShader,
-            //fragmentShader
-        //});
-        this.applyToMesh();
-      this.material.visible = true
-      //this.el.addEventListener('model-loaded', () => this.applyToMesh());
-
-      document.addEventListener('mousemove', function (e) {
-        //this.el.sceneEl.camera.position.x += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed)
-        this.el.sceneEl.camera.rotation.y += this.getSpeed(e.clientX, this.data.mouse.x, this.data.speed)
-        this.data.mouse.x = e.clientX
-        this.data.mouse.y = e.clientY
-      }.bind(this))
-    },
-    /**
-     * Update the ShaderMaterial when component data changes.
-     */
-    update: function () {
-        this.material.uniforms.color.value.set(this.data.color);
-    },
-
-    /**
-     * Apply the material to the current entity.
-     */
-    applyToMesh: function() {
-        const mesh = this.el.getObject3D('mesh')
-        if (mesh) {
-          var mat = this.material
-          mesh.traverse(function (node) {
-            if (node.isMesh) {
-              node.material = mat
-            }
-          })
-        }
-    },
-    /**
-     * On each frame, update the 'time' uniform in the shaders.
-     */
-    tick: function (t) {
-        this.material.uniforms.time.value = t / 1000;
-    }
-})"))
+                           }))
 
 (defn register-thing []
   (register-component
@@ -433,9 +278,7 @@
                                                l2 l1
                                                color-1 (str "hsl(" color ", 70%, " l1 "%)")
                                                color-2 (str "hsl(" (+ color color-difference)", 70%, " l2 "%)")]
-                                           #js {#_#_"backgroundColor" color-1
-                                                "background" (str "linear-gradient(180deg, " color-1 ", " color-2 ")")
-                                              #_#_"backgroundColor" (str "hsla(" color ", 70%, " (-  30 (* 5 index)) "%, 0.5)")})
+                                           #js {"background" (str "linear-gradient(180deg, " color-1 ", " color-2 ")")})
                                          )
                                        }
                             (when cardType [:h6.title-type [:code "["  (string/join ", " cardType )"]"]])
@@ -483,9 +326,10 @@
 
     ((load-script) "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js" #())
     ;; ((load-script) "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js" #())
-    (register-inc-on-click)
-    (register-thing)
-    (register-color-on-click)
+    ;; (register-inc-on-click)
+    ;; (register-thing)
+    ;; (register-color-on-click)
+
     (mouse-camera-rotation)
 
     (register-home-page-shader)
@@ -494,25 +338,15 @@
     ;; pass through the CLJS parser
     [:a-scene {:dangerouslySetInnerHTML {:__html (html
                                                    [:a-entity {:mouse-camera-rotation ""}]
-                                                   #_(let [c "#2EAFAC"
-                                                         distance 0.5
-                                                         base-y 1.6]
-                                                     (map (fn [attrs] [:a-plane (merge attrs {:custom-home-page-shader "color: red;" :color "#2EAFAC"}) ""])
-                                                          [{:position (str "0 " base-y " "(- 0 distance)) :rotation "0 0 0"} ;; front
-                                                           {:position (str "0 " base-y " " distance) :rotation "0 180 0"} ;; back
-                                                           {:position (str distance " " base-y " 0") :rotation "0 -90 0"} ;; right
-                                                           {:position (str (- 0 distance) " " base-y " 0") :rotation "0 90 0"} ;; left
-                                                           {:position (str "0 " (+ base-y distance) " 0") :rotation "90 0 0"} ;; top
-                                                           {:position (str "0 " (- base-y distance) " 0") :rotation "-90 0 0"} ;; bottom
-                                                           ]))
-                                                   [:a-sphere {
-                                                                 :custom-home-page-shader "color: red;"
-                                                                 ;;:dynamic-body ""
-                                                                 ;; :change-color-on-click ""
-                                                                 ;; :increase-position-on-click "increment: 2; axis: x"
-                                                                 ;; :my-component ""
-                                                                 :scale "1 1 1"
-                                                                 :position "0 1.6 0"} ""]
+                                                   [:a-icosahedron {
+                                                                     ;; :rotation "0 90 0"
+                                                                     :custom-home-page-shader "color: red;"
+                                                                     ;;:dynamic-body ""
+                                                                     ;; :change-color-on-click ""
+                                                                     ;; :increase-position-on-click "increment: 2; axis: x"
+                                                                     ;; :my-component ""
+                                                                     :scale "1 1 1"
+                                                                     :position "0 1.6 0"} ""]
                                                    ;; ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
                                                    ;; [:a-box {:color "black"
                                                    ;;          :my-component ""
