@@ -64,7 +64,7 @@
               ;; Wow, okay, this is dope: save whatever variables from being munged
               ;; here, thanks to this great blog post: http://www.lispcast.com/clojurescript-externs
               ;; I wish there was a way to save everything in this.whatever, ya know?
-              :externs ["externs/marked.js"]
+              :externs ["externs/aframe.js"]
 
               :closure-warnings {:global-this :off}
 
