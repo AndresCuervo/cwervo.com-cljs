@@ -700,7 +700,7 @@ void main() {
 
 (defn projects-page []
    [:div
-    page-toggle-button
+    ;; page-toggle-button
     [:div.floating-page
      responsive-header
      (make-cards [{:title "3D Model Style Transfer Demos"
