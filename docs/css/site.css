@@ -182,6 +182,15 @@ a:hover {
     margin-top: 0
 }
 
+
+.card .card-photo {
+    display: block;
+    margin: 0.25em auto;
+
+    max-height: 6em;
+    width: auto;
+}
+
 .eye-button {
     color: hsla(0, 100%, 100%, 0.7);
     background-color: transparent;

@@ -703,7 +703,15 @@ void main() {
     page-toggle-button
     [:div.floating-page
      responsive-header
-     (make-cards [{:title "Imagine Trees Like These"
+     (make-cards [{:title "3D Model Style Transfer Demos"
+                   :types ["Project"]
+                   :url "https://codepen.io/collection/AGzjZj/"
+                   :description [:span "A collection of Codepens showing off the results of my experiments with
+                                       applying machine learning style transfer techniques to 3D models. Displayed
+                                       using A-Frame."
+                                 [:img.card-photo {:src "https://media.giphy.com/media/xT9IgGZnFzjZGVikBW/giphy.gif"}]]
+                   }
+                  {:title "Imagine Trees Like These"
                    :types ["Project" "VR"]
                    :url "https://vr.cwervo.com/scenes/itlt/"
                    :description "This was my creative writing capstone project at Oberlin College. I
