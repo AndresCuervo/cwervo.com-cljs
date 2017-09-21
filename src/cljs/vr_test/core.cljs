@@ -565,7 +565,7 @@ void main() {
            }"))
 
 (defn make-cards [info & {:keys [h-size color] :or {h-size :h3
-                                                    color 220}}]
+                                                    color 240}}]
   [:ul.card-list (-> (fn [index card]
                        (let [title (:title card)
                              image (:image card)
@@ -579,10 +579,10 @@ void main() {
                                               "backgroundSize" "100%";
                                               "backgroundColor" "black"}
                                          ;; TODO TODO AHHHhhh :) Turn this into a gradient!!!
-                                         (let [color-difference 10
+                                         (let [color-difference 3
                                                l1 (- 50 (* color-difference index))
-                                               ;; l2 (- l1 color-difference)
-                                               l2 l1
+                                               l2 (- l1 15)
+                                               ;; l2 l1
                                                color-1 (str "hsl(" color ", 70%, " l1 "%)")
                                                color-2 (str "hsl(" (+ color color-difference)", 70%, " l2 "%)")]
                                            #js {"background" (str "linear-gradient(180deg, " color-1 ", " color-2 ")")})
@@ -611,6 +611,7 @@ void main() {
     page-toggle-button
     [:div.floating-page.home-page
      responsive-header
+     [:div.about "Hello there! I’m a software developer, human computer interaction researcher, & VR/AR artist. Currently, I’m at " [:a {:href "https://circleci.com/"} "CircleCI"] " working on frontend development in Clojure & Clojurescript."]
      (make-cards [{:title "Projects 💻🗂✨"
                    :url "/projects"
                    :description "A collection of links to my some projects - a resumé/portfolio thing."}
@@ -658,10 +659,6 @@ void main() {
                                                    ;; [:a-camera
                                                    ;;  [:a-cursor]]
                                                    [:a-sky {:color "blue"} ""])}}]])
-
-;; (defn home-page []
-;;   [:div [:h2 "Home page ???"]
-;;    [:div [:a {:href "/about"} "go to the about page"]]])
 
 (defn about-page []
   [:div
@@ -714,8 +711,8 @@ void main() {
                   {:title "Imagine Trees Like These"
                    :types ["Project" "VR"]
                    :url "https://vr.cwervo.com/scenes/itlt/"
-                   :description "This was my creative writing capstone project at Oberlin College. I
-                                wanted to explore an abstract immersive narrative about nature using VR."
+                   :description "At Oberlin College I majored in Computer Science and Creative Writing, and this project was my creative writing capstone. I
+                                wanted to explore an abstract immersive narrative about nature using the new medium of virtual reality."
                    :image {:href "images/sun-detail.png" :alt "A screenshot from my AR Medusa refraction experiment"}}
                   {:title "Imagine Trees Like These"
                    :types ["Presentation" "VR"]

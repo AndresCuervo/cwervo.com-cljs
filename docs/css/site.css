@@ -20,7 +20,11 @@ a {
 }
 
 a:hover {
+    cursor: pointer;
     text-decoration: underline;
+    margin-bottom: 5px;
+    /* transition: letter-spacing 0.5s; */
+    /* letter-spacing: 0.025em; */
 }
 
 #topnote {
@@ -56,28 +60,24 @@ a:hover {
 }
 
 .floating-page.home-page {
-    background-color: hsla(0, 100%, 100%, 0.8);
+    color: white;
     background-color: hsla(179, 58%, 43%, 0.5)
     /* background-color: transparent; */
 }
 
-.responsive-header {
+.responsive-header, .responsive-header a{
     display: flex;
+    color: rgb(255, 255, 255);
+}
+
+.responsive-header {
     flex-direction: row;
     justify-content: center;
     margin: 5% 0;
-    color: black;
 }
 
-.responsive-header a {
-    color: black;
-    display: flex;
-}
-
-.responsive-header:hover * {
-    text-decoration: none;
-    cursor: pointer;
-    color: #333;
+.responsive-header:hover > a {
+    color: rgb(220, 220, 220);
 }
 
 .logo {
@@ -125,6 +125,11 @@ a:hover {
 
 .test-hsl-box:hover {
     margin-bottom: 5px;
+}
+
+.about {
+    text-indent: 3em;
+    padding: 0 6%
 }
 
 .card-list {
