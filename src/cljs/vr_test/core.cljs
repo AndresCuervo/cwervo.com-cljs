@@ -611,7 +611,7 @@ void main() {
     page-toggle-button
     [:div.floating-page.home-page
      responsive-header
-     [:div.about "Hello there! I’m a software developer, human computer interaction researcher, & VR/AR artist. Currently, I’m at " [:a {:href "https://circleci.com/"} "CircleCI"] " working on frontend development in Clojure & Clojurescript."]
+     [:div.about "👋🏼 Hello there! I’m a software developer, human computer interaction researcher, & VR/AR artist. Currently, I’m at " [:a {:href "https://circleci.com/"} "CircleCI"] " working on frontend development in Clojure & Clojurescript."]
      (make-cards [{:title "Projects 💻🗂✨"
                    :url "/projects"
                    :description "A collection of links to my some projects - a resumé/portfolio thing."}
