@@ -420,11 +420,11 @@ void main() {
                         `
 
                     this.material  = new THREE.ShaderMaterial({
-                             side: THREE.BackSide,
-                    uniforms: {
-                    time: { value: 0.0 },
-                    color: { value: new THREE.Color(data.color) },
-                    resolution: { value: { x : window.innerWidth, y: window.innerHeight } }
+                      side: THREE.BackSide,
+                      uniforms: {
+                      time: { value: 0.0 },
+                      color: { value: new THREE.Color(data.color) },
+                      resolution: { value: { x : window.innerWidth, y: window.innerHeight } }
                     },
                     vertexShader,
                     fragmentShader
@@ -443,7 +443,8 @@ void main() {
                            }
                            }" )
          :tick (js* "function (t) {
-                    this.material.uniforms.time.value = t / 1000;
+                    //console.log(t)
+                    this.material.uniforms.time.value = t / 1000
                     }")
          }))
 
@@ -627,7 +628,7 @@ void main() {
     ((load-script) "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js" #())
     ;; ((load-script) "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js" #())
     ;; (register-inc-on-click)
-    ;; (register-thing)
+    (register-thing)
     ;; (register-color-on-click)
 
     (mouse-camera-rotation)
@@ -636,29 +637,39 @@ void main() {
 
     ;; Write a CLJS macro to do the inserting of the empty strings at the end of vectors, since it isn't ISeqable so it can't
     ;; pass through the CLJS parser
-    [:a-scene {:dangerouslySetInnerHTML {:__html (html
-                                                   [:a-entity {:mouse-camera-rotation ""}]
-                                                   [:a-icosahedron {
-                                                   ;; [:a-sphere {
+
+    ;; No entity wrapper (old way):
+    ;; #_[:a-scene {:dangerouslySetInnerHTML {:__html (html
+    ;;                                                 [:a-entity {:mouse-camera-rotation ""}]
+    ;;                                                 [:a-icosahedron {
+    ;;                                                                  :dynamic-body ""
+    ;;                                                                  ;; [:a-sphere {
+    ;;                                                                  ;; :rotation "0 90 0"
+    ;;                                                                  :custom-home-page-shader "color: #2EAFAC;"
+    ;;                                                                  ;;:dynamic-body ""
+    ;;                                                                  ;; :change-color-on-click ""
+    ;;                                                                  ;; :increase-position-on-click "increment: 2; axis: x"
+    ;;                                                                  :my-component ""
+    ;;                                                                  :scale "1 1 1"
+    ;;                                                                  :position "0 1.6 0"} ""]
+    ;;                                                 [:a-sky {:color "blue"} ""]
+    ;;                                                 )}}]
+    ;; Entity wrapper (new way):
+    [:a-scene [:a-entity
+               {:dangerouslySetInnerHTML {:__html (html
+                                                    [:a-entity {:mouse-camera-rotation ""}]
+                                                    [:a-icosahedron {
+                                                                     ;; [:a-sphere {
                                                                      ;; :rotation "0 90 0"
                                                                      :custom-home-page-shader "color: #2EAFAC;"
                                                                      ;;:dynamic-body ""
                                                                      ;; :change-color-on-click ""
                                                                      ;; :increase-position-on-click "increment: 2; axis: x"
-                                                                     ;; :my-component ""
+                                                                     :my-component ""
                                                                      :scale "1 1 1"
                                                                      :position "0 1.6 0"} ""]
-                                                   ;; ;; [:a-entity {:position "0 2.25 -15" :particle-system "color: #EF0000,#44CC00"} ""]
-                                                   ;; [:a-box {:color "black"
-                                                   ;;          :my-component ""
-                                                   ;;          :position "1 0 -4"
-                                                   ;;          :scale "0.5 2 0"
-                                                   ;;          :change-color-on-click ""
-                                                   ;;          :increase-position-on-click "axis: y;"
-                                                   ;;          } ""]
-                                                   ;; [:a-camera
-                                                   ;;  [:a-cursor]]
-                                                   [:a-sky {:color "blue"} ""])}}]])
+                                                    [:a-sky {:color "blue"} ""]
+                                                    )}}]]])
 
 (defn about-page []
   [:div
@@ -816,8 +827,8 @@ void main() {
 ;; Initialize app
 
 (defn mount-root []
-  (print-components)
-  (println "😲 ABOUT TO DELETE COMPONENTSSSS 😲")
+  ;; (print-components)
+  ;; (println "😲 ABOUT TO DELETE COMPONENTSSSS 😲")
   (delete-components)
   (reagent/render [current-page] (.getElementById js/document "app")))
 
