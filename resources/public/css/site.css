@@ -137,7 +137,7 @@ a:hover {
     padding: 0 6%
 }
 
-.card, .card-link {
+.card {
     color: white;
     width: 97.8%;
     display: inline-block;
@@ -145,6 +145,26 @@ a:hover {
     margin: 0.25em 0;
 
     transition: letter-spacing 0.5s;
+}
+
+.card-link {
+    transition: letter-spacing 0.5s;
+}
+
+.project-link {
+    font-size: 2em;
+    transition: letter-spacing 0.5s;
+}
+
+.card:hover .project-link {
+    background-color: hsla(220, 50%, 45%, 0.5);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+
+.card:hover .title {
+    letter-spacing: 0.1em;
 }
 
 .card {
@@ -156,12 +176,11 @@ a:hover {
 }
 
 .card:hover {
-    letter-spacing: 0.025em;
+    /* letter-spacing: 0.025em; */
 }
 
 .title {
-    /* transition: letter-spacing 0.5s, */
-    /*             padding-bottom 0.5s; */
+    transition: letter-spacing 0.5s;
     padding-bottom: 5px;
     border-bottom: 1px solid white;
 }

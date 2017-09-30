@@ -565,35 +565,46 @@ void main() {
            document.getElementsByTagName('head')[0].appendChild(script);
            }"))
 
-(defn make-cards [info & {:keys [h-size color] :or {h-size :h3
-                                                    color 240}}]
+(defn wrap-link [wrap? content url]
+  (if wrap?
+    (conj content [:a.project-link {:target "_blank"
+                                    :href url} "🖇 Link to project ↝"])
+    [:a.card-link {:href url}
+     content]))
+
+;; TODO : Give this a big "🖇Link to project ↩" button instead of having it be the whole freaking card, so you can embed other links into there!
+(defn make-cards [info & {:keys [h-size color projects?] :or {h-size :h3
+                                                    color 240
+                                                    projects? false}}]
   [:ul.card-list (-> (fn [index card]
                        (let [title (:title card)
                              image (:image card)
                              cardType (:types card)]
                          [:li {:key (str cardType title)}
-                          [:a.card-link {:href (:url card)}
-                           [:div.card {:style
-                                       ;; (if image
-                                       (if false
-                                         #js {"backgroundImage" (str "url(" (:href image) ")")
-                                              "backgroundSize" "100%";
-                                              "backgroundColor" "black"}
-                                         ;; TODO TODO AHHHhhh :) Turn this into a gradient!!!
-                                         (let [color-difference 3
-                                               l1 (- 50 (* color-difference index))
-                                               l2 (- l1 15)
-                                               ;; l2 l1
-                                               color-1 (str "hsl(" color ", 70%, " l1 "%)")
-                                               color-2 (str "hsl(" (+ color color-difference)", 70%, " l2 "%)")]
-                                           #js {"background" (str "linear-gradient(180deg, " color-1 ", " color-2 ")")})
-                                         )
-                                       }
-                            (when cardType [:h6.title-type [:code "["  (string/join ", " cardType )"]"]])
-                            ;; TODO muahAHHAHAHA, use index to make some beautiful stylezzzz
-                            [h-size {:class "title"} (str  title)]
-                            [:div.card-description (:description card)]
-                            ]]]))
+                          ;; (js/console.log (str (keys card) " | " (:project? card)))
+                          (wrap-link projects?
+                                     [:div.card {:style
+                                                 ;; (if image
+                                                 (if false
+                                                   #js {"backgroundImage" (str "url(" (:href image) ")")
+                                                        "backgroundSize" "100%";
+                                                        "backgroundColor" "black"}
+                                                   ;; TODO TODO AHHHhhh :) Turn this into a gradient!!!
+                                                   (let [color-difference 3
+                                                         l1 (- 50 (* color-difference index))
+                                                         l2 (- l1 15)
+                                                         ;; l2 l1
+                                                         color-1 (str "hsl(" color ", 70%, " l1 "%)")
+                                                         color-2 (str "hsl(" (+ color color-difference)", 70%, " l2 "%)")]
+                                                     #js {"background" (str "linear-gradient(180deg, " color-1 ", " color-2 ")")})
+                                                   )
+                                                 }
+                                      (when cardType [:h6.title-type [:code "["  (string/join ", " cardType )"]"]])
+                                      ;; TODO muahAHHAHAHA, use index to make some beautiful stylezzzz
+                                      [h-size {:class "title"} (str  title)]
+                                      [:div.card-description (:description card)]]
+                                     (:url card))
+                          ]))
                      (map-indexed info))])
 
 (defn toggle-VR []
@@ -711,7 +722,48 @@ void main() {
     ;; page-toggle-button
     [:div.floating-page
      responsive-header
-     (make-cards [{:title "3D Model Style Transfer Demos"
+     (make-cards [{:title "3D Loading Animations"
+                   :types ["Project"]
+                   :url "https://caff.glitch.me/loaders/"
+
+                   :description [:span "Loading animations are important for
+                                       signaling to a user that a system is
+                                       taking action. I wanted to take a more
+                                       educational approach to my work in
+                                       webVR, so I used Glitch to make a few
+                                       simple loading animations in a webVR
+                                       scene. My intention is for people to view the code at "
+
+                                 [:a {:target "_blank"
+                                      :href "https://glitch.com/~caff"}
+                                  "this Glitch link"]
+
+                                 ", hit \"View Source\", & navigate to " [:code "/public/loaders/index.html"]
+
+                                 " to inspect my code as an example. Using
+                                 Glitch, you can also \"remix\" the code, so
+                                 that a student can build off these examples. You'll see it's a
+                                 simple set of A-Frame VR primitives combined
+                                 with various delays to achieve sequential
+                                 animations."
+
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 ;; TODO Replace with a compilation GIF of loaders :)
+                                 [:img.card-photo {:src "https://media.giphy.com/media/xT9IgGZnFzjZGVikBW/giphy.gif"}]
+                                 ]
+                   }
+                  {:title "3D Model Style Transfer Demos"
                    :types ["Project"]
                    :url "https://codepen.io/collection/AGzjZj/"
                    :description [:span "A collection of Codepens showing off the results of my experiments with
@@ -741,7 +793,8 @@ void main() {
                    :url "https://vr.cwervo.com"
                    :description "This is my first (& now defunct) VR portfolio website. Feel free to take a look at my old VR (and some AR) projects!"
                    }
-                  ])]])
+                  ]
+                 :projects? true)]])
 
 (defn vr-page []
    [:div
