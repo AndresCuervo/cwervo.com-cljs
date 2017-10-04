@@ -723,7 +723,7 @@ void main() {
     [:div.floating-page
      responsive-header
      (make-cards [{:title "3D Loading Animations"
-                   :types ["Project"]
+                   :types ["Project" "VR"]
                    :url "https://caff.glitch.me/loaders/"
 
                    :description [:span "Loading animations are important for
@@ -747,28 +747,14 @@ void main() {
                                  with various delays to achieve sequential
                                  animations."
 
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 ;; TODO Replace with a compilation GIF of loaders :)
-                                 [:img.card-photo {:src "https://media.giphy.com/media/xT9IgGZnFzjZGVikBW/giphy.gif"}]
-                                 ]
+                                 [:img.card-photo {:src "https://media.giphy.com/media/xT9Igk37ghGf6mqj4I/giphy.gif"}]]
                    }
                   {:title "3D Model Style Transfer Demos"
                    :types ["Project"]
                    :url "https://codepen.io/collection/AGzjZj/"
                    :description [:span "A collection of Codepens showing off the results of my experiments with
                                        applying machine learning style transfer techniques to 3D models. Displayed
-                                       using A-Frame."
+                                       using A-Frame, but this isn't a VR-specific technique."
                                  [:img.card-photo {:src "https://media.giphy.com/media/xT9IgGZnFzjZGVikBW/giphy.gif"}]]
                    }
                   {:title "Imagine Trees Like These"
@@ -794,6 +780,7 @@ void main() {
                    :description "This is my first (& now defunct) VR portfolio website. Feel free to take a look at my old VR (and some AR) projects!"
                    }
                   ]
+                 :color 270
                  :projects? true)]])
 
 (defn vr-page []
