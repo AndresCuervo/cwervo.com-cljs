@@ -722,7 +722,18 @@ void main() {
     ;; page-toggle-button
     [:div.floating-page
      responsive-header
-     (make-cards [{:title "3D Loading Animations"
+     (make-cards [{:title "#ARctober"
+                   :types ["Project" "VR"]
+                   :url "https://medium.com/@cwervo/arctober-11da399199be"
+
+                   :description [:span "In the tradition of October based daily challenges like Inktober or Hacktoberfest
+                                       I started doing daily web AR experiments. The 'Link to project ↝' below takes you to
+                                      a Medium post with videos of each of the projects for easier viewing."
+                                 [:a {:href "http://arexp.glitch.me" :target "_blank"} " This is the main project page"]
+                                 ", which is actually"
+                                 [:a {:href "https://glitch.com/~arexp" :target "_blank"} "a Glitch project you can explore the source of!"]]
+                   }
+                  {:title "3D Loading Animations"
                    :types ["Project" "VR"]
                    :url "https://caff.glitch.me/loaders/"
 
