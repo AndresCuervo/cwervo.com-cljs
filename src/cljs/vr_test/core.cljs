@@ -717,21 +717,76 @@ void main() {
     [:div
      thoughts-url])
 
+(defn giphy-video
+  "This should be an ID from Giphy, for example:
+  https://giphy.com/gifs/cake-vr-a-frame-xT0xeGh5XGoz5znQQ0
+  The last alphanumeric string is the ID, e.g. xT0xeGh5XGoz5znQQ0
+  "
+  [id]
+  [:video.card-photo {:autoPlay "autoplay"
+                      :loop "loop"
+                      :type "mp4"}
+   [:source{:src (str "https://media.giphy.com/media/"id"/giphy.mp4")}]
+   #_[:img{:async ""
+         :src (str "https://media.giphy.com/media/"id"/giphy.gif")}]])
+
 (defn projects-page []
    [:div
     ;; page-toggle-button
     [:div.floating-page
      responsive-header
-     (make-cards [{:title "#ARctober"
+     (make-cards [{:title "Samsung WebVR Grand Prize Contest Winner"
+                   :types ["Project" "VR"]
+                   :url "http://caff.glitch.me/"
+                   :description [:span
+                                 "In October 2017 I won the Samsung Internet Grand Prize
+                                 for my WebVR project \"CAFF\" (Cwervo's A-Frame Funland),
+                                 a collection of interesting little webVR, usually A-Frame, each
+                                 experiments showing off an interesting concept or interaction
+                                 in webVR."]}
+                  {:title "Fishbowl 360° VR Drawings"
+                   :types ["Project" "VR" "Video"]
+                   :url "https://www.youtube.com/watch?v=iZLaBBYj1u0&list=PLeVLRVkVbp48fA4rEigcKpf5yzv2Y2Yr3"
+                   :description [:span
+                                 "The " [:i "Fishbowl"]
+                                 " drawings are a series of videos I'm making using a fishbowl on
+                                 top of a 360° camera where I draw on tissue paper over the fishbowl to create
+                                 a hand-drawn 360° video. I plan on doing a few more things with this technique,
+                                 but for now I've linked to a playlist of the drawings I've made so far!"
+                                 (giphy-video "l0CLUUqi4qPsufs3K")
+                                 ]}
+                  {:title "Github Pixel Editor"
+                   :types ["Bookmarklet"]
+                   :url "https://github.com/AndresCuervo/bookmarklet-collection#github-calendar-pixel-editor"
+                   :description [:span
+                                 "I used about 60 lines of Javascript to turn the SVG squares of the "
+                                 [:a {:href "http://github.com"} "GitHub.com"]
+                                 " commit calendar into a primitive pixel editor - with a few colors to choose from
+                                 and an option to clear the whole calendar! Made available as a bookmarklet."
+                                 (giphy-video "26u4nJPf0JtQPdStq")]}
+                  {:title "\"The Ambassadors\" Painting Optical Illusion Exploration"
+                   :types ["Project" "VR"]
+                   :url "https://codepen.io/cwervo/full/yPyLwV/"
+                   :description [:span
+                                 "This is a concept for exploring optical illusions in VR. This demo shows the painting \"The Ambassadors\"
+                                 (1533) by Hans Holbein the Younger, in which an anamorphic skull was painted such that it only appears \"normal\"
+                                 when viewed from the correct angle. The scene I created rotates the painting to a -75° angle to reveal the skull, and then repeats
+                                 the animation continuously. This is an interested techique for possibly building a VR art gallery, making expensive and fragile
+                                 artwork accessible & pliable in a VR environment!"
+                                 (giphy-video "3ov9k33p8GqPLVPMPe")
+                                 ]
+                   }
+                  {:title "#ARctober"
                    :types ["Project" "VR"]
                    :url "https://medium.com/@cwervo/arctober-11da399199be"
 
                    :description [:span "In the tradition of October based daily challenges like Inktober or Hacktoberfest
                                        I started doing daily web AR experiments. The 'Link to project ↝' below takes you to
-                                      a Medium post with videos of each of the projects for easier viewing."
+                                       a Medium post with videos of each of the projects for easier viewing."
                                  [:a {:href "http://arexp.glitch.me" :target "_blank"} " This is the main project page"]
-                                 ", which is actually"
-                                 [:a {:href "https://glitch.com/~arexp" :target "_blank"} "a Glitch project you can explore the source of!"]]
+                                 ", which is actually "
+                                 [:a {:href "https://glitch.com/~arexp" :target "_blank"} "a Glitch project you can explore the source of!"]
+                                 (giphy-video "3ohs7MfcIhfLjW5X32")]
                    }
                   {:title "3D Loading Animations"
                    :types ["Project" "VR"]
@@ -757,8 +812,7 @@ void main() {
                                  simple set of A-Frame VR primitives combined
                                  with various delays to achieve sequential
                                  animations."
-
-                                 [:img.card-photo {:src "https://media.giphy.com/media/xT9Igk37ghGf6mqj4I/giphy.gif"}]]
+                                 (giphy-video "xT9Igk37ghGf6mqj4I")]
                    }
                   {:title "3D Model Style Transfer Demos"
                    :types ["Project"]
@@ -766,7 +820,7 @@ void main() {
                    :description [:span "A collection of Codepens showing off the results of my experiments with
                                        applying machine learning style transfer techniques to 3D models. Displayed
                                        using A-Frame, but this isn't a VR-specific technique."
-                                 [:img.card-photo {:src "https://media.giphy.com/media/xT9IgGZnFzjZGVikBW/giphy.gif"}]]
+                                 (giphy-video "xT9IgGZnFzjZGVikBW")]
                    }
                   {:title "Imagine Trees Like These"
                    :types ["Project" "VR"]
@@ -786,11 +840,10 @@ void main() {
                                 During this meetup we taught an 2-hour introductory workshop on A-Frame."
                    }
                   {:title "vr.cwervo.com"
-                   :types ["Website" "VR"]
-                   :url "https://vr.cwervo.com"
-                   :description "This is my first (& now defunct) VR portfolio website. Feel free to take a look at my old VR (and some AR) projects!"
-                   }
-                  ]
+                  :types ["Website" "VR"]
+                  :url "https://vr.cwervo.com"
+                  :description "This is my first (& now defunct) VR portfolio website. Feel free to take a look at my old VR (and some AR) projects!"
+                  }]
                  :color 270
                  :projects? true)]])
 

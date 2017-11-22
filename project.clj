@@ -30,7 +30,10 @@
   :ring {:handler vr-test.handler/app
          :uberwar-name "vr_test.war"}
 
-  :min-lein-version "2.5.0"
+  ;; Add newest lein version, and add a workaround for the renamed java.xml.bind error for Java 9:
+  ;; https://github.com/http-kit/http-kit/issues/356
+  :min-lein-version "2.8.1"
+  ;; :jvm-opts ["--add-modules" "java.xml.bind"]
 
   :uberjar-name "vr_test.jar"
 
