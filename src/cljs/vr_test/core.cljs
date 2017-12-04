@@ -623,7 +623,7 @@ void main() {
     page-toggle-button
     [:div.floating-page.home-page
      responsive-header
-     [:div.about "👋🏼 Hello there! I’m a software developer, human computer interaction researcher, & VR/AR artist. Currently, I’m at " [:a {:href "https://circleci.com/"} "CircleCI"] " working on frontend development in Clojure & Clojurescript."]
+     [:div.about "👋🏼 Hello there! I’m a software developer, human computer interaction researcher, & VR/AR artist. Currently, I’m at " [:a {:target "_blank" :href "https://circleci.com/"} "CircleCI"] " working on frontend development in Clojure & Clojurescript."]
      (make-cards [{:title "Projects 💻🗂✨"
                    :url "/projects"
                    :description "A collection of links to my some projects - a resumé/portfolio thing."}
@@ -743,7 +743,8 @@ void main() {
                                  for my WebVR project \"CAFF\" (Cwervo's A-Frame Funland),
                                  a collection of interesting little webVR, usually A-Frame, each
                                  experiments showing off an interesting concept or interaction
-                                 in webVR."]}
+                                 in webVR."
+                                 (giphy-video "l1J9Q5Z6QWbzm9Eoo")]}
                   {:title "Fishbowl 360° VR Drawings"
                    :types ["Project" "VR" "Video"]
                    :url "https://www.youtube.com/watch?v=iZLaBBYj1u0&list=PLeVLRVkVbp48fA4rEigcKpf5yzv2Y2Yr3"

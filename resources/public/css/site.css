@@ -16,15 +16,17 @@ h3 {
 
 a {
     text-decoration: none;
-    color: #09f;
+    color: papayawhip;
+    transition: letter-spacing 0.5s;
 }
 
 a:hover {
     cursor: pointer;
     text-decoration: underline;
     margin-bottom: 5px;
-    /* transition: letter-spacing 0.5s; */
-    /* letter-spacing: 0.025em; */
+    /* Offset the  */
+    margin-top: -5px;
+    letter-spacing: 3em;
 }
 
 #topnote {
@@ -41,7 +43,7 @@ a:hover {
 
     color: black;
     /* position: absolute; */
-    font-size: 18pt;
+    font-size: 12pt;
     top: 0;
     z-index: 1;
     /* position: fixed; */
@@ -98,24 +100,6 @@ a:hover {
     font-family: 'Space Mono', monospace;
 }
 
-
-@media(min-width: 700px) {
-    .logo {
-        height: 8.5vw;
-        margin-top: 4%;
-    }
-    .nameContainer {
-        font-size: 3.3vw;
-    }
-
-    .responsive-header {
-        margin: 1% 0;
-    }
-}
-
-@media(min-width: 600px) {
-}
-
 .test-hsl-box {
     display: inline-block;
     height: 15px;
@@ -152,7 +136,7 @@ a:hover {
 }
 
 .project-link {
-    font-size: 2em;
+    font-size: 1em;
     transition: letter-spacing 0.5s;
 }
 
@@ -180,6 +164,7 @@ a:hover {
 }
 
 .title {
+    font-size: 1.5em;
     transition: letter-spacing 0.5s;
     padding-bottom: 5px;
     border-bottom: 1px solid white;
@@ -213,6 +198,7 @@ a:hover {
 
     max-height: 6em;
     width: auto;
+    max-width: 100%;
 }
 
 .eye-button {
@@ -237,4 +223,34 @@ a:hover {
     color: hsla(0, 100%, 100%, 1);
     background-color: hsla(0, 100%, 100%, 0.1);
     cursor: pointer;
+}
+
+
+@media(min-width: 700px) {
+    .logo {
+        height: 8.5vw;
+        margin-top: 4%;
+    }
+    .nameContainer {
+        font-size: 3.3vw;
+    }
+
+    .responsive-header {
+        margin: 1% 0;
+    }
+
+    .project-link {
+        font-size: 1.5em;
+    }
+
+    .floating-page {
+        font-size: 18pt;
+    }
+
+    .title {
+        font-size: 3em;
+    }
+}
+
+@media(min-width: 600px) {
 }
