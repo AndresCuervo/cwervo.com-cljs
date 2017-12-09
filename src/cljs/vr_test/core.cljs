@@ -28,6 +28,19 @@
 
 (def colors ["pink" "blue" "yellow" "red" "peachpuff" "#2EAFAC" "#BAE"])
 
+(defn giphy-video
+  "This should be an ID from Giphy, for example:
+  https://giphy.com/gifs/cake-vr-a-frame-xT0xeGh5XGoz5znQQ0
+  The last alphanumeric string is the ID, e.g. xT0xeGh5XGoz5znQQ0
+  "
+  [id]
+  [:video.card-photo {:autoPlay "autoplay"
+                      :loop "loop"
+                      :type "mp4"}
+   [:source{:src (str "https://media.giphy.com/media/"id"/giphy.mp4")}]
+   #_[:img{:async ""
+         :src (str "https://media.giphy.com/media/"id"/giphy.gif")}]])
+
 ;; From: https://stackoverflow.com/questions/28039338/how-to-loop-a-javascript-object-and-push-each-into-an-array-in-clojurescript
 (defn key-value [obj]
   (clj->js
@@ -627,9 +640,12 @@ void main() {
      (make-cards [{:title "Projects 💻🗂✨"
                    :url "/projects"
                    :description "A collection of links to my some projects - a resumé/portfolio thing."}
+                  {:title "Talks 🗣🔊"
+                   :url "https://slides.cwervo.com"
+                   :description [:span  "Slides/videos of talks I've given."]}
                   {:title "Contact ☎️📣📬"
                    :url "/contact"
-                   :description "Say hi on the interwebs!"}])]
+                   :description [:span  "Say hi on the interwebs!"]}])]
 
     ;; TODO : --- Bring back the a-scene below, make it a box, so that you can
     ;; use either your mouse to rotate or on a phone you always see some interesting part of the shader
@@ -716,19 +732,6 @@ void main() {
 (defn thoughts-notice [thoughts-url]
     [:div
      thoughts-url])
-
-(defn giphy-video
-  "This should be an ID from Giphy, for example:
-  https://giphy.com/gifs/cake-vr-a-frame-xT0xeGh5XGoz5znQQ0
-  The last alphanumeric string is the ID, e.g. xT0xeGh5XGoz5znQQ0
-  "
-  [id]
-  [:video.card-photo {:autoPlay "autoplay"
-                      :loop "loop"
-                      :type "mp4"}
-   [:source{:src (str "https://media.giphy.com/media/"id"/giphy.mp4")}]
-   #_[:img{:async ""
-         :src (str "https://media.giphy.com/media/"id"/giphy.gif")}]])
 
 (defn projects-page []
    [:div

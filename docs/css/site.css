@@ -20,15 +20,19 @@ a {
     transition: letter-spacing 0.5s;
 }
 
-a:hover {
+a .nameLine {
     cursor: pointer;
     text-decoration: underline;
+
     margin-bottom: 5px;
     /* Offset the  */
     margin-top: -5px;
-    letter-spacing: 3em;
+    transition: letter-spacing 1s;
 }
 
+a:hover .nameLine {
+    letter-spacing: 2.5em;
+}
 #topnote {
     position: absolute;
     top: 0;
@@ -253,4 +257,9 @@ a:hover {
 }
 
 @media(min-width: 600px) {
+}
+
+/* Override the inside rule for hover*/
+.card-link .card-description {
+    letter-spacing: normal;
 }
