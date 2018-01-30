@@ -59,6 +59,7 @@
   (GET "/thoughts" [] (loading-page))
   (GET "/projects" [] (loading-page))
   (GET "/projects/vr" [] (loading-page))
+  (GET "/resume" [] (loading-page))
 
   (resources "/")
   (not-found "<h1> Not found </h1>
