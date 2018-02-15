@@ -956,6 +956,54 @@ if ("undefined" === typeof $cljs$core$_STAR_loaded_libs_STAR_$$) {
 function $cljs$core$pr_opts$$() {
   return new $cljs$core$PersistentArrayMap$$(null, 5, [$cljs$core$cst$0kw$0flush_DASH_on_DASH_newline$$, !0, $cljs$core$cst$0kw$0readably$$, !0, $cljs$core$cst$0kw$0meta$$, !1, $cljs$core$cst$0kw$0dup$$, !1, $cljs$core$cst$0kw$0print_DASH_length$$, null], null);
 }
+function $cljs$core$enable_console_print_BANG_$$() {
+  $cljs$core$_STAR_print_fn_STAR_$$ = function() {
+    function $G__10413$$($G__10413$$) {
+      var $var_args$jscomp$75$$ = null;
+      if (0 < arguments.length) {
+        $var_args$jscomp$75$$ = 0;
+        for (var $G__10414__a$$ = Array(arguments.length - 0); $var_args$jscomp$75$$ < $G__10414__a$$.length;) {
+          $G__10414__a$$[$var_args$jscomp$75$$] = arguments[$var_args$jscomp$75$$ + 0], ++$var_args$jscomp$75$$;
+        }
+        $var_args$jscomp$75$$ = new $cljs$core$IndexedSeq$$($G__10414__a$$, 0, null);
+      }
+      return $G__10413__delegate$$.call(this, $var_args$jscomp$75$$);
+    }
+    function $G__10413__delegate$$($G__10413$$) {
+      return console.log.apply(console, $cljs$core$into_array$cljs$0core$0IFn$0_invoke$0arity$02$$($G__10413$$));
+    }
+    $G__10413$$.$cljs$lang$maxFixedArity$ = 0;
+    $G__10413$$.$cljs$lang$applyTo$ = function($G__10413$$) {
+      $G__10413$$ = $cljs$core$seq$$($G__10413$$);
+      return $G__10413__delegate$$($G__10413$$);
+    };
+    $G__10413$$.$cljs$core$IFn$_invoke$arity$variadic$ = $G__10413__delegate$$;
+    return $G__10413$$;
+  }();
+  $cljs$core$_STAR_print_err_fn_STAR_$$ = function() {
+    function $G__10416$$($G__10416$$) {
+      var $var_args$jscomp$76$$ = null;
+      if (0 < arguments.length) {
+        $var_args$jscomp$76$$ = 0;
+        for (var $G__10417__a$$ = Array(arguments.length - 0); $var_args$jscomp$76$$ < $G__10417__a$$.length;) {
+          $G__10417__a$$[$var_args$jscomp$76$$] = arguments[$var_args$jscomp$76$$ + 0], ++$var_args$jscomp$76$$;
+        }
+        $var_args$jscomp$76$$ = new $cljs$core$IndexedSeq$$($G__10417__a$$, 0, null);
+      }
+      return $G__10416__delegate$$.call(this, $var_args$jscomp$76$$);
+    }
+    function $G__10416__delegate$$($G__10416$$) {
+      return console.error.apply(console, $cljs$core$into_array$cljs$0core$0IFn$0_invoke$0arity$02$$($G__10416$$));
+    }
+    $G__10416$$.$cljs$lang$maxFixedArity$ = 0;
+    $G__10416$$.$cljs$lang$applyTo$ = function($G__10416$$) {
+      $G__10416$$ = $cljs$core$seq$$($G__10416$$);
+      return $G__10416__delegate$$($G__10416$$);
+    };
+    $G__10416$$.$cljs$core$IFn$_invoke$arity$variadic$ = $G__10416__delegate$$;
+    return $G__10416$$;
+  }();
+}
 function $cljs$core$truth_$$($x$jscomp$78$$) {
   return null != $x$jscomp$78$$ && !1 !== $x$jscomp$78$$;
 }
@@ -1747,32 +1795,32 @@ function $cljs$core$hash_string$$($JSCompiler_temp$jscomp$13_k$jscomp$20$$) {
   if (null == $JSCompiler_temp$jscomp$13_k$jscomp$20$$) {
     return 0;
   }
-  var $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$ = $cljs$core$string_hash_cache$$[$JSCompiler_temp$jscomp$13_k$jscomp$20$$];
-  if ("number" !== typeof $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$) {
+  var $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$ = $cljs$core$string_hash_cache$$[$JSCompiler_temp$jscomp$13_k$jscomp$20$$];
+  if ("number" !== typeof $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$) {
     a: {
       if (null != $JSCompiler_temp$jscomp$13_k$jscomp$20$$) {
-        if ($h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$ = $JSCompiler_temp$jscomp$13_k$jscomp$20$$.length, 0 < $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$) {
-          for (var $i$jscomp$inline_1131$$ = 0, $G__10525$jscomp$inline_1134_hash$jscomp$inline_1132$$ = 0;;) {
-            if ($i$jscomp$inline_1131$$ < $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$) {
-              var $G__10524$jscomp$inline_1133$$ = $i$jscomp$inline_1131$$ + 1;
-              $G__10525$jscomp$inline_1134_hash$jscomp$inline_1132$$ = $cljs$core$imul$$(31, $G__10525$jscomp$inline_1134_hash$jscomp$inline_1132$$) + $JSCompiler_temp$jscomp$13_k$jscomp$20$$.charCodeAt($i$jscomp$inline_1131$$);
-              $i$jscomp$inline_1131$$ = $G__10524$jscomp$inline_1133$$;
+        if ($h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$ = $JSCompiler_temp$jscomp$13_k$jscomp$20$$.length, 0 < $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$) {
+          for (var $i$jscomp$inline_1112$$ = 0, $G__10525$jscomp$inline_1115_hash$jscomp$inline_1113$$ = 0;;) {
+            if ($i$jscomp$inline_1112$$ < $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$) {
+              var $G__10524$jscomp$inline_1114$$ = $i$jscomp$inline_1112$$ + 1;
+              $G__10525$jscomp$inline_1115_hash$jscomp$inline_1113$$ = $cljs$core$imul$$(31, $G__10525$jscomp$inline_1115_hash$jscomp$inline_1113$$) + $JSCompiler_temp$jscomp$13_k$jscomp$20$$.charCodeAt($i$jscomp$inline_1112$$);
+              $i$jscomp$inline_1112$$ = $G__10524$jscomp$inline_1114$$;
             } else {
-              $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$ = $G__10525$jscomp$inline_1134_hash$jscomp$inline_1132$$;
+              $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$ = $G__10525$jscomp$inline_1115_hash$jscomp$inline_1113$$;
               break a;
             }
           }
         } else {
-          $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$ = 0;
+          $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$ = 0;
         }
       } else {
-        $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$ = 0;
+        $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$ = 0;
       }
     }
-    $cljs$core$string_hash_cache$$[$JSCompiler_temp$jscomp$13_k$jscomp$20$$] = $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$;
+    $cljs$core$string_hash_cache$$[$JSCompiler_temp$jscomp$13_k$jscomp$20$$] = $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$;
     $cljs$core$string_hash_cache_count$$ += 1;
   }
-  return $JSCompiler_temp$jscomp$13_k$jscomp$20$$ = $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1130$$;
+  return $JSCompiler_temp$jscomp$13_k$jscomp$20$$ = $h$jscomp$21_h$jscomp$inline_190_len$jscomp$inline_1111$$;
 }
 function $cljs$core$hash$$($JSCompiler_temp$jscomp$10_JSCompiler_temp$jscomp$11_JSCompiler_temp$jscomp$12_h1$jscomp$inline_194_in$$jscomp$inline_192_k1$jscomp$inline_193_o$jscomp$24$$) {
   if (null != $JSCompiler_temp$jscomp$10_JSCompiler_temp$jscomp$11_JSCompiler_temp$jscomp$12_h1$jscomp$inline_194_in$$jscomp$inline_192_k1$jscomp$inline_193_o$jscomp$24$$ && ($JSCompiler_temp$jscomp$10_JSCompiler_temp$jscomp$11_JSCompiler_temp$jscomp$12_h1$jscomp$inline_194_in$$jscomp$inline_192_k1$jscomp$inline_193_o$jscomp$24$$.$cljs$lang$protocol_mask$partition0$$ & 4194304 || $cljs$core$PROTOCOL_SENTINEL$$ === $JSCompiler_temp$jscomp$10_JSCompiler_temp$jscomp$11_JSCompiler_temp$jscomp$12_h1$jscomp$inline_194_in$$jscomp$inline_192_k1$jscomp$inline_193_o$jscomp$24$$.$cljs$core$IHash$$)) {
@@ -1801,24 +1849,24 @@ function $cljs$core$hash$$($JSCompiler_temp$jscomp$10_JSCompiler_temp$jscomp$11_
   }
 }
 function $cljs$core$hash_symbol$$($hash$jscomp$inline_197_sym$$) {
-  var $in$$jscomp$inline_1140_seed$jscomp$inline_196$$ = $hash$jscomp$inline_197_sym$$.name;
+  var $in$$jscomp$inline_1121_seed$jscomp$inline_196$$ = $hash$jscomp$inline_197_sym$$.name;
   a: {
-    var $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ = 1;
-    for (var $G__10521$jscomp$inline_1145_h1$jscomp$inline_1143$$ = 0;;) {
-      if ($h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ < $in$$jscomp$inline_1140_seed$jscomp$inline_196$$.length) {
-        var $G__10520$jscomp$inline_1144$$ = $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ + 2;
-        $G__10521$jscomp$inline_1145_h1$jscomp$inline_1143$$ = $cljs$core$m3_mix_H1$$($G__10521$jscomp$inline_1145_h1$jscomp$inline_1143$$, $cljs$core$m3_mix_K1$$($in$$jscomp$inline_1140_seed$jscomp$inline_196$$.charCodeAt($h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ - 1) | $in$$jscomp$inline_1140_seed$jscomp$inline_196$$.charCodeAt($h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$) << 16));
-        $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ = $G__10520$jscomp$inline_1144$$;
+    var $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ = 1;
+    for (var $G__10521$jscomp$inline_1126_h1$jscomp$inline_1124$$ = 0;;) {
+      if ($h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ < $in$$jscomp$inline_1121_seed$jscomp$inline_196$$.length) {
+        var $G__10520$jscomp$inline_1125$$ = $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ + 2;
+        $G__10521$jscomp$inline_1126_h1$jscomp$inline_1124$$ = $cljs$core$m3_mix_H1$$($G__10521$jscomp$inline_1126_h1$jscomp$inline_1124$$, $cljs$core$m3_mix_K1$$($in$$jscomp$inline_1121_seed$jscomp$inline_196$$.charCodeAt($h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ - 1) | $in$$jscomp$inline_1121_seed$jscomp$inline_196$$.charCodeAt($h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$) << 16));
+        $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ = $G__10520$jscomp$inline_1125$$;
       } else {
-        $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ = $G__10521$jscomp$inline_1145_h1$jscomp$inline_1143$$;
+        $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ = $G__10521$jscomp$inline_1126_h1$jscomp$inline_1124$$;
         break a;
       }
     }
   }
-  $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ = 1 === ($in$$jscomp$inline_1140_seed$jscomp$inline_196$$.length & 1) ? $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$ ^ $cljs$core$m3_mix_K1$$($in$$jscomp$inline_1140_seed$jscomp$inline_196$$.charCodeAt($in$$jscomp$inline_1140_seed$jscomp$inline_196$$.length - 1)) : $h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$;
-  $in$$jscomp$inline_1140_seed$jscomp$inline_196$$ = $cljs$core$m3_fmix$$($h1$jscomp$inline_1141_h1__$1$jscomp$inline_1146_i$jscomp$inline_1142$$, $cljs$core$imul$$(2, $in$$jscomp$inline_1140_seed$jscomp$inline_196$$.length));
+  $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ = 1 === ($in$$jscomp$inline_1121_seed$jscomp$inline_196$$.length & 1) ? $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$ ^ $cljs$core$m3_mix_K1$$($in$$jscomp$inline_1121_seed$jscomp$inline_196$$.charCodeAt($in$$jscomp$inline_1121_seed$jscomp$inline_196$$.length - 1)) : $h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$;
+  $in$$jscomp$inline_1121_seed$jscomp$inline_196$$ = $cljs$core$m3_fmix$$($h1$jscomp$inline_1122_h1__$1$jscomp$inline_1127_i$jscomp$inline_1123$$, $cljs$core$imul$$(2, $in$$jscomp$inline_1121_seed$jscomp$inline_196$$.length));
   $hash$jscomp$inline_197_sym$$ = $cljs$core$hash_string$$($hash$jscomp$inline_197_sym$$.$ns$);
-  return $in$$jscomp$inline_1140_seed$jscomp$inline_196$$ ^ $hash$jscomp$inline_197_sym$$ + 2654435769 + ($in$$jscomp$inline_1140_seed$jscomp$inline_196$$ << 6) + ($in$$jscomp$inline_1140_seed$jscomp$inline_196$$ >> 2);
+  return $in$$jscomp$inline_1121_seed$jscomp$inline_196$$ ^ $hash$jscomp$inline_197_sym$$ + 2654435769 + ($in$$jscomp$inline_1121_seed$jscomp$inline_196$$ << 6) + ($in$$jscomp$inline_1121_seed$jscomp$inline_196$$ >> 2);
 }
 function $cljs$core$Symbol$$($ns$jscomp$1$$, $name$jscomp$77$$, $str$jscomp$61$$, $_hash$$, $_meta$$) {
   this.$ns$ = $ns$jscomp$1$$;
@@ -5419,9 +5467,9 @@ function $cljs$core$filter$cljs$0core$0IFn$0_invoke$0arity$02$$($pred$jscomp$7$$
       if ($cljs$core$chunked_seq_QMARK_$$($r$jscomp$27_temp__4657__auto__$jscomp$7$$)) {
         for (var $c$jscomp$126_f$jscomp$209$$ = $cljs$core$_chunked_first$$($r$jscomp$27_temp__4657__auto__$jscomp$7$$), $size$jscomp$24$$ = $cljs$core$count$$($c$jscomp$126_f$jscomp$209$$), $b$jscomp$149$$ = new $cljs$core$ChunkBuffer$$(Array($size$jscomp$24$$), 0), $i_11803$$ = 0;;) {
           if ($i_11803$$ < $size$jscomp$24$$) {
-            var $G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$($c$jscomp$126_f$jscomp$209$$, $i_11803$$);
-            $G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$ = $pred$jscomp$7$$.$cljs$core$IFn$_invoke$arity$1$ ? $pred$jscomp$7$$.$cljs$core$IFn$_invoke$arity$1$($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$) : $pred$jscomp$7$$.call(null, $G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$);
-            $cljs$core$truth_$$($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$) && ($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$($c$jscomp$126_f$jscomp$209$$, $i_11803$$), $b$jscomp$149$$.add($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1330$$));
+            var $G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$($c$jscomp$126_f$jscomp$209$$, $i_11803$$);
+            $G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$ = $pred$jscomp$7$$.$cljs$core$IFn$_invoke$arity$1$ ? $pred$jscomp$7$$.$cljs$core$IFn$_invoke$arity$1$($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$) : $pred$jscomp$7$$.call(null, $G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$);
+            $cljs$core$truth_$$($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$) && ($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$($c$jscomp$126_f$jscomp$209$$, $i_11803$$), $b$jscomp$149$$.add($G__11799$jscomp$inline_408_JSCompiler_inline_result$jscomp$56_x$jscomp$inline_1311$$));
             $i_11803$$ += 1;
           } else {
             break;
@@ -5744,23 +5792,23 @@ $JSCompiler_prototypeAlias$$.$cljs$core$ILookup$_lookup$arity$3$ = function($col
 };
 $JSCompiler_prototypeAlias$$.$cljs$core$IKVReduce$_kv_reduce$arity$3$ = function($i$jscomp$177_v$jscomp$18$$, $f$jscomp$226$$, $init$jscomp$7_len$jscomp$17$$) {
   $i$jscomp$177_v$jscomp$18$$ = 0;
-  for (var $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$ = $init$jscomp$7_len$jscomp$17$$;;) {
+  for (var $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$ = $init$jscomp$7_len$jscomp$17$$;;) {
     if ($i$jscomp$177_v$jscomp$18$$ < this.$cnt$) {
       var $G__11944_arr$jscomp$92_init__$2$$ = $cljs$core$unchecked_array_for$$(this, $i$jscomp$177_v$jscomp$18$$);
       $init$jscomp$7_len$jscomp$17$$ = $G__11944_arr$jscomp$92_init__$2$$.length;
       a: {
-        for (var $j$jscomp$inline_1149$$ = 0;;) {
-          if ($j$jscomp$inline_1149$$ < $init$jscomp$7_len$jscomp$17$$) {
-            var $G__11935$jscomp$inline_1153$$ = $j$jscomp$inline_1149$$ + $i$jscomp$177_v$jscomp$18$$, $G__11936$jscomp$inline_1154$$ = $G__11944_arr$jscomp$92_init__$2$$[$j$jscomp$inline_1149$$];
-            $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$ = $f$jscomp$226$$.$cljs$core$IFn$_invoke$arity$3$ ? $f$jscomp$226$$.$cljs$core$IFn$_invoke$arity$3$($G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$, $G__11935$jscomp$inline_1153$$, $G__11936$jscomp$inline_1154$$) : $f$jscomp$226$$.call(null, $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$, 
-            $G__11935$jscomp$inline_1153$$, $G__11936$jscomp$inline_1154$$);
-            if ($cljs$core$reduced_QMARK_$$($G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$)) {
-              $G__11944_arr$jscomp$92_init__$2$$ = $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$;
+        for (var $j$jscomp$inline_1130$$ = 0;;) {
+          if ($j$jscomp$inline_1130$$ < $init$jscomp$7_len$jscomp$17$$) {
+            var $G__11935$jscomp$inline_1134$$ = $j$jscomp$inline_1130$$ + $i$jscomp$177_v$jscomp$18$$, $G__11936$jscomp$inline_1135$$ = $G__11944_arr$jscomp$92_init__$2$$[$j$jscomp$inline_1130$$];
+            $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$ = $f$jscomp$226$$.$cljs$core$IFn$_invoke$arity$3$ ? $f$jscomp$226$$.$cljs$core$IFn$_invoke$arity$3$($G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$, $G__11935$jscomp$inline_1134$$, $G__11936$jscomp$inline_1135$$) : $f$jscomp$226$$.call(null, $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$, 
+            $G__11935$jscomp$inline_1134$$, $G__11936$jscomp$inline_1135$$);
+            if ($cljs$core$reduced_QMARK_$$($G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$)) {
+              $G__11944_arr$jscomp$92_init__$2$$ = $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$;
               break a;
             }
-            $j$jscomp$inline_1149$$ += 1;
+            $j$jscomp$inline_1130$$ += 1;
           } else {
-            $G__11944_arr$jscomp$92_init__$2$$ = $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$;
+            $G__11944_arr$jscomp$92_init__$2$$ = $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$;
             break a;
           }
         }
@@ -5769,9 +5817,9 @@ $JSCompiler_prototypeAlias$$.$cljs$core$IKVReduce$_kv_reduce$arity$3$ = function
         return $cljs$core$_deref$$($G__11944_arr$jscomp$92_init__$2$$);
       }
       $i$jscomp$177_v$jscomp$18$$ += $init$jscomp$7_len$jscomp$17$$;
-      $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$ = $G__11944_arr$jscomp$92_init__$2$$;
+      $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$ = $G__11944_arr$jscomp$92_init__$2$$;
     } else {
-      return $G__11934$jscomp$inline_1152_G__11942$jscomp$inline_1155_init__$1_init__$2$jscomp$inline_1150_init__$3$jscomp$inline_1151$$;
+      return $G__11934$jscomp$inline_1133_G__11942$jscomp$inline_1136_init__$1_init__$2$jscomp$inline_1131_init__$3$jscomp$inline_1132$$;
     }
   }
 };
@@ -5861,23 +5909,23 @@ $JSCompiler_prototypeAlias$$.$cljs$core$IReduce$_reduce$arity$2$ = function($v$j
 };
 $JSCompiler_prototypeAlias$$.$cljs$core$IReduce$_reduce$arity$3$ = function($i$jscomp$178_v$jscomp$20$$, $f$jscomp$228$$, $init$jscomp$8_len$jscomp$18$$) {
   $i$jscomp$178_v$jscomp$20$$ = 0;
-  for (var $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$ = $init$jscomp$8_len$jscomp$18$$;;) {
+  for (var $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$ = $init$jscomp$8_len$jscomp$18$$;;) {
     if ($i$jscomp$178_v$jscomp$20$$ < this.$cnt$) {
       var $G__11948_arr$jscomp$93_init__$2$jscomp$2$$ = $cljs$core$unchecked_array_for$$(this, $i$jscomp$178_v$jscomp$20$$);
       $init$jscomp$8_len$jscomp$18$$ = $G__11948_arr$jscomp$93_init__$2$jscomp$2$$.length;
       a: {
-        for (var $j$jscomp$inline_1157$$ = 0;;) {
-          if ($j$jscomp$inline_1157$$ < $init$jscomp$8_len$jscomp$18$$) {
-            var $G__11938$jscomp$inline_1161$$ = $G__11948_arr$jscomp$93_init__$2$jscomp$2$$[$j$jscomp$inline_1157$$];
-            $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$ = $f$jscomp$228$$.$cljs$core$IFn$_invoke$arity$2$ ? $f$jscomp$228$$.$cljs$core$IFn$_invoke$arity$2$($G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$, $G__11938$jscomp$inline_1161$$) : $f$jscomp$228$$.call(null, $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$, 
-            $G__11938$jscomp$inline_1161$$);
-            if ($cljs$core$reduced_QMARK_$$($G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$)) {
-              $G__11948_arr$jscomp$93_init__$2$jscomp$2$$ = $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$;
+        for (var $j$jscomp$inline_1138$$ = 0;;) {
+          if ($j$jscomp$inline_1138$$ < $init$jscomp$8_len$jscomp$18$$) {
+            var $G__11938$jscomp$inline_1142$$ = $G__11948_arr$jscomp$93_init__$2$jscomp$2$$[$j$jscomp$inline_1138$$];
+            $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$ = $f$jscomp$228$$.$cljs$core$IFn$_invoke$arity$2$ ? $f$jscomp$228$$.$cljs$core$IFn$_invoke$arity$2$($G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$, $G__11938$jscomp$inline_1142$$) : $f$jscomp$228$$.call(null, $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$, 
+            $G__11938$jscomp$inline_1142$$);
+            if ($cljs$core$reduced_QMARK_$$($G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$)) {
+              $G__11948_arr$jscomp$93_init__$2$jscomp$2$$ = $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$;
               break a;
             }
-            $j$jscomp$inline_1157$$ += 1;
+            $j$jscomp$inline_1138$$ += 1;
           } else {
-            $G__11948_arr$jscomp$93_init__$2$jscomp$2$$ = $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$;
+            $G__11948_arr$jscomp$93_init__$2$jscomp$2$$ = $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$;
             break a;
           }
         }
@@ -5886,9 +5934,9 @@ $JSCompiler_prototypeAlias$$.$cljs$core$IReduce$_reduce$arity$3$ = function($i$j
         return $cljs$core$_deref$$($G__11948_arr$jscomp$93_init__$2$jscomp$2$$);
       }
       $i$jscomp$178_v$jscomp$20$$ += $init$jscomp$8_len$jscomp$18$$;
-      $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$ = $G__11948_arr$jscomp$93_init__$2$jscomp$2$$;
+      $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$ = $G__11948_arr$jscomp$93_init__$2$jscomp$2$$;
     } else {
-      return $G__11937$jscomp$inline_1160_G__11946$jscomp$inline_1162_init__$1$jscomp$1_init__$2$jscomp$inline_1158_init__$3$jscomp$inline_1159$$;
+      return $G__11937$jscomp$inline_1141_G__11946$jscomp$inline_1143_init__$1$jscomp$1_init__$2$jscomp$inline_1139_init__$3$jscomp$inline_1140$$;
     }
   }
 };
@@ -5930,9 +5978,9 @@ $JSCompiler_prototypeAlias$$.$cljs$core$IWithMeta$_with_meta$arity$2$ = function
 $JSCompiler_prototypeAlias$$.$cljs$core$ICollection$_conj$arity$2$ = function($coll$jscomp$290_len$jscomp$19_new_shift$$, $o$jscomp$83$$) {
   if (32 > this.$cnt$ - $cljs$core$tail_off$$(this)) {
     $coll$jscomp$290_len$jscomp$19_new_shift$$ = this.$tail$.length;
-    for (var $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = Array($coll$jscomp$290_len$jscomp$19_new_shift$$ + 1), $i_11950_val$jscomp$inline_1342$$ = 0;;) {
-      if ($i_11950_val$jscomp$inline_1342$$ < $coll$jscomp$290_len$jscomp$19_new_shift$$) {
-        $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$[$i_11950_val$jscomp$inline_1342$$] = this.$tail$[$i_11950_val$jscomp$inline_1342$$], $i_11950_val$jscomp$inline_1342$$ += 1;
+    for (var $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = Array($coll$jscomp$290_len$jscomp$19_new_shift$$ + 1), $i_11950_val$jscomp$inline_1323$$ = 0;;) {
+      if ($i_11950_val$jscomp$inline_1323$$ < $coll$jscomp$290_len$jscomp$19_new_shift$$) {
+        $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$[$i_11950_val$jscomp$inline_1323$$] = this.$tail$[$i_11950_val$jscomp$inline_1323$$], $i_11950_val$jscomp$inline_1323$$ += 1;
       } else {
         break;
       }
@@ -5941,8 +5989,8 @@ $JSCompiler_prototypeAlias$$.$cljs$core$ICollection$_conj$arity$2$ = function($c
     return new $cljs$core$PersistentVector$$(this.meta, this.$cnt$ + 1, this.shift, this.root, $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$, null);
   }
   $coll$jscomp$290_len$jscomp$19_new_shift$$ = ($JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = this.$cnt$ >>> 5 > 1 << this.shift) ? this.shift + 5 : this.shift;
-  $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ ? ($JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = $cljs$core$pv_fresh_node$$(null), $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$.$arr$[0] = this.root, $i_11950_val$jscomp$inline_1342$$ = $cljs$core$new_path$$(null, this.shift, new $cljs$core$VectorNode$$(null, this.$tail$)), $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$.$arr$[1] = 
-  $i_11950_val$jscomp$inline_1342$$) : $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = $cljs$core$push_tail$$(this, this.shift, this.root, new $cljs$core$VectorNode$$(null, this.$tail$));
+  $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ ? ($JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = $cljs$core$pv_fresh_node$$(null), $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$.$arr$[0] = this.root, $i_11950_val$jscomp$inline_1323$$ = $cljs$core$new_path$$(null, this.shift, new $cljs$core$VectorNode$$(null, this.$tail$)), $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$.$arr$[1] = 
+  $i_11950_val$jscomp$inline_1323$$) : $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$ = $cljs$core$push_tail$$(this, this.shift, this.root, new $cljs$core$VectorNode$$(null, this.$tail$));
   return new $cljs$core$PersistentVector$$(this.meta, this.$cnt$ + 1, $coll$jscomp$290_len$jscomp$19_new_shift$$, $JSCompiler_temp$jscomp$68_n_r$jscomp$inline_436_new_tail$jscomp$2_root_overflow_QMARK_$$, [$o$jscomp$83$$], null);
 };
 $JSCompiler_prototypeAlias$$.call = function() {
@@ -6253,31 +6301,31 @@ $JSCompiler_prototypeAlias$$.$cljs$core$IEmptyableCollection$_empty$arity$1$ = f
 $JSCompiler_prototypeAlias$$.$cljs$core$IReduce$_reduce$arity$2$ = function($coll$jscomp$337$$, $f$jscomp$232$$) {
   return null != this.$v$ && $cljs$core$PROTOCOL_SENTINEL$$ === this.$v$.$cljs$core$APersistentVector$$ ? $cljs$core$pv_reduce$cljs$0core$0IFn$0_invoke$0arity$04$$(this.$v$, $f$jscomp$232$$, this.start, this.end) : $cljs$core$ci_reduce$cljs$0core$0IFn$0_invoke$0arity$02$$(this, $f$jscomp$232$$);
 };
-$JSCompiler_prototypeAlias$$.$cljs$core$IReduce$_reduce$arity$3$ = function($cnt$jscomp$inline_1167_coll$jscomp$338$$, $JSCompiler_temp$jscomp$1112_f$jscomp$233$$, $G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$) {
+$JSCompiler_prototypeAlias$$.$cljs$core$IReduce$_reduce$arity$3$ = function($cnt$jscomp$inline_1148_coll$jscomp$338$$, $JSCompiler_temp$jscomp$1093_f$jscomp$233$$, $G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$) {
   if (null != this.$v$ && $cljs$core$PROTOCOL_SENTINEL$$ === this.$v$.$cljs$core$APersistentVector$$) {
-    $JSCompiler_temp$jscomp$1112_f$jscomp$233$$ = $cljs$core$pv_reduce$cljs$0core$0IFn$0_invoke$0arity$05$$(this.$v$, $JSCompiler_temp$jscomp$1112_f$jscomp$233$$, $G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$, this.start, this.end);
+    $JSCompiler_temp$jscomp$1093_f$jscomp$233$$ = $cljs$core$pv_reduce$cljs$0core$0IFn$0_invoke$0arity$05$$(this.$v$, $JSCompiler_temp$jscomp$1093_f$jscomp$233$$, $G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$, this.start, this.end);
   } else {
     a: {
-      $cnt$jscomp$inline_1167_coll$jscomp$338$$ = $cljs$core$_count$$(this);
-      var $G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$ = $G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$;
-      for ($G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$ = 0;;) {
-        if ($G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$ < $cnt$jscomp$inline_1167_coll$jscomp$338$$) {
-          var $G__10642$jscomp$inline_1172$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$(this, $G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$);
-          $G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$ = $JSCompiler_temp$jscomp$1112_f$jscomp$233$$.$cljs$core$IFn$_invoke$arity$2$ ? $JSCompiler_temp$jscomp$1112_f$jscomp$233$$.$cljs$core$IFn$_invoke$arity$2$($G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$, $G__10642$jscomp$inline_1172$$) : $JSCompiler_temp$jscomp$1112_f$jscomp$233$$.call(null, $G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$, 
-          $G__10642$jscomp$inline_1172$$);
-          if ($cljs$core$reduced_QMARK_$$($G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$)) {
-            $JSCompiler_temp$jscomp$1112_f$jscomp$233$$ = $cljs$core$_deref$$($G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$);
+      $cnt$jscomp$inline_1148_coll$jscomp$338$$ = $cljs$core$_count$$(this);
+      var $G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$ = $G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$;
+      for ($G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$ = 0;;) {
+        if ($G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$ < $cnt$jscomp$inline_1148_coll$jscomp$338$$) {
+          var $G__10642$jscomp$inline_1153$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$(this, $G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$);
+          $G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$ = $JSCompiler_temp$jscomp$1093_f$jscomp$233$$.$cljs$core$IFn$_invoke$arity$2$ ? $JSCompiler_temp$jscomp$1093_f$jscomp$233$$.$cljs$core$IFn$_invoke$arity$2$($G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$, $G__10642$jscomp$inline_1153$$) : $JSCompiler_temp$jscomp$1093_f$jscomp$233$$.call(null, $G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$, 
+          $G__10642$jscomp$inline_1153$$);
+          if ($cljs$core$reduced_QMARK_$$($G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$)) {
+            $JSCompiler_temp$jscomp$1093_f$jscomp$233$$ = $cljs$core$_deref$$($G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$);
             break a;
           }
-          $G__10649$jscomp$inline_1173_init$jscomp$10_n$jscomp$inline_1169$$ += 1;
+          $G__10649$jscomp$inline_1154_init$jscomp$10_n$jscomp$inline_1150$$ += 1;
         } else {
-          $JSCompiler_temp$jscomp$1112_f$jscomp$233$$ = $G__10641$jscomp$inline_1171_nval$jscomp$inline_1170_val__$1$jscomp$inline_1168$$;
+          $JSCompiler_temp$jscomp$1093_f$jscomp$233$$ = $G__10641$jscomp$inline_1152_nval$jscomp$inline_1151_val__$1$jscomp$inline_1149$$;
           break a;
         }
       }
     }
   }
-  return $JSCompiler_temp$jscomp$1112_f$jscomp$233$$;
+  return $JSCompiler_temp$jscomp$1093_f$jscomp$233$$;
 };
 $JSCompiler_prototypeAlias$$.$cljs$core$IAssociative$_assoc$arity$3$ = function($coll$jscomp$339$$, $key$jscomp$73$$, $val$jscomp$63$$) {
   if ("number" === typeof $key$jscomp$73$$) {
@@ -6426,9 +6474,9 @@ function $JSCompiler_StaticMethods_cljs$core$ITransientVector$_assoc_n_BANG_$ari
               if (0 === $new_root$jscomp$3$$) {
                 $node$jscomp$20_node__$1$jscomp$1$$.$arr$[$n$jscomp$111$$ & 31] = $val$jscomp$65$$;
               } else {
-                var $level$jscomp$16_val$jscomp$inline_1350$$ = $n$jscomp$111$$ >>> $new_root$jscomp$3$$ & 31;
-                $new_root$jscomp$3$$ = $cljs$core$go$$($new_root$jscomp$3$$ - 5, $node$jscomp$20_node__$1$jscomp$1$$.$arr$[$level$jscomp$16_val$jscomp$inline_1350$$]);
-                $node$jscomp$20_node__$1$jscomp$1$$.$arr$[$level$jscomp$16_val$jscomp$inline_1350$$] = $new_root$jscomp$3$$;
+                var $level$jscomp$16_val$jscomp$inline_1331$$ = $n$jscomp$111$$ >>> $new_root$jscomp$3$$ & 31;
+                $new_root$jscomp$3$$ = $cljs$core$go$$($new_root$jscomp$3$$ - 5, $node$jscomp$20_node__$1$jscomp$1$$.$arr$[$level$jscomp$16_val$jscomp$inline_1331$$]);
+                $node$jscomp$20_node__$1$jscomp$1$$.$arr$[$level$jscomp$16_val$jscomp$inline_1331$$] = $new_root$jscomp$3$$;
               }
               return $node$jscomp$20_node__$1$jscomp$1$$;
             };
@@ -6866,29 +6914,29 @@ $JSCompiler_prototypeAlias$$.$cljs$core$IMap$_dissoc$arity$2$ = function($coll$j
     return this;
   }
 };
-$JSCompiler_prototypeAlias$$.$cljs$core$IAssociative$_assoc$arity$3$ = function($arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$, $G__12099$jscomp$inline_521_k$jscomp$153$$, $v$jscomp$38$$) {
-  $arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$ = $cljs$core$array_index_of$$(this.$arr$, $G__12099$jscomp$inline_521_k$jscomp$153$$);
-  if (-1 === $arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$) {
+$JSCompiler_prototypeAlias$$.$cljs$core$IAssociative$_assoc$arity$3$ = function($arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$, $G__12099$jscomp$inline_521_k$jscomp$153$$, $v$jscomp$38$$) {
+  $arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$ = $cljs$core$array_index_of$$(this.$arr$, $G__12099$jscomp$inline_521_k$jscomp$153$$);
+  if (-1 === $arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$) {
     if (this.$cnt$ < $cljs$core$PersistentArrayMap$HASHMAP_THRESHOLD$$) {
-      $arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$ = this.$arr$;
-      for (var $l$jscomp$inline_1178$$ = $arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$.length, $narr$jscomp$inline_1179$$ = Array($l$jscomp$inline_1178$$ + 2), $i_12067$jscomp$inline_1180$$ = 0;;) {
-        if ($i_12067$jscomp$inline_1180$$ < $l$jscomp$inline_1178$$) {
-          $narr$jscomp$inline_1179$$[$i_12067$jscomp$inline_1180$$] = $arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$[$i_12067$jscomp$inline_1180$$], $i_12067$jscomp$inline_1180$$ += 1;
+      $arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$ = this.$arr$;
+      for (var $l$jscomp$inline_1159$$ = $arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$.length, $narr$jscomp$inline_1160$$ = Array($l$jscomp$inline_1159$$ + 2), $i_12067$jscomp$inline_1161$$ = 0;;) {
+        if ($i_12067$jscomp$inline_1161$$ < $l$jscomp$inline_1159$$) {
+          $narr$jscomp$inline_1160$$[$i_12067$jscomp$inline_1161$$] = $arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$[$i_12067$jscomp$inline_1161$$], $i_12067$jscomp$inline_1161$$ += 1;
         } else {
           break;
         }
       }
-      $narr$jscomp$inline_1179$$[$l$jscomp$inline_1178$$] = $G__12099$jscomp$inline_521_k$jscomp$153$$;
-      $narr$jscomp$inline_1179$$[$l$jscomp$inline_1178$$ + 1] = $v$jscomp$38$$;
-      return new $cljs$core$PersistentArrayMap$$(this.meta, this.$cnt$ + 1, $narr$jscomp$inline_1179$$, null);
+      $narr$jscomp$inline_1160$$[$l$jscomp$inline_1159$$] = $G__12099$jscomp$inline_521_k$jscomp$153$$;
+      $narr$jscomp$inline_1160$$[$l$jscomp$inline_1159$$ + 1] = $v$jscomp$38$$;
+      return new $cljs$core$PersistentArrayMap$$(this.meta, this.$cnt$ + 1, $narr$jscomp$inline_1160$$, null);
     }
     return $cljs$core$_with_meta$$($cljs$core$_assoc$$($cljs$core$into$$.$cljs$core$IFn$_invoke$arity$2$($cljs$core$PersistentHashMap$EMPTY$$, this), $G__12099$jscomp$inline_521_k$jscomp$153$$, $v$jscomp$38$$), this.meta);
   }
-  if ($v$jscomp$38$$ === this.$arr$[$arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$ + 1]) {
+  if ($v$jscomp$38$$ === this.$arr$[$arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$ + 1]) {
     return this;
   }
   $G__12099$jscomp$inline_521_k$jscomp$153$$ = $cljs$core$aclone$$(this.$arr$);
-  $G__12099$jscomp$inline_521_k$jscomp$153$$[$arr$jscomp$inline_1175_coll$jscomp$457_idx$jscomp$25$$ + 1] = $v$jscomp$38$$;
+  $G__12099$jscomp$inline_521_k$jscomp$153$$[$arr$jscomp$inline_1156_coll$jscomp$457_idx$jscomp$25$$ + 1] = $v$jscomp$38$$;
   return new $cljs$core$PersistentArrayMap$$(this.meta, this.$cnt$, $G__12099$jscomp$inline_521_k$jscomp$153$$, null);
 };
 $JSCompiler_prototypeAlias$$.$cljs$core$IAssociative$_contains_key_QMARK_$arity$2$ = function($coll$jscomp$458$$, $k$jscomp$154$$) {
@@ -7776,12 +7824,12 @@ $JSCompiler_prototypeAlias$$.$cljs$core$ILookup$_lookup$arity$2$ = function($col
 $JSCompiler_prototypeAlias$$.$cljs$core$ILookup$_lookup$arity$3$ = function($coll$jscomp$510$$, $k$jscomp$168$$, $not_found$jscomp$51$$) {
   return null == $k$jscomp$168$$ ? this.$has_nil_QMARK_$ ? this.$nil_val$ : $not_found$jscomp$51$$ : null == this.root ? $not_found$jscomp$51$$ : this.root.$inode_lookup$(0, $cljs$core$hash$$($k$jscomp$168$$), $k$jscomp$168$$, $not_found$jscomp$51$$);
 };
-$JSCompiler_prototypeAlias$$.$cljs$core$IKVReduce$_kv_reduce$arity$3$ = function($coll$jscomp$511_init__$1$jscomp$7$$, $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$, $init$jscomp$17$$) {
-  $coll$jscomp$511_init__$1$jscomp$7$$ = this.$has_nil_QMARK_$ ? $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$.$cljs$core$IFn$_invoke$arity$3$ ? $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$.$cljs$core$IFn$_invoke$arity$3$($init$jscomp$17$$, null, this.$nil_val$) : $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$.call(null, $init$jscomp$17$$, null, this.$nil_val$) : 
+$JSCompiler_prototypeAlias$$.$cljs$core$IKVReduce$_kv_reduce$arity$3$ = function($coll$jscomp$511_init__$1$jscomp$7$$, $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$, $init$jscomp$17$$) {
+  $coll$jscomp$511_init__$1$jscomp$7$$ = this.$has_nil_QMARK_$ ? $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$.$cljs$core$IFn$_invoke$arity$3$ ? $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$.$cljs$core$IFn$_invoke$arity$3$($init$jscomp$17$$, null, this.$nil_val$) : $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$.call(null, $init$jscomp$17$$, null, this.$nil_val$) : 
   $init$jscomp$17$$;
-  $cljs$core$reduced_QMARK_$$($coll$jscomp$511_init__$1$jscomp$7$$) ? $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$ = $cljs$core$_deref$$($coll$jscomp$511_init__$1$jscomp$7$$) : null != this.root ? ($JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$ = this.root.$kv_reduce$($JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$, $coll$jscomp$511_init__$1$jscomp$7$$), $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$ = 
-  $cljs$core$reduced_QMARK_$$($JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$) ? $cljs$core$_deref$$($JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$) : $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$) : $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$ = $coll$jscomp$511_init__$1$jscomp$7$$;
-  return $JSCompiler_temp$jscomp$1110_JSCompiler_temp$jscomp$1111_f$jscomp$252_x$jscomp$inline_1184$$;
+  $cljs$core$reduced_QMARK_$$($coll$jscomp$511_init__$1$jscomp$7$$) ? $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$ = $cljs$core$_deref$$($coll$jscomp$511_init__$1$jscomp$7$$) : null != this.root ? ($JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$ = this.root.$kv_reduce$($JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$, $coll$jscomp$511_init__$1$jscomp$7$$), $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$ = 
+  $cljs$core$reduced_QMARK_$$($JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$) ? $cljs$core$_deref$$($JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$) : $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$) : $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$ = $coll$jscomp$511_init__$1$jscomp$7$$;
+  return $JSCompiler_temp$jscomp$1091_JSCompiler_temp$jscomp$1092_f$jscomp$252_x$jscomp$inline_1165$$;
 };
 $JSCompiler_prototypeAlias$$.$cljs$core$IIterable$_iterator$arity$1$ = function() {
   var $root_iter$jscomp$2$$ = this.root ? $cljs$core$_iterator$$(this.root) : $cljs$core$nil_iter$$();
@@ -7980,13 +8028,13 @@ var $cljs$core$hash_map$$ = function $cljs$core$hash_map$$($var_args$jscomp$235$
   return $cljs$core$hash_map$$.$cljs$core$IFn$_invoke$arity$variadic$(0 < $args__8821__auto__$jscomp$3$$.length ? new $cljs$core$IndexedSeq$$($args__8821__auto__$jscomp$3$$.slice(0), 0, null) : null);
 };
 $cljs$core$hash_map$$.$cljs$core$IFn$_invoke$arity$variadic$ = function($G__12393_keyvals$jscomp$1$$) {
-  for (var $in$$jscomp$2_val$jscomp$inline_1188$$ = $cljs$core$seq$$($G__12393_keyvals$jscomp$1$$), $G__12394_out$jscomp$4$$ = $cljs$core$_as_transient$$($cljs$core$PersistentHashMap$EMPTY$$);;) {
-    if ($in$$jscomp$2_val$jscomp$inline_1188$$) {
-      $G__12393_keyvals$jscomp$1$$ = $cljs$core$next$$($cljs$core$next$$($in$$jscomp$2_val$jscomp$inline_1188$$));
-      var $key$jscomp$inline_1187$$ = $cljs$core$first$$($in$$jscomp$2_val$jscomp$inline_1188$$);
-      $in$$jscomp$2_val$jscomp$inline_1188$$ = $cljs$core$first$$($cljs$core$next$$($in$$jscomp$2_val$jscomp$inline_1188$$));
-      $G__12394_out$jscomp$4$$ = $cljs$core$_assoc_BANG_$$($G__12394_out$jscomp$4$$, $key$jscomp$inline_1187$$, $in$$jscomp$2_val$jscomp$inline_1188$$);
-      $in$$jscomp$2_val$jscomp$inline_1188$$ = $G__12393_keyvals$jscomp$1$$;
+  for (var $in$$jscomp$2_val$jscomp$inline_1169$$ = $cljs$core$seq$$($G__12393_keyvals$jscomp$1$$), $G__12394_out$jscomp$4$$ = $cljs$core$_as_transient$$($cljs$core$PersistentHashMap$EMPTY$$);;) {
+    if ($in$$jscomp$2_val$jscomp$inline_1169$$) {
+      $G__12393_keyvals$jscomp$1$$ = $cljs$core$next$$($cljs$core$next$$($in$$jscomp$2_val$jscomp$inline_1169$$));
+      var $key$jscomp$inline_1168$$ = $cljs$core$first$$($in$$jscomp$2_val$jscomp$inline_1169$$);
+      $in$$jscomp$2_val$jscomp$inline_1169$$ = $cljs$core$first$$($cljs$core$next$$($in$$jscomp$2_val$jscomp$inline_1169$$));
+      $G__12394_out$jscomp$4$$ = $cljs$core$_assoc_BANG_$$($G__12394_out$jscomp$4$$, $key$jscomp$inline_1168$$, $in$$jscomp$2_val$jscomp$inline_1169$$);
+      $in$$jscomp$2_val$jscomp$inline_1169$$ = $G__12393_keyvals$jscomp$1$$;
     } else {
       return $cljs$core$_persistent_BANG_$$($G__12394_out$jscomp$4$$);
     }
@@ -9050,10 +9098,10 @@ function $cljs$core$isa_QMARK_$cljs$0core$0IFn$0_invoke$0arity$03$$($h$jscomp$85
     return $G__13020_JSCompiler_inline_result$jscomp$103_and__7633__auto__$jscomp$29_and__7633__auto____$1$jscomp$13_and__7633__auto____$2$jscomp$5_fexpr__13018$jscomp$inline_753_or__7645__auto__$jscomp$44_or__7645__auto____$1$jscomp$10_ret$jscomp$43$$;
   }
 }
-function $cljs$core$parents$cljs$0core$0IFn$0_invoke$0arity$01$$($coll$jscomp$inline_1190_tag$jscomp$1$$) {
+function $cljs$core$parents$cljs$0core$0IFn$0_invoke$0arity$01$$($coll$jscomp$inline_1171_tag$jscomp$1$$) {
   var $h$jscomp$inline_755$$ = $cljs$core$_deref$$($cljs$core$get_global_hierarchy$$());
-  $coll$jscomp$inline_1190_tag$jscomp$1$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($cljs$core$cst$0kw$0parents$$.$cljs$core$IFn$_invoke$arity$1$($h$jscomp$inline_755$$), $coll$jscomp$inline_1190_tag$jscomp$1$$);
-  return $cljs$core$seq$$($coll$jscomp$inline_1190_tag$jscomp$1$$) ? $coll$jscomp$inline_1190_tag$jscomp$1$$ : null;
+  $coll$jscomp$inline_1171_tag$jscomp$1$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($cljs$core$cst$0kw$0parents$$.$cljs$core$IFn$_invoke$arity$1$($h$jscomp$inline_755$$), $coll$jscomp$inline_1171_tag$jscomp$1$$);
+  return $cljs$core$seq$$($coll$jscomp$inline_1171_tag$jscomp$1$$) ? $coll$jscomp$inline_1171_tag$jscomp$1$$ : null;
 }
 function $cljs$core$reset_cache$$($method_cache$$, $method_table$$, $cached_hierarchy$$, $hierarchy$$) {
   $cljs$core$swap_BANG_$$.$cljs$core$IFn$_invoke$arity$2$($method_cache$$, function() {
@@ -9567,37 +9615,38 @@ $cljs$core$ExceptionInfo$$.prototype.toString = function() {
   return $cljs$core$pr_str_STAR_$$(this);
 };
 var $cljs$core$cst$0sym$0meta11390$$ = new $cljs$core$Symbol$$(null, "meta11390", "meta11390", 1936034016, null), $cljs$core$cst$0kw$0description$$ = new $cljs$core$Keyword$$(null, "description", "description", -1428560544), $cljs$core$cst$0sym$0meta13282$$ = new $cljs$core$Symbol$$(null, "meta13282", "meta13282", -2085851488, null), $cljs$core$cst$0kw$0a_DASH_entity$$ = new $cljs$core$Keyword$$(null, "a-entity", "a-entity", 2142934912), $cljs$core$cst$0sym$0clauses$$ = new $cljs$core$Symbol$$(null, 
-"clauses", "clauses", -1199594528, null), $cljs$core$cst$0sym$0meta15105$$ = new $cljs$core$Symbol$$(null, "meta15105", "meta15105", -1100250495, null), $cljs$core$cst$0kw$0path_DASH_exists_QMARK_$$ = new $cljs$core$Keyword$$(null, "path-exists?", "path-exists?", 1473384514), $cljs$core$cst$0kw$0on_DASH_set$$ = new $cljs$core$Keyword$$(null, "on-set", "on-set", -140953470), $cljs$core$cst$0kw$0date$$ = new $cljs$core$Keyword$$(null, "date", "date", -1463434462), $cljs$core$cst$0kw$0_STAR_$$ = new $cljs$core$Keyword$$(null, 
-"*", "*", -1294732318), $cljs$core$cst$0kw$0hr$$ = new $cljs$core$Keyword$$(null, "hr", "hr", 1377740067), $cljs$core$cst$0kw$0cljsLegacyRender$$ = new $cljs$core$Keyword$$(null, "cljsLegacyRender", "cljsLegacyRender", -1527295613), $cljs$core$cst$0kw$0meta$$ = new $cljs$core$Keyword$$(null, "meta", "meta", 1499536964), $cljs$core$cst$0kw$0ul$$ = new $cljs$core$Keyword$$(null, "ul", "ul", -1349521403), $cljs$core$cst$0kw$0color$$ = new $cljs$core$Keyword$$(null, "color", "color", 1011675173), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_resume_DASH_page$$ = 
-new $cljs$core$Symbol$$("vr-test.core", "resume-page", "vr-test.core/resume-page", 136341605, null), $cljs$core$cst$0kw$0dup$$ = new $cljs$core$Keyword$$(null, "dup", "dup", 556298533), $cljs$core$cst$0kw$0key$$ = new $cljs$core$Keyword$$(null, "key", "key", -1516042587), $cljs$core$cst$0kw$0li$0test_DASH_hsl_DASH_box$$ = new $cljs$core$Keyword$$(null, "li.test-hsl-box", "li.test-hsl-box", -1918298394), $cljs$core$cst$0kw$0a_DASH_scene$$ = new $cljs$core$Keyword$$(null, "a-scene", "a-scene", -2040164474), 
-$cljs$core$cst$0kw$0alt$$ = new $cljs$core$Keyword$$(null, "alt", "alt", -3214426), $cljs$core$cst$0kw$0video$0card_DASH_photo$$ = new $cljs$core$Keyword$$(null, "video.card-photo", "video.card-photo", 1677454278), $cljs$core$cst$0kw$0div$0responsive_DASH_header$$ = new $cljs$core$Keyword$$(null, "div.responsive-header", "div.responsive-header", -1625617913), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_about_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "about-page", "vr-test.core/about-page", 
--530957689, null), $cljs$core$cst$0kw$0displayName$$ = new $cljs$core$Keyword$$(null, "displayName", "displayName", -809144601), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_projects_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "projects-page", "vr-test.core/projects-page", 1699748775, null), $cljs$core$cst$0kw$0validator$$ = new $cljs$core$Keyword$$(null, "validator", "validator", -1966190681), $cljs$core$cst$0kw$0div$0card_DASH_description$$ = new $cljs$core$Keyword$$(null, "div.card-description", 
-"div.card-description", -525823960), $cljs$core$cst$0kw$0ul$0job_description_list$$ = new $cljs$core$Keyword$$(null, "ul.job_description_list", "ul.job_description_list", -1826134872), $cljs$core$cst$0kw$0default$$ = new $cljs$core$Keyword$$(null, "default", "default", -1987822328), $cljs$core$cst$0kw$0finally_DASH_block$$ = new $cljs$core$Keyword$$(null, "finally-block", "finally-block", 832982472), $cljs$core$cst$0kw$0img$0logo$$ = new $cljs$core$Keyword$$(null, "img.logo", "img.logo", -1845330328), 
-$cljs$core$cst$0kw$0span$0nameLine$$ = new $cljs$core$Keyword$$(null, "span.nameLine", "span.nameLine", -2132623672), $cljs$core$cst$0kw$0ns$$ = new $cljs$core$Keyword$$(null, "ns", "ns", 441598760), $cljs$core$cst$0kw$0warn$$ = new $cljs$core$Keyword$$(null, "warn", "warn", -436710552), $cljs$core$cst$0kw$0name$$ = new $cljs$core$Keyword$$(null, "name", "name", 1843675177), $cljs$core$cst$0kw$0button$0eye_DASH_button$$ = new $cljs$core$Keyword$$(null, "button.eye-button", "button.eye-button", -392307543), 
-$cljs$core$cst$0sym$0projects_DASH_page$$ = new $cljs$core$Symbol$$(null, "projects-page", "projects-page", -456213047, null), $cljs$core$cst$0kw$0li$$ = new $cljs$core$Keyword$$(null, "li", "li", 723558921), $cljs$core$cst$0kw$0job_name$$ = new $cljs$core$Keyword$$(null, "job_name", "job_name", 1540857481), $cljs$core$cst$0sym$0about_DASH_page$$ = new $cljs$core$Symbol$$(null, "about-page", "about-page", 2116788009, null), $cljs$core$cst$0sym$0home_DASH_page$$ = new $cljs$core$Symbol$$(null, "home-page", 
-"home-page", -850279575, null), $cljs$core$cst$0kw$0file$$ = new $cljs$core$Keyword$$(null, "file", "file", -1269645878), $cljs$core$cst$0sym$0meta17074$$ = new $cljs$core$Symbol$$(null, "meta17074", "meta17074", -1396061494, null), $cljs$core$cst$0kw$0secretary$0core_SLASH_map$$ = new $cljs$core$Keyword$$("secretary.core", "map", "secretary.core/map", -31086646), $cljs$core$cst$0kw$0end_DASH_column$$ = new $cljs$core$Keyword$$(null, "end-column", "end-column", 1425389514), $cljs$core$cst$0kw$0start$$ = 
-new $cljs$core$Keyword$$(null, "start", "start", -355208981), $cljs$core$cst$0kw$0div$0contact_DASH_info$$ = new $cljs$core$Keyword$$(null, "div.contact-info", "div.contact-info", 1461575019), $cljs$core$cst$0kw$0params$$ = new $cljs$core$Keyword$$(null, "params", "params", 710516235), $cljs$core$cst$0kw$0component_DASH_did_DASH_update$$ = new $cljs$core$Keyword$$(null, "component-did-update", "component-did-update", -1468549173), $cljs$core$cst$0kw$0div$0resume$$ = new $cljs$core$Keyword$$(null, 
-"div.resume", "div.resume", 2086221803), $cljs$core$cst$0kw$0a$0project_DASH_link$$ = new $cljs$core$Keyword$$(null, "a.project-link", "a.project-link", -1274296308), $cljs$core$cst$0kw$0val$$ = new $cljs$core$Keyword$$(null, "val", "val", 128701612), $cljs$core$cst$0kw$0recur$$ = new $cljs$core$Keyword$$(null, "recur", "recur", -437573268), $cljs$core$cst$0kw$0type$$ = new $cljs$core$Keyword$$(null, "type", "type", 1174270348), $cljs$core$cst$0kw$0span$0underline$$ = new $cljs$core$Keyword$$(null, 
-"span.underline", "span.underline", 1899596268), $cljs$core$cst$0kw$0catch_DASH_block$$ = new $cljs$core$Keyword$$(null, "catch-block", "catch-block", 1175212748), $cljs$core$cst$0kw$0span_SHARP_topnote$$ = new $cljs$core$Keyword$$(null, "span#topnote", "span#topnote", 106107917), $cljs$core$cst$0kw$0src$$ = new $cljs$core$Keyword$$(null, "src", "src", -1651076051), $cljs$core$cst$0kw$0fallback_DASH_impl$$ = new $cljs$core$Keyword$$(null, "fallback-impl", "fallback-impl", -1501286995), $cljs$core$cst$0kw$0route$$ = 
-new $cljs$core$Keyword$$(null, "route", "route", 329891309), $cljs$core$cst$0kw$0source$$ = new $cljs$core$Keyword$$(null, "source", "source", -433931539), $cljs$core$cst$0sym$0contact_DASH_page$$ = new $cljs$core$Symbol$$(null, "contact-page", "contact-page", -463507667, null), $cljs$core$cst$0kw$0flush_DASH_on_DASH_newline$$ = new $cljs$core$Keyword$$(null, "flush-on-newline", "flush-on-newline", -151457939), $cljs$core$cst$0kw$0componentWillUnmount$$ = new $cljs$core$Keyword$$(null, "componentWillUnmount", 
-"componentWillUnmount", 1573788814), $cljs$core$cst$0kw$0descendants$$ = new $cljs$core$Keyword$$(null, "descendants", "descendants", 1824886031), $cljs$core$cst$0kw$0title$$ = new $cljs$core$Keyword$$(null, "title", "title", 636505583), $cljs$core$cst$0kw$0div$0nameContainer$$ = new $cljs$core$Keyword$$(null, "div.nameContainer", "div.nameContainer", 1894892175), $cljs$core$cst$0kw$0prefix$$ = new $cljs$core$Keyword$$(null, "prefix", "prefix", -265908465), $cljs$core$cst$0kw$0column$$ = new $cljs$core$Keyword$$(null, 
-"column", "column", 2078222095), $cljs$core$cst$0kw$0types$$ = new $cljs$core$Keyword$$(null, "types", "types", 590030639), $cljs$core$cst$0kw$0loop$$ = new $cljs$core$Keyword$$(null, "loop", "loop", -395552849), $cljs$core$cst$0kw$0shouldComponentUpdate$$ = new $cljs$core$Keyword$$(null, "shouldComponentUpdate", "shouldComponentUpdate", 1795750960), $cljs$core$cst$0sym$0meta14973$$ = new $cljs$core$Symbol$$(null, "meta14973", "meta14973", 2054927504, null), $cljs$core$cst$0kw$0div$0card$$ = new $cljs$core$Keyword$$(null, 
-"div.card", "div.card", -459317104), $cljs$core$cst$0kw$0ancestors$$ = new $cljs$core$Keyword$$(null, "ancestors", "ancestors", -776045424), $cljs$core$cst$0kw$0style$$ = new $cljs$core$Keyword$$(null, "style", "style", -496642736), $cljs$core$cst$0kw$0div$$ = new $cljs$core$Keyword$$(null, "div", "div", 1057191632), $cljs$core$cst$0kw$0readably$$ = new $cljs$core$Keyword$$(null, "readably", "readably", 1129599760), $cljs$core$cst$0kw$0more_DASH_marker$$ = new $cljs$core$Keyword$$(null, "more-marker", 
-"more-marker", -14717935), $cljs$core$cst$0sym$0re$$ = new $cljs$core$Symbol$$(null, "re", "re", 1869207729, null), $cljs$core$cst$0sym$0vr_DASH_page$$ = new $cljs$core$Symbol$$(null, "vr-page", "vr-page", -1317691087, null), $cljs$core$cst$0sym$0orig_DASH_route$$ = new $cljs$core$Symbol$$(null, "orig-route", "orig-route", 899103121, null), $cljs$core$cst$0kw$0reagentRender$$ = new $cljs$core$Keyword$$(null, "reagentRender", "reagentRender", -358306383), $cljs$core$cst$0sym$0hsl_DASH_test_DASH_page$$ = 
-new $cljs$core$Symbol$$(null, "hsl-test-page", "hsl-test-page", -1385347471, null), $cljs$core$cst$0sym$0params$$ = new $cljs$core$Symbol$$(null, "params", "params", -1943919534, null), $cljs$core$cst$0kw$0no_DASH_cache$$ = new $cljs$core$Keyword$$(null, "no-cache", "no-cache", 1588056370), $cljs$core$cst$0kw$0render$$ = new $cljs$core$Keyword$$(null, "render", "render", -1408033454), $cljs$core$cst$0kw$0reagent_DASH_render$$ = new $cljs$core$Keyword$$(null, "reagent-render", "reagent-render", -985383853), 
-$cljs$core$cst$0kw$0line$$ = new $cljs$core$Keyword$$(null, "line", "line", 212345235), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "home-page", "vr-test.core/home-page", 1290757523, null), $cljs$core$cst$0sym$0val$$ = new $cljs$core$Symbol$$(null, "val", "val", 1769233139, null), $cljs$core$cst$0sym$0resume_DASH_page$$ = new $cljs$core$Symbol$$(null, "resume-page", "resume-page", -1949383789, null), $cljs$core$cst$0kw$0print_DASH_length$$ = 
-new $cljs$core$Keyword$$(null, "print-length", "print-length", 1931866356), $cljs$core$cst$0sym$0vec__17070$$ = new $cljs$core$Symbol$$(null, "vec__17070", "vec__17070", 1210634580, null), $cljs$core$cst$0kw$0h_DASH_size$$ = new $cljs$core$Keyword$$(null, "h-size", "h-size", 520461780), $cljs$core$cst$0kw$0class$$ = new $cljs$core$Keyword$$(null, "class", "class", -2030961996), $cljs$core$cst$0kw$0catch_DASH_exception$$ = new $cljs$core$Keyword$$(null, "catch-exception", "catch-exception", -1997306795), 
-$cljs$core$cst$0kw$0auto_DASH_run$$ = new $cljs$core$Keyword$$(null, "auto-run", "auto-run", 1958400437), $cljs$core$cst$0kw$0parents$$ = new $cljs$core$Keyword$$(null, "parents", "parents", -2027538891), $cljs$core$cst$0kw$0projects_QMARK_$$ = new $cljs$core$Keyword$$(null, "projects?", "projects?", 755011189), $cljs$core$cst$0kw$0component_DASH_will_DASH_unmount$$ = new $cljs$core$Keyword$$(null, "component-will-unmount", "component-will-unmount", -2058314698), $cljs$core$cst$0kw$0prev$$ = new $cljs$core$Keyword$$(null, 
-"prev", "prev", -1597069226), $cljs$core$cst$0sym$0vr_DASH_test$0core$$ = new $cljs$core$Symbol$$(null, "vr-test.core", "vr-test.core", 1801312438, null), $cljs$core$cst$0kw$0url$$ = new $cljs$core$Keyword$$(null, "url", "url", 276297046), $cljs$core$cst$0kw$0code$$ = new $cljs$core$Keyword$$(null, "code", "code", 1586293142), $cljs$core$cst$0kw$0continue_DASH_block$$ = new $cljs$core$Keyword$$(null, "continue-block", "continue-block", -1852047850), $cljs$core$cst$0kw$0query_DASH_params$$ = new $cljs$core$Keyword$$(null, 
-"query-params", "query-params", 900640534), $cljs$core$cst$0kw$0div$0floating_DASH_page$$ = new $cljs$core$Keyword$$(null, "div.floating-page", "div.floating-page", -1655040905), $cljs$core$cst$0kw$0end_DASH_line$$ = new $cljs$core$Keyword$$(null, "end-line", "end-line", 1837326455), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_contact_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "contact-page", "vr-test.core/contact-page", 1741539575, null), $cljs$core$cst$0kw$0autoPlay$$ = new $cljs$core$Keyword$$(null, 
-"autoPlay", "autoPlay", -561263241), $cljs$core$cst$0kw$0display_DASH_name$$ = new $cljs$core$Keyword$$(null, "display-name", "display-name", 694513143), $cljs$core$cst$0kw$0on_DASH_dispose$$ = new $cljs$core$Keyword$$(null, "on-dispose", "on-dispose", 2105306360), $cljs$core$cst$0kw$0image$$ = new $cljs$core$Keyword$$(null, "image", "image", -58725096), $cljs$core$cst$0kw$0action$$ = new $cljs$core$Keyword$$(null, "action", "action", -811238024), $cljs$core$cst$0kw$0error$$ = new $cljs$core$Keyword$$(null, 
-"error", "error", -978969032), $cljs$core$cst$0kw$0h2$$ = new $cljs$core$Keyword$$(null, "h2", "h2", -372662728), $cljs$core$cst$0kw$0componentFunction$$ = new $cljs$core$Keyword$$(null, "componentFunction", "componentFunction", 825866104), $cljs$core$cst$0kw$0__html$$ = new $cljs$core$Keyword$$(null, "__html", "__html", 674048345), $cljs$core$cst$0kw$0secretary$0core_SLASH_sequential$$ = new $cljs$core$Keyword$$("secretary.core", "sequential", "secretary.core/sequential", -347187207), $cljs$core$cst$0kw$0target$$ = 
-new $cljs$core$Keyword$$(null, "target", "target", 253001721), $cljs$core$cst$0kw$0end$$ = new $cljs$core$Keyword$$(null, "end", "end", -268185958), $cljs$core$cst$0kw$0h1$$ = new $cljs$core$Keyword$$(null, "h1", "h1", -1896887462), $cljs$core$cst$0kw$0arglists$$ = new $cljs$core$Keyword$$(null, "arglists", "arglists", 1661989754), $cljs$core$cst$0kw$0autobind$$ = new $cljs$core$Keyword$$(null, "autobind", "autobind", -570650245), $cljs$core$cst$0kw$0hierarchy$$ = new $cljs$core$Keyword$$(null, "hierarchy", 
-"hierarchy", -1053470341), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_hsl_DASH_test_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "hsl-test-page", "vr-test.core/hsl-test-page", 735194587, null), $cljs$core$cst$0kw$0h3$$ = new $cljs$core$Keyword$$(null, "h3", "h3", 2067611163), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_vr_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "vr-page", "vr-test.core/vr-page", 868616859, null), $cljs$core$cst$0kw$0alt_DASH_impl$$ = new $cljs$core$Keyword$$(null, 
-"alt-impl", "alt-impl", 670969595), $cljs$core$cst$0kw$0div$0floating_DASH_page$0home_DASH_page$$ = new $cljs$core$Keyword$$(null, "div.floating-page.home-page", "div.floating-page.home-page", 171025371), $cljs$core$cst$0kw$0doc$$ = new $cljs$core$Keyword$$(null, "doc", "doc", 1913296891), $cljs$core$cst$0kw$0nav_DASH_handler$$ = new $cljs$core$Keyword$$(null, "nav-handler", "nav-handler", 2039495484), $cljs$core$cst$0kw$0media$$ = new $cljs$core$Keyword$$(null, "media", "media", -1066138403), $cljs$core$cst$0kw$0h6$0title_DASH_type$$ = 
-new $cljs$core$Keyword$$(null, "h6.title-type", "h6.title-type", -1200926147), $cljs$core$cst$0kw$0a$0card_DASH_link$$ = new $cljs$core$Keyword$$(null, "a.card-link", "a.card-link", 2015634045), $cljs$core$cst$0kw$0componentWillMount$$ = new $cljs$core$Keyword$$(null, "componentWillMount", "componentWillMount", -285327619), $cljs$core$cst$0kw$0div$0about$$ = new $cljs$core$Keyword$$(null, "div.about", "div.about", -443877635), $cljs$core$cst$0kw$0i$$ = new $cljs$core$Keyword$$(null, "i", "i", -1386841315), 
-$cljs$core$cst$0kw$0test$$ = new $cljs$core$Keyword$$(null, "test", "test", 577538877), $cljs$core$cst$0kw$0onClick$$ = new $cljs$core$Keyword$$(null, "onClick", "onClick", -1991238530), $cljs$core$cst$0kw$0href$$ = new $cljs$core$Keyword$$(null, "href", "href", -793805698), $cljs$core$cst$0kw$0a$$ = new $cljs$core$Keyword$$(null, "a", "a", -2123407586), $cljs$core$cst$0kw$0dangerouslySetInnerHTML$$ = new $cljs$core$Keyword$$(null, "dangerouslySetInnerHTML", "dangerouslySetInnerHTML", -554971138), 
-$cljs$core$cst$0kw$0cljs$0core_SLASH_not_DASH_found$$ = new $cljs$core$Keyword$$("cljs.core", "not-found", "cljs.core/not-found", -1572889185), $cljs$core$cst$0kw$0ul$0card_DASH_list$$ = new $cljs$core$Keyword$$(null, "ul.card-list", "ul.card-list", -1220003201), $cljs$core$cst$0kw$0span$$ = new $cljs$core$Keyword$$(null, "span", "span", 1394872991), $cljs$core$cst$0sym$0f$$ = new $cljs$core$Symbol$$(null, "f", "f", 43394975, null);
+"clauses", "clauses", -1199594528, null), $cljs$core$cst$0sym$0resume$0resume_SLASH_resume_DASH_page$$ = new $cljs$core$Symbol$$("resume.resume", "resume-page", "resume.resume/resume-page", -1521267583, null), $cljs$core$cst$0sym$0meta15105$$ = new $cljs$core$Symbol$$(null, "meta15105", "meta15105", -1100250495, null), $cljs$core$cst$0kw$0path_DASH_exists_QMARK_$$ = new $cljs$core$Keyword$$(null, "path-exists?", "path-exists?", 1473384514), $cljs$core$cst$0kw$0on_DASH_set$$ = new $cljs$core$Keyword$$(null, 
+"on-set", "on-set", -140953470), $cljs$core$cst$0kw$0date$$ = new $cljs$core$Keyword$$(null, "date", "date", -1463434462), $cljs$core$cst$0kw$0_STAR_$$ = new $cljs$core$Keyword$$(null, "*", "*", -1294732318), $cljs$core$cst$0kw$0hr$$ = new $cljs$core$Keyword$$(null, "hr", "hr", 1377740067), $cljs$core$cst$0kw$0cljsLegacyRender$$ = new $cljs$core$Keyword$$(null, "cljsLegacyRender", "cljsLegacyRender", -1527295613), $cljs$core$cst$0kw$0meta$$ = new $cljs$core$Keyword$$(null, "meta", "meta", 1499536964), 
+$cljs$core$cst$0kw$0ul$$ = new $cljs$core$Keyword$$(null, "ul", "ul", -1349521403), $cljs$core$cst$0kw$0color$$ = new $cljs$core$Keyword$$(null, "color", "color", 1011675173), $cljs$core$cst$0kw$0dup$$ = new $cljs$core$Keyword$$(null, "dup", "dup", 556298533), $cljs$core$cst$0kw$0key$$ = new $cljs$core$Keyword$$(null, "key", "key", -1516042587), $cljs$core$cst$0kw$0li$0test_DASH_hsl_DASH_box$$ = new $cljs$core$Keyword$$(null, "li.test-hsl-box", "li.test-hsl-box", -1918298394), $cljs$core$cst$0kw$0a_DASH_scene$$ = 
+new $cljs$core$Keyword$$(null, "a-scene", "a-scene", -2040164474), $cljs$core$cst$0kw$0alt$$ = new $cljs$core$Keyword$$(null, "alt", "alt", -3214426), $cljs$core$cst$0kw$0video$0card_DASH_photo$$ = new $cljs$core$Keyword$$(null, "video.card-photo", "video.card-photo", 1677454278), $cljs$core$cst$0kw$0div$0responsive_DASH_header$$ = new $cljs$core$Keyword$$(null, "div.responsive-header", "div.responsive-header", -1625617913), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_about_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", 
+"about-page", "vr-test.core/about-page", -530957689, null), $cljs$core$cst$0kw$0displayName$$ = new $cljs$core$Keyword$$(null, "displayName", "displayName", -809144601), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_projects_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "projects-page", "vr-test.core/projects-page", 1699748775, null), $cljs$core$cst$0kw$0validator$$ = new $cljs$core$Keyword$$(null, "validator", "validator", -1966190681), $cljs$core$cst$0kw$0div$0card_DASH_description$$ = 
+new $cljs$core$Keyword$$(null, "div.card-description", "div.card-description", -525823960), $cljs$core$cst$0kw$0ul$0job_description_list$$ = new $cljs$core$Keyword$$(null, "ul.job_description_list", "ul.job_description_list", -1826134872), $cljs$core$cst$0kw$0default$$ = new $cljs$core$Keyword$$(null, "default", "default", -1987822328), $cljs$core$cst$0kw$0finally_DASH_block$$ = new $cljs$core$Keyword$$(null, "finally-block", "finally-block", 832982472), $cljs$core$cst$0kw$0img$0logo$$ = new $cljs$core$Keyword$$(null, 
+"img.logo", "img.logo", -1845330328), $cljs$core$cst$0kw$0span$0nameLine$$ = new $cljs$core$Keyword$$(null, "span.nameLine", "span.nameLine", -2132623672), $cljs$core$cst$0kw$0ns$$ = new $cljs$core$Keyword$$(null, "ns", "ns", 441598760), $cljs$core$cst$0kw$0warn$$ = new $cljs$core$Keyword$$(null, "warn", "warn", -436710552), $cljs$core$cst$0kw$0name$$ = new $cljs$core$Keyword$$(null, "name", "name", 1843675177), $cljs$core$cst$0kw$0button$0eye_DASH_button$$ = new $cljs$core$Keyword$$(null, "button.eye-button", 
+"button.eye-button", -392307543), $cljs$core$cst$0sym$0projects_DASH_page$$ = new $cljs$core$Symbol$$(null, "projects-page", "projects-page", -456213047, null), $cljs$core$cst$0kw$0li$$ = new $cljs$core$Keyword$$(null, "li", "li", 723558921), $cljs$core$cst$0kw$0job_name$$ = new $cljs$core$Keyword$$(null, "job_name", "job_name", 1540857481), $cljs$core$cst$0sym$0about_DASH_page$$ = new $cljs$core$Symbol$$(null, "about-page", "about-page", 2116788009, null), $cljs$core$cst$0sym$0home_DASH_page$$ = 
+new $cljs$core$Symbol$$(null, "home-page", "home-page", -850279575, null), $cljs$core$cst$0kw$0file$$ = new $cljs$core$Keyword$$(null, "file", "file", -1269645878), $cljs$core$cst$0sym$0meta17074$$ = new $cljs$core$Symbol$$(null, "meta17074", "meta17074", -1396061494, null), $cljs$core$cst$0kw$0secretary$0core_SLASH_map$$ = new $cljs$core$Keyword$$("secretary.core", "map", "secretary.core/map", -31086646), $cljs$core$cst$0kw$0end_DASH_column$$ = new $cljs$core$Keyword$$(null, "end-column", "end-column", 
+1425389514), $cljs$core$cst$0kw$0start$$ = new $cljs$core$Keyword$$(null, "start", "start", -355208981), $cljs$core$cst$0kw$0div$0contact_DASH_info$$ = new $cljs$core$Keyword$$(null, "div.contact-info", "div.contact-info", 1461575019), $cljs$core$cst$0kw$0params$$ = new $cljs$core$Keyword$$(null, "params", "params", 710516235), $cljs$core$cst$0kw$0component_DASH_did_DASH_update$$ = new $cljs$core$Keyword$$(null, "component-did-update", "component-did-update", -1468549173), $cljs$core$cst$0kw$0div$0resume$$ = 
+new $cljs$core$Keyword$$(null, "div.resume", "div.resume", 2086221803), $cljs$core$cst$0kw$0a$0project_DASH_link$$ = new $cljs$core$Keyword$$(null, "a.project-link", "a.project-link", -1274296308), $cljs$core$cst$0kw$0val$$ = new $cljs$core$Keyword$$(null, "val", "val", 128701612), $cljs$core$cst$0kw$0recur$$ = new $cljs$core$Keyword$$(null, "recur", "recur", -437573268), $cljs$core$cst$0kw$0type$$ = new $cljs$core$Keyword$$(null, "type", "type", 1174270348), $cljs$core$cst$0kw$0span$0underline$$ = 
+new $cljs$core$Keyword$$(null, "span.underline", "span.underline", 1899596268), $cljs$core$cst$0kw$0catch_DASH_block$$ = new $cljs$core$Keyword$$(null, "catch-block", "catch-block", 1175212748), $cljs$core$cst$0kw$0span_SHARP_topnote$$ = new $cljs$core$Keyword$$(null, "span#topnote", "span#topnote", 106107917), $cljs$core$cst$0kw$0src$$ = new $cljs$core$Keyword$$(null, "src", "src", -1651076051), $cljs$core$cst$0kw$0fallback_DASH_impl$$ = new $cljs$core$Keyword$$(null, "fallback-impl", "fallback-impl", 
+-1501286995), $cljs$core$cst$0kw$0route$$ = new $cljs$core$Keyword$$(null, "route", "route", 329891309), $cljs$core$cst$0kw$0source$$ = new $cljs$core$Keyword$$(null, "source", "source", -433931539), $cljs$core$cst$0sym$0contact_DASH_page$$ = new $cljs$core$Symbol$$(null, "contact-page", "contact-page", -463507667, null), $cljs$core$cst$0kw$0flush_DASH_on_DASH_newline$$ = new $cljs$core$Keyword$$(null, "flush-on-newline", "flush-on-newline", -151457939), $cljs$core$cst$0kw$0componentWillUnmount$$ = 
+new $cljs$core$Keyword$$(null, "componentWillUnmount", "componentWillUnmount", 1573788814), $cljs$core$cst$0kw$0descendants$$ = new $cljs$core$Keyword$$(null, "descendants", "descendants", 1824886031), $cljs$core$cst$0kw$0title$$ = new $cljs$core$Keyword$$(null, "title", "title", 636505583), $cljs$core$cst$0kw$0div$0nameContainer$$ = new $cljs$core$Keyword$$(null, "div.nameContainer", "div.nameContainer", 1894892175), $cljs$core$cst$0kw$0prefix$$ = new $cljs$core$Keyword$$(null, "prefix", "prefix", 
+-265908465), $cljs$core$cst$0kw$0column$$ = new $cljs$core$Keyword$$(null, "column", "column", 2078222095), $cljs$core$cst$0kw$0types$$ = new $cljs$core$Keyword$$(null, "types", "types", 590030639), $cljs$core$cst$0kw$0loop$$ = new $cljs$core$Keyword$$(null, "loop", "loop", -395552849), $cljs$core$cst$0kw$0shouldComponentUpdate$$ = new $cljs$core$Keyword$$(null, "shouldComponentUpdate", "shouldComponentUpdate", 1795750960), $cljs$core$cst$0sym$0meta14973$$ = new $cljs$core$Symbol$$(null, "meta14973", 
+"meta14973", 2054927504, null), $cljs$core$cst$0kw$0div$0card$$ = new $cljs$core$Keyword$$(null, "div.card", "div.card", -459317104), $cljs$core$cst$0kw$0ancestors$$ = new $cljs$core$Keyword$$(null, "ancestors", "ancestors", -776045424), $cljs$core$cst$0kw$0style$$ = new $cljs$core$Keyword$$(null, "style", "style", -496642736), $cljs$core$cst$0kw$0div$$ = new $cljs$core$Keyword$$(null, "div", "div", 1057191632), $cljs$core$cst$0kw$0readably$$ = new $cljs$core$Keyword$$(null, "readably", "readably", 
+1129599760), $cljs$core$cst$0kw$0h4$$ = new $cljs$core$Keyword$$(null, "h4", "h4", 2004862993), $cljs$core$cst$0kw$0more_DASH_marker$$ = new $cljs$core$Keyword$$(null, "more-marker", "more-marker", -14717935), $cljs$core$cst$0sym$0re$$ = new $cljs$core$Symbol$$(null, "re", "re", 1869207729, null), $cljs$core$cst$0sym$0vr_DASH_page$$ = new $cljs$core$Symbol$$(null, "vr-page", "vr-page", -1317691087, null), $cljs$core$cst$0sym$0orig_DASH_route$$ = new $cljs$core$Symbol$$(null, "orig-route", "orig-route", 
+899103121, null), $cljs$core$cst$0kw$0reagentRender$$ = new $cljs$core$Keyword$$(null, "reagentRender", "reagentRender", -358306383), $cljs$core$cst$0sym$0hsl_DASH_test_DASH_page$$ = new $cljs$core$Symbol$$(null, "hsl-test-page", "hsl-test-page", -1385347471, null), $cljs$core$cst$0sym$0params$$ = new $cljs$core$Symbol$$(null, "params", "params", -1943919534, null), $cljs$core$cst$0kw$0no_DASH_cache$$ = new $cljs$core$Keyword$$(null, "no-cache", "no-cache", 1588056370), $cljs$core$cst$0kw$0render$$ = 
+new $cljs$core$Keyword$$(null, "render", "render", -1408033454), $cljs$core$cst$0kw$0reagent_DASH_render$$ = new $cljs$core$Keyword$$(null, "reagent-render", "reagent-render", -985383853), $cljs$core$cst$0kw$0line$$ = new $cljs$core$Keyword$$(null, "line", "line", 212345235), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "home-page", "vr-test.core/home-page", 1290757523, null), $cljs$core$cst$0sym$0val$$ = new $cljs$core$Symbol$$(null, "val", 
+"val", 1769233139, null), $cljs$core$cst$0sym$0resume_DASH_page$$ = new $cljs$core$Symbol$$(null, "resume-page", "resume-page", -1949383789, null), $cljs$core$cst$0kw$0print_DASH_length$$ = new $cljs$core$Keyword$$(null, "print-length", "print-length", 1931866356), $cljs$core$cst$0sym$0vec__17070$$ = new $cljs$core$Symbol$$(null, "vec__17070", "vec__17070", 1210634580, null), $cljs$core$cst$0kw$0h_DASH_size$$ = new $cljs$core$Keyword$$(null, "h-size", "h-size", 520461780), $cljs$core$cst$0kw$0class$$ = 
+new $cljs$core$Keyword$$(null, "class", "class", -2030961996), $cljs$core$cst$0kw$0catch_DASH_exception$$ = new $cljs$core$Keyword$$(null, "catch-exception", "catch-exception", -1997306795), $cljs$core$cst$0kw$0auto_DASH_run$$ = new $cljs$core$Keyword$$(null, "auto-run", "auto-run", 1958400437), $cljs$core$cst$0kw$0parents$$ = new $cljs$core$Keyword$$(null, "parents", "parents", -2027538891), $cljs$core$cst$0kw$0projects_QMARK_$$ = new $cljs$core$Keyword$$(null, "projects?", "projects?", 755011189), 
+$cljs$core$cst$0kw$0component_DASH_will_DASH_unmount$$ = new $cljs$core$Keyword$$(null, "component-will-unmount", "component-will-unmount", -2058314698), $cljs$core$cst$0kw$0prev$$ = new $cljs$core$Keyword$$(null, "prev", "prev", -1597069226), $cljs$core$cst$0sym$0vr_DASH_test$0core$$ = new $cljs$core$Symbol$$(null, "vr-test.core", "vr-test.core", 1801312438, null), $cljs$core$cst$0kw$0url$$ = new $cljs$core$Keyword$$(null, "url", "url", 276297046), $cljs$core$cst$0kw$0code$$ = new $cljs$core$Keyword$$(null, 
+"code", "code", 1586293142), $cljs$core$cst$0kw$0continue_DASH_block$$ = new $cljs$core$Keyword$$(null, "continue-block", "continue-block", -1852047850), $cljs$core$cst$0kw$0query_DASH_params$$ = new $cljs$core$Keyword$$(null, "query-params", "query-params", 900640534), $cljs$core$cst$0kw$0div$0floating_DASH_page$$ = new $cljs$core$Keyword$$(null, "div.floating-page", "div.floating-page", -1655040905), $cljs$core$cst$0kw$0end_DASH_line$$ = new $cljs$core$Keyword$$(null, "end-line", "end-line", 1837326455), 
+$cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_contact_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "contact-page", "vr-test.core/contact-page", 1741539575, null), $cljs$core$cst$0kw$0autoPlay$$ = new $cljs$core$Keyword$$(null, "autoPlay", "autoPlay", -561263241), $cljs$core$cst$0kw$0display_DASH_name$$ = new $cljs$core$Keyword$$(null, "display-name", "display-name", 694513143), $cljs$core$cst$0kw$0on_DASH_dispose$$ = new $cljs$core$Keyword$$(null, "on-dispose", "on-dispose", 2105306360), 
+$cljs$core$cst$0kw$0image$$ = new $cljs$core$Keyword$$(null, "image", "image", -58725096), $cljs$core$cst$0kw$0action$$ = new $cljs$core$Keyword$$(null, "action", "action", -811238024), $cljs$core$cst$0kw$0error$$ = new $cljs$core$Keyword$$(null, "error", "error", -978969032), $cljs$core$cst$0kw$0h2$$ = new $cljs$core$Keyword$$(null, "h2", "h2", -372662728), $cljs$core$cst$0kw$0componentFunction$$ = new $cljs$core$Keyword$$(null, "componentFunction", "componentFunction", 825866104), $cljs$core$cst$0kw$0__html$$ = 
+new $cljs$core$Keyword$$(null, "__html", "__html", 674048345), $cljs$core$cst$0kw$0secretary$0core_SLASH_sequential$$ = new $cljs$core$Keyword$$("secretary.core", "sequential", "secretary.core/sequential", -347187207), $cljs$core$cst$0kw$0target$$ = new $cljs$core$Keyword$$(null, "target", "target", 253001721), $cljs$core$cst$0kw$0end$$ = new $cljs$core$Keyword$$(null, "end", "end", -268185958), $cljs$core$cst$0kw$0h1$$ = new $cljs$core$Keyword$$(null, "h1", "h1", -1896887462), $cljs$core$cst$0kw$0arglists$$ = 
+new $cljs$core$Keyword$$(null, "arglists", "arglists", 1661989754), $cljs$core$cst$0kw$0autobind$$ = new $cljs$core$Keyword$$(null, "autobind", "autobind", -570650245), $cljs$core$cst$0kw$0hierarchy$$ = new $cljs$core$Keyword$$(null, "hierarchy", "hierarchy", -1053470341), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_hsl_DASH_test_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "hsl-test-page", "vr-test.core/hsl-test-page", 735194587, null), $cljs$core$cst$0kw$0h3$$ = new $cljs$core$Keyword$$(null, 
+"h3", "h3", 2067611163), $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_vr_DASH_page$$ = new $cljs$core$Symbol$$("vr-test.core", "vr-page", "vr-test.core/vr-page", 868616859, null), $cljs$core$cst$0kw$0alt_DASH_impl$$ = new $cljs$core$Keyword$$(null, "alt-impl", "alt-impl", 670969595), $cljs$core$cst$0kw$0div$0floating_DASH_page$0home_DASH_page$$ = new $cljs$core$Keyword$$(null, "div.floating-page.home-page", "div.floating-page.home-page", 171025371), $cljs$core$cst$0kw$0doc$$ = new $cljs$core$Keyword$$(null, 
+"doc", "doc", 1913296891), $cljs$core$cst$0kw$0nav_DASH_handler$$ = new $cljs$core$Keyword$$(null, "nav-handler", "nav-handler", 2039495484), $cljs$core$cst$0kw$0media$$ = new $cljs$core$Keyword$$(null, "media", "media", -1066138403), $cljs$core$cst$0sym$0resume$0resume$$ = new $cljs$core$Symbol$$(null, "resume.resume", "resume.resume", -418895619, null), $cljs$core$cst$0kw$0h6$0title_DASH_type$$ = new $cljs$core$Keyword$$(null, "h6.title-type", "h6.title-type", -1200926147), $cljs$core$cst$0kw$0a$0card_DASH_link$$ = 
+new $cljs$core$Keyword$$(null, "a.card-link", "a.card-link", 2015634045), $cljs$core$cst$0kw$0componentWillMount$$ = new $cljs$core$Keyword$$(null, "componentWillMount", "componentWillMount", -285327619), $cljs$core$cst$0kw$0div$0about$$ = new $cljs$core$Keyword$$(null, "div.about", "div.about", -443877635), $cljs$core$cst$0kw$0i$$ = new $cljs$core$Keyword$$(null, "i", "i", -1386841315), $cljs$core$cst$0kw$0test$$ = new $cljs$core$Keyword$$(null, "test", "test", 577538877), $cljs$core$cst$0kw$0onClick$$ = 
+new $cljs$core$Keyword$$(null, "onClick", "onClick", -1991238530), $cljs$core$cst$0kw$0href$$ = new $cljs$core$Keyword$$(null, "href", "href", -793805698), $cljs$core$cst$0kw$0a$$ = new $cljs$core$Keyword$$(null, "a", "a", -2123407586), $cljs$core$cst$0kw$0dangerouslySetInnerHTML$$ = new $cljs$core$Keyword$$(null, "dangerouslySetInnerHTML", "dangerouslySetInnerHTML", -554971138), $cljs$core$cst$0kw$0cljs$0core_SLASH_not_DASH_found$$ = new $cljs$core$Keyword$$("cljs.core", "not-found", "cljs.core/not-found", 
+-1572889185), $cljs$core$cst$0kw$0ul$0card_DASH_list$$ = new $cljs$core$Keyword$$(null, "ul.card-list", "ul.card-list", -1220003201), $cljs$core$cst$0kw$0span$$ = new $cljs$core$Keyword$$(null, "span", "span", 1394872991), $cljs$core$cst$0sym$0f$$ = new $cljs$core$Symbol$$(null, "f", "f", 43394975, null);
 var $goog$labs$userAgent$util$userAgent_$$;
 a: {
   var $navigator$jscomp$inline_773$$ = $goog$global$$.navigator;
@@ -10552,8 +10601,8 @@ function $cljs$core$async$impl$channels$ex_handler$$($ex$jscomp$7$$) {
   return null;
 }
 function $cljs$core$async$impl$channels$handle$$($buf$jscomp$10$$, $else$_t$jscomp$27$$) {
-  var $fexpr__13298$jscomp$inline_1202$$ = $cljs$core$truth_$$(null) ? null : $cljs$core$async$impl$channels$ex_handler$$;
-  $else$_t$jscomp$27$$ = $fexpr__13298$jscomp$inline_1202$$.$cljs$core$IFn$_invoke$arity$1$ ? $fexpr__13298$jscomp$inline_1202$$.$cljs$core$IFn$_invoke$arity$1$($else$_t$jscomp$27$$) : $fexpr__13298$jscomp$inline_1202$$.call(null, $else$_t$jscomp$27$$);
+  var $fexpr__13298$jscomp$inline_1183$$ = $cljs$core$truth_$$(null) ? null : $cljs$core$async$impl$channels$ex_handler$$;
+  $else$_t$jscomp$27$$ = $fexpr__13298$jscomp$inline_1183$$.$cljs$core$IFn$_invoke$arity$1$ ? $fexpr__13298$jscomp$inline_1183$$.$cljs$core$IFn$_invoke$arity$1$($else$_t$jscomp$27$$) : $fexpr__13298$jscomp$inline_1183$$.call(null, $else$_t$jscomp$27$$);
   return null == $else$_t$jscomp$27$$ ? $buf$jscomp$10$$ : $cljs$core$async$impl$protocols$add_BANG_$$.$cljs$core$IFn$_invoke$arity$2$($buf$jscomp$10$$, $else$_t$jscomp$27$$);
 }
 function $cljs$core$async$impl$channels$chan$cljs$0core$0IFn$0_invoke$0arity$03$$($buf$jscomp$13$$) {
@@ -10744,31 +10793,31 @@ function $goog$uri$utils$parseQueryData$$($encodedQuery_pairs$jscomp$1$$, $callb
     }
   }
 }
-;function $goog$Uri$$($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$, $opt_ignoreCase$$) {
+;function $goog$Uri$$($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$, $opt_ignoreCase$$) {
   this.$domain_$ = this.$userInfo_$ = this.$scheme_$ = "";
   this.$port_$ = null;
   this.$fragment_$ = this.$path_$ = "";
   this.$ignoreCase_$ = this.$isReadOnly_$ = !1;
-  if ($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$ instanceof $goog$Uri$$) {
-    this.$ignoreCase_$ = void 0 !== $opt_ignoreCase$$ ? $opt_ignoreCase$$ : $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$ignoreCase_$;
-    $JSCompiler_StaticMethods_setScheme$$(this, $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$scheme_$);
-    var $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$ = $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$userInfo_$;
+  if ($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$ instanceof $goog$Uri$$) {
+    this.$ignoreCase_$ = void 0 !== $opt_ignoreCase$$ ? $opt_ignoreCase$$ : $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$ignoreCase_$;
+    $JSCompiler_StaticMethods_setScheme$$(this, $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$scheme_$);
+    var $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$ = $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$userInfo_$;
     $JSCompiler_StaticMethods_enforceReadOnly$$(this);
-    this.$userInfo_$ = $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$;
-    $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$ = $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$domain_$;
+    this.$userInfo_$ = $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$;
+    $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$ = $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$domain_$;
     $JSCompiler_StaticMethods_enforceReadOnly$$(this);
-    this.$domain_$ = $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$;
-    $JSCompiler_StaticMethods_setPort$$(this, $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$port_$);
-    this.setPath($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$path_$);
-    $JSCompiler_StaticMethods_setQueryData$$(this, $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$queryData_$.clone());
-    $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$ = $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$.$fragment_$;
+    this.$domain_$ = $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$;
+    $JSCompiler_StaticMethods_setPort$$(this, $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$port_$);
+    this.setPath($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$path_$);
+    $JSCompiler_StaticMethods_setQueryData$$(this, $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$queryData_$.clone());
+    $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$ = $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$.$fragment_$;
     $JSCompiler_StaticMethods_enforceReadOnly$$(this);
-    this.$fragment_$ = $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$;
+    this.$fragment_$ = $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$;
   } else {
-    $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$ && ($m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$ = String($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$).match($goog$uri$utils$splitRe_$$)) ? (this.$ignoreCase_$ = !!$opt_ignoreCase$$, $JSCompiler_StaticMethods_setScheme$$(this, $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[1] || 
-    "", !0), $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$ = $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[2] || "", $JSCompiler_StaticMethods_enforceReadOnly$$(this), this.$userInfo_$ = $goog$Uri$decodeOrEmpty_$$($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$), $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$ = 
-    $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[3] || "", $JSCompiler_StaticMethods_enforceReadOnly$$(this), this.$domain_$ = $goog$Uri$decodeOrEmpty_$$($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$, !0), $JSCompiler_StaticMethods_setPort$$(this, $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[4]), this.setPath($m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[5] || 
-    "", !0), $JSCompiler_StaticMethods_setQueryData$$(this, $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[6] || "", !0), $newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$ = $m$jscomp$92_newDomain$jscomp$inline_1209_newUserInfo$jscomp$inline_1205$$[7] || "", $JSCompiler_StaticMethods_enforceReadOnly$$(this), this.$fragment_$ = $goog$Uri$decodeOrEmpty_$$($newDomain$jscomp$inline_1221_newFragment$jscomp$inline_1213_newFragment$jscomp$inline_1225_newUserInfo$jscomp$inline_1217_opt_uri$$)) : 
+    $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$ && ($m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$ = String($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$).match($goog$uri$utils$splitRe_$$)) ? (this.$ignoreCase_$ = !!$opt_ignoreCase$$, $JSCompiler_StaticMethods_setScheme$$(this, $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[1] || 
+    "", !0), $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$ = $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[2] || "", $JSCompiler_StaticMethods_enforceReadOnly$$(this), this.$userInfo_$ = $goog$Uri$decodeOrEmpty_$$($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$), $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$ = 
+    $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[3] || "", $JSCompiler_StaticMethods_enforceReadOnly$$(this), this.$domain_$ = $goog$Uri$decodeOrEmpty_$$($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$, !0), $JSCompiler_StaticMethods_setPort$$(this, $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[4]), this.setPath($m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[5] || 
+    "", !0), $JSCompiler_StaticMethods_setQueryData$$(this, $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[6] || "", !0), $newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$ = $m$jscomp$92_newDomain$jscomp$inline_1190_newUserInfo$jscomp$inline_1186$$[7] || "", $JSCompiler_StaticMethods_enforceReadOnly$$(this), this.$fragment_$ = $goog$Uri$decodeOrEmpty_$$($newDomain$jscomp$inline_1202_newFragment$jscomp$inline_1194_newFragment$jscomp$inline_1206_newUserInfo$jscomp$inline_1198_opt_uri$$)) : 
     (this.$ignoreCase_$ = !!$opt_ignoreCase$$, this.$queryData_$ = new $goog$Uri$QueryData$$(null, 0, this.$ignoreCase_$));
   }
 }
@@ -10788,52 +10837,52 @@ $JSCompiler_prototypeAlias$$.toString = function() {
   ($domain$jscomp$2_fragment$jscomp$1_path$jscomp$16_port$jscomp$2_query$jscomp$8$$ = this.$fragment_$) && $out$jscomp$10$$.push("#", $goog$Uri$encodeSpecialChars_$$($domain$jscomp$2_fragment$jscomp$1_path$jscomp$16_port$jscomp$2_query$jscomp$8$$, $goog$Uri$reDisallowedInFragment_$$));
   return $out$jscomp$10$$.join("");
 };
-$JSCompiler_prototypeAlias$$.resolve = function($newFragment$jscomp$inline_1237_relativeUri$$) {
-  var $absoluteUri$$ = this.clone(), $overridden$$ = !!$newFragment$jscomp$inline_1237_relativeUri$$.$scheme_$;
-  $overridden$$ ? $JSCompiler_StaticMethods_setScheme$$($absoluteUri$$, $newFragment$jscomp$inline_1237_relativeUri$$.$scheme_$) : $overridden$$ = !!$newFragment$jscomp$inline_1237_relativeUri$$.$userInfo_$;
+$JSCompiler_prototypeAlias$$.resolve = function($newFragment$jscomp$inline_1218_relativeUri$$) {
+  var $absoluteUri$$ = this.clone(), $overridden$$ = !!$newFragment$jscomp$inline_1218_relativeUri$$.$scheme_$;
+  $overridden$$ ? $JSCompiler_StaticMethods_setScheme$$($absoluteUri$$, $newFragment$jscomp$inline_1218_relativeUri$$.$scheme_$) : $overridden$$ = !!$newFragment$jscomp$inline_1218_relativeUri$$.$userInfo_$;
   if ($overridden$$) {
-    var $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = $newFragment$jscomp$inline_1237_relativeUri$$.$userInfo_$;
+    var $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = $newFragment$jscomp$inline_1218_relativeUri$$.$userInfo_$;
     $JSCompiler_StaticMethods_enforceReadOnly$$($absoluteUri$$);
-    $absoluteUri$$.$userInfo_$ = $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$;
+    $absoluteUri$$.$userInfo_$ = $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$;
   } else {
-    $overridden$$ = !!$newFragment$jscomp$inline_1237_relativeUri$$.$domain_$;
+    $overridden$$ = !!$newFragment$jscomp$inline_1218_relativeUri$$.$domain_$;
   }
-  $overridden$$ ? ($leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = $newFragment$jscomp$inline_1237_relativeUri$$.$domain_$, $JSCompiler_StaticMethods_enforceReadOnly$$($absoluteUri$$), $absoluteUri$$.$domain_$ = $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$) : $overridden$$ = null != $newFragment$jscomp$inline_1237_relativeUri$$.$port_$;
-  $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = $newFragment$jscomp$inline_1237_relativeUri$$.$path_$;
+  $overridden$$ ? ($leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = $newFragment$jscomp$inline_1218_relativeUri$$.$domain_$, $JSCompiler_StaticMethods_enforceReadOnly$$($absoluteUri$$), $absoluteUri$$.$domain_$ = $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$) : $overridden$$ = null != $newFragment$jscomp$inline_1218_relativeUri$$.$port_$;
+  $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = $newFragment$jscomp$inline_1218_relativeUri$$.$path_$;
   if ($overridden$$) {
-    $JSCompiler_StaticMethods_setPort$$($absoluteUri$$, $newFragment$jscomp$inline_1237_relativeUri$$.$port_$);
+    $JSCompiler_StaticMethods_setPort$$($absoluteUri$$, $newFragment$jscomp$inline_1218_relativeUri$$.$port_$);
   } else {
-    if ($overridden$$ = !!$newFragment$jscomp$inline_1237_relativeUri$$.$path_$) {
-      if ("/" != $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$.charAt(0)) {
+    if ($overridden$$ = !!$newFragment$jscomp$inline_1218_relativeUri$$.$path_$) {
+      if ("/" != $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$.charAt(0)) {
         if (this.$domain_$ && !this.$path_$) {
-          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = "/" + $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$;
+          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = "/" + $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$;
         } else {
           var $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ = $absoluteUri$$.$path_$.lastIndexOf("/");
-          -1 != $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ && ($leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = $absoluteUri$$.$path_$.substr(0, $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ + 1) + $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$);
+          -1 != $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ && ($leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = $absoluteUri$$.$path_$.substr(0, $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ + 1) + $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$);
         }
       }
-      $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ = $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$;
+      $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ = $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$;
       if (".." == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ || "." == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$) {
-        $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = "";
+        $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = "";
       } else {
         if (-1 != $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.indexOf("./") || -1 != $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.indexOf("/.")) {
-          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = 0 == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.lastIndexOf("/", 0);
+          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = 0 == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.lastIndexOf("/", 0);
           $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$ = $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.split("/");
           for (var $out$jscomp$inline_833$$ = [], $pos$jscomp$inline_834$$ = 0; $pos$jscomp$inline_834$$ < $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.length;) {
             var $segment$jscomp$inline_835$$ = $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$[$pos$jscomp$inline_834$$++];
-            "." == $segment$jscomp$inline_835$$ ? $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ && $pos$jscomp$inline_834$$ == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.length && $out$jscomp$inline_833$$.push("") : ".." == $segment$jscomp$inline_835$$ ? ((1 < $out$jscomp$inline_833$$.length || 1 == $out$jscomp$inline_833$$.length && "" != $out$jscomp$inline_833$$[0]) && $out$jscomp$inline_833$$.pop(), $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ && 
-            $pos$jscomp$inline_834$$ == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.length && $out$jscomp$inline_833$$.push("")) : ($out$jscomp$inline_833$$.push($segment$jscomp$inline_835$$), $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = !0);
+            "." == $segment$jscomp$inline_835$$ ? $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ && $pos$jscomp$inline_834$$ == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.length && $out$jscomp$inline_833$$.push("") : ".." == $segment$jscomp$inline_835$$ ? ((1 < $out$jscomp$inline_833$$.length || 1 == $out$jscomp$inline_833$$.length && "" != $out$jscomp$inline_833$$[0]) && $out$jscomp$inline_833$$.pop(), $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ && 
+            $pos$jscomp$inline_834$$ == $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$.length && $out$jscomp$inline_833$$.push("")) : ($out$jscomp$inline_833$$.push($segment$jscomp$inline_835$$), $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = !0);
           }
-          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = $out$jscomp$inline_833$$.join("/");
+          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = $out$jscomp$inline_833$$.join("/");
         } else {
-          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$ = $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$;
+          $leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$ = $lastSlashIndex_path$jscomp$inline_830_segments$jscomp$inline_832$$;
         }
       }
     }
   }
-  $overridden$$ ? $absoluteUri$$.setPath($leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1233_newUserInfo$jscomp$inline_1229_path$jscomp$17$$) : $overridden$$ = "" !== $newFragment$jscomp$inline_1237_relativeUri$$.$queryData_$.toString();
-  $overridden$$ ? $JSCompiler_StaticMethods_setQueryData$$($absoluteUri$$, $newFragment$jscomp$inline_1237_relativeUri$$.$queryData_$.clone()) : $overridden$$ = !!$newFragment$jscomp$inline_1237_relativeUri$$.$fragment_$;
-  $overridden$$ && ($newFragment$jscomp$inline_1237_relativeUri$$ = $newFragment$jscomp$inline_1237_relativeUri$$.$fragment_$, $JSCompiler_StaticMethods_enforceReadOnly$$($absoluteUri$$), $absoluteUri$$.$fragment_$ = $newFragment$jscomp$inline_1237_relativeUri$$);
+  $overridden$$ ? $absoluteUri$$.setPath($leadingSlash$jscomp$inline_831_newDomain$jscomp$inline_1214_newUserInfo$jscomp$inline_1210_path$jscomp$17$$) : $overridden$$ = "" !== $newFragment$jscomp$inline_1218_relativeUri$$.$queryData_$.toString();
+  $overridden$$ ? $JSCompiler_StaticMethods_setQueryData$$($absoluteUri$$, $newFragment$jscomp$inline_1218_relativeUri$$.$queryData_$.clone()) : $overridden$$ = !!$newFragment$jscomp$inline_1218_relativeUri$$.$fragment_$;
+  $overridden$$ && ($newFragment$jscomp$inline_1218_relativeUri$$ = $newFragment$jscomp$inline_1218_relativeUri$$.$fragment_$, $JSCompiler_StaticMethods_enforceReadOnly$$($absoluteUri$$), $absoluteUri$$.$fragment_$ = $newFragment$jscomp$inline_1218_relativeUri$$);
   return $absoluteUri$$;
 };
 $JSCompiler_prototypeAlias$$.clone = function() {
@@ -11020,20 +11069,20 @@ $JSCompiler_prototypeAlias$$.extend = function($var_args$jscomp$320$$) {
     }, this);
   }
 };
-for (var $arr$jscomp$inline_1357$$ = Array(1), $i_15023$jscomp$inline_1358$$ = 0;;) {
-  if ($i_15023$jscomp$inline_1358$$ < $arr$jscomp$inline_1357$$.length) {
-    $arr$jscomp$inline_1357$$[$i_15023$jscomp$inline_1358$$] = null, $i_15023$jscomp$inline_1358$$ += 1;
+for (var $arr$jscomp$inline_1338$$ = Array(1), $i_15023$jscomp$inline_1339$$ = 0;;) {
+  if ($i_15023$jscomp$inline_1339$$ < $arr$jscomp$inline_1338$$.length) {
+    $arr$jscomp$inline_1338$$[$i_15023$jscomp$inline_1339$$] = null, $i_15023$jscomp$inline_1339$$ += 1;
   } else {
     break;
   }
 }
-;function $cljs$core$async$chan$cljs$0core$0IFn$0_invoke$0arity$03$$($JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$) {
-  $JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$ = $cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$($JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$, 0) ? null : $JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$;
-  if ($cljs$core$truth_$$(null) && !$cljs$core$truth_$$($JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$)) {
+;function $cljs$core$async$chan$cljs$0core$0IFn$0_invoke$0arity$03$$($JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$) {
+  $JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$ = $cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$($JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$, 0) ? null : $JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$;
+  if ($cljs$core$truth_$$(null) && !$cljs$core$truth_$$($JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$)) {
     throw Error("Assert failed: buffer must be supplied when transducer is\nbuf-or-n");
   }
-  $JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$ = "number" === typeof $JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$ ? new $cljs$core$async$impl$buffers$FixedBuffer$$($cljs$core$async$impl$buffers$ring_buffer$$($JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$), $JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$) : $JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$;
-  return $cljs$core$async$impl$channels$chan$cljs$0core$0IFn$0_invoke$0arity$03$$($JSCompiler_temp$jscomp$1116_buf_or_n$jscomp$2_buf_or_n__$1$$);
+  $JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$ = "number" === typeof $JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$ ? new $cljs$core$async$impl$buffers$FixedBuffer$$($cljs$core$async$impl$buffers$ring_buffer$$($JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$), $JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$) : $JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$;
+  return $cljs$core$async$impl$channels$chan$cljs$0core$0IFn$0_invoke$0arity$03$$($JSCompiler_temp$jscomp$1097_buf_or_n$jscomp$2_buf_or_n__$1$$);
 }
 var $cljs$core$async$fhnop$$ = function($f$jscomp$357$$) {
   "undefined" === typeof $cljs$core$async$t_cljs$0core$0async15104$$ && ($cljs$core$async$t_cljs$0core$0async15104$$ = function($f$jscomp$357$$, $meta15105$$) {
@@ -11234,20 +11283,20 @@ function $clojure$string$split_with_empty_regex$$($s$jscomp$126$$, $c$jscomp$180
 function $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$02$$($s$jscomp$127$$, $re$jscomp$8$$) {
   return $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$03$$($s$jscomp$127$$, $re$jscomp$8$$, 0);
 }
-function $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$03$$($s$jscomp$128_s__$1$jscomp$inline_870$$, $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$, $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$) {
-  if ("/(?:)/" === "" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$)) {
-    $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$ = $clojure$string$split_with_empty_regex$$($s$jscomp$128_s__$1$jscomp$inline_870$$, $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$);
+function $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$03$$($s$jscomp$128_s__$1$jscomp$inline_870$$, $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$, $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$) {
+  if ("/(?:)/" === "" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$)) {
+    $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$ = $clojure$string$split_with_empty_regex$$($s$jscomp$128_s__$1$jscomp$inline_870$$, $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$);
   } else {
-    if (1 > $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$) {
-      $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$ = $cljs$core$vec$$(("" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($s$jscomp$128_s__$1$jscomp$inline_870$$)).split($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$));
+    if (1 > $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$) {
+      $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$ = $cljs$core$vec$$(("" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($s$jscomp$128_s__$1$jscomp$inline_870$$)).split($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$));
     } else {
       a: {
-        for (var $G__13242$jscomp$inline_876_limit__$1$jscomp$inline_871$$ = $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$, $G__13243$jscomp$inline_877_parts$jscomp$inline_872$$ = $cljs$core$PersistentVector$EMPTY$$;;) {
+        for (var $G__13242$jscomp$inline_876_limit__$1$jscomp$inline_871$$ = $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$, $G__13243$jscomp$inline_877_parts$jscomp$inline_872$$ = $cljs$core$PersistentVector$EMPTY$$;;) {
           if (1 === $G__13242$jscomp$inline_876_limit__$1$jscomp$inline_871$$) {
-            $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$ = $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($G__13243$jscomp$inline_877_parts$jscomp$inline_872$$, $s$jscomp$128_s__$1$jscomp$inline_870$$);
+            $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$ = $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($G__13243$jscomp$inline_877_parts$jscomp$inline_872$$, $s$jscomp$128_s__$1$jscomp$inline_870$$);
             break a;
           }
-          var $G__13241$jscomp$inline_875_m$jscomp$inline_873$$ = $cljs$core$re_find$$($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$, $s$jscomp$128_s__$1$jscomp$inline_870$$);
+          var $G__13241$jscomp$inline_875_m$jscomp$inline_873$$ = $cljs$core$re_find$$($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$, $s$jscomp$128_s__$1$jscomp$inline_870$$);
           if (null != $G__13241$jscomp$inline_875_m$jscomp$inline_873$$) {
             var $index$jscomp$inline_874$$ = $s$jscomp$128_s__$1$jscomp$inline_870$$.indexOf($G__13241$jscomp$inline_875_m$jscomp$inline_873$$);
             $G__13241$jscomp$inline_875_m$jscomp$inline_873$$ = $s$jscomp$128_s__$1$jscomp$inline_870$$.substring($index$jscomp$inline_874$$ + $cljs$core$count$$($G__13241$jscomp$inline_875_m$jscomp$inline_873$$));
@@ -11255,27 +11304,27 @@ function $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$03$$($s$jscomp$12
             $G__13243$jscomp$inline_877_parts$jscomp$inline_872$$ = $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($G__13243$jscomp$inline_877_parts$jscomp$inline_872$$, $s$jscomp$128_s__$1$jscomp$inline_870$$.substring(0, $index$jscomp$inline_874$$));
             $s$jscomp$128_s__$1$jscomp$inline_870$$ = $G__13241$jscomp$inline_875_m$jscomp$inline_873$$;
           } else {
-            $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$ = $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($G__13243$jscomp$inline_877_parts$jscomp$inline_872$$, $s$jscomp$128_s__$1$jscomp$inline_870$$);
+            $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$ = $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($G__13243$jscomp$inline_877_parts$jscomp$inline_872$$, $s$jscomp$128_s__$1$jscomp$inline_870$$);
             break a;
           }
         }
       }
     }
   }
-  if (0 === $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$ && 1 < $cljs$core$count$$($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$)) {
+  if (0 === $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$ && 1 < $cljs$core$count$$($JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$)) {
     a: {
-      for ($JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$ = $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$;;) {
-        if ("" === (null == $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$ ? null : $cljs$core$_peek$$($JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$))) {
-          $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$ = null == $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$ ? null : $cljs$core$_pop$$($JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$);
+      for ($JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$ = $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$;;) {
+        if ("" === (null == $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$ ? null : $cljs$core$_peek$$($JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$))) {
+          $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$ = null == $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$ ? null : $cljs$core$_pop$$($JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$);
         } else {
           break a;
         }
       }
     }
   } else {
-    $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$ = $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1243$$;
+    $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$ = $JSCompiler_temp$jscomp$118_JSCompiler_temp$jscomp$119_re$jscomp$9_v$jscomp$inline_1224$$;
   }
-  return $JSCompiler_temp$jscomp$inline_1244_limit$jscomp$3_v__$1$jscomp$inline_1245$$;
+  return $JSCompiler_temp$jscomp$inline_1225_limit$jscomp$3_v__$1$jscomp$inline_1226$$;
 }
 ;if ("undefined" === typeof $accountant$core$history$$) {
   var $accountant$core$history$$ = new $goog$history$Html5History$$;
@@ -11558,11 +11607,11 @@ function $JSCompiler_StaticMethods_schedule$$($G__13327_JSCompiler_StaticMethods
       if (null != $this$$jscomp$130$$) {
         $G__13327_JSCompiler_StaticMethods_schedule$self$$.componentQueue = null;
         $this$$jscomp$130$$.sort($reagent$impl$batching$compare_mount_order$$);
-        for (var $n__8590__auto__$jscomp$inline_1361$$ = $this$$jscomp$130$$.length, $i$jscomp$inline_1362$$ = 0;;) {
-          if ($i$jscomp$inline_1362$$ < $n__8590__auto__$jscomp$inline_1361$$) {
-            var $c_13324$jscomp$inline_1363$$ = $this$$jscomp$130$$[$i$jscomp$inline_1362$$];
-            !0 === $c_13324$jscomp$inline_1363$$.cljsIsDirty && $c_13324$jscomp$inline_1363$$.forceUpdate();
-            $i$jscomp$inline_1362$$ += 1;
+        for (var $n__8590__auto__$jscomp$inline_1342$$ = $this$$jscomp$130$$.length, $i$jscomp$inline_1343$$ = 0;;) {
+          if ($i$jscomp$inline_1343$$ < $n__8590__auto__$jscomp$inline_1342$$) {
+            var $c_13324$jscomp$inline_1344$$ = $this$$jscomp$130$$[$i$jscomp$inline_1343$$];
+            !0 === $c_13324$jscomp$inline_1344$$.cljsIsDirty && $c_13324$jscomp$inline_1344$$.forceUpdate();
+            $i$jscomp$inline_1343$$ += 1;
           } else {
             break;
           }
@@ -12404,9 +12453,9 @@ function $reagent$impl$template$named_QMARK_$$($x$jscomp$651$$) {
 var $reagent$impl$template$prop_name_cache$$ = {"class":"className", "for":"htmlFor", charset:"charSet"};
 function $reagent$impl$template$kv_conv$$($o$jscomp$146$$, $JSCompiler_inline_result$jscomp$144_k$jscomp$329$$, $v$jscomp$103$$) {
   if ($reagent$impl$template$named_QMARK_$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$)) {
-    var $k$jscomp$inline_1268_temp__4659__auto__$jscomp$inline_994$$ = $cljs$core$name$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$);
-    $k$jscomp$inline_1268_temp__4659__auto__$jscomp$inline_994$$ = $reagent$impl$template$prop_name_cache$$.hasOwnProperty($k$jscomp$inline_1268_temp__4659__auto__$jscomp$inline_994$$) ? $reagent$impl$template$prop_name_cache$$[$k$jscomp$inline_1268_temp__4659__auto__$jscomp$inline_994$$] : null;
-    $JSCompiler_inline_result$jscomp$144_k$jscomp$329$$ = null == $k$jscomp$inline_1268_temp__4659__auto__$jscomp$inline_994$$ ? $reagent$impl$template$prop_name_cache$$[$cljs$core$name$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$)] = $reagent$impl$util$dash_to_camel$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$) : $k$jscomp$inline_1268_temp__4659__auto__$jscomp$inline_994$$;
+    var $k$jscomp$inline_1249_temp__4659__auto__$jscomp$inline_994$$ = $cljs$core$name$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$);
+    $k$jscomp$inline_1249_temp__4659__auto__$jscomp$inline_994$$ = $reagent$impl$template$prop_name_cache$$.hasOwnProperty($k$jscomp$inline_1249_temp__4659__auto__$jscomp$inline_994$$) ? $reagent$impl$template$prop_name_cache$$[$k$jscomp$inline_1249_temp__4659__auto__$jscomp$inline_994$$] : null;
+    $JSCompiler_inline_result$jscomp$144_k$jscomp$329$$ = null == $k$jscomp$inline_1249_temp__4659__auto__$jscomp$inline_994$$ ? $reagent$impl$template$prop_name_cache$$[$cljs$core$name$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$)] = $reagent$impl$util$dash_to_camel$$($JSCompiler_inline_result$jscomp$144_k$jscomp$329$$) : $k$jscomp$inline_1249_temp__4659__auto__$jscomp$inline_994$$;
   }
   $o$jscomp$146$$[$JSCompiler_inline_result$jscomp$144_k$jscomp$329$$] = $reagent$impl$template$convert_prop_value$$.$cljs$core$IFn$_invoke$arity$1$ ? $reagent$impl$template$convert_prop_value$$.$cljs$core$IFn$_invoke$arity$1$($v$jscomp$103$$) : $reagent$impl$template$convert_prop_value$$.call(null, $v$jscomp$103$$);
   return $o$jscomp$146$$;
@@ -12522,15 +12571,15 @@ function $reagent$impl$template$key_from_vec$$($v$jscomp$107$$) {
   return null == $temp__4659__auto__$jscomp$13$$ ? $reagent$impl$template$get_key$$($cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($v$jscomp$107$$, 1)) : $temp__4659__auto__$jscomp$13$$;
 }
 var $reagent$impl$template$tag_name_cache$$ = {};
-function $reagent$impl$template$native_element$$($jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $first$jscomp$7_first_child$jscomp$2$$) {
-  var $comp$jscomp$11_o$jscomp$inline_1005$$ = $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$.name, $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $first$jscomp$7_first_child$jscomp$2$$), $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ = null == $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ || 
-  $cljs$core$map_QMARK_$$($p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$);
-  $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ = $reagent$impl$template$convert_prop_value$$($JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ ? $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ : null);
-  var $id$jscomp$inline_1272_old$jscomp$inline_1275$$ = $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$.id;
-  $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ = null != $id$jscomp$inline_1272_old$jscomp$inline_1275$$ && null == (null == $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ ? null : $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$.id) ? $reagent$impl$template$oset$$($p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$, "id", $id$jscomp$inline_1272_old$jscomp$inline_1275$$) : $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$;
-  $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$ = $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$.className;
-  null == $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$ ? $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$ = $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ : ($id$jscomp$inline_1272_old$jscomp$inline_1275$$ = null == $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$ ? null : $p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$.className, $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$ = $reagent$impl$template$oset$$($p$jscomp$inline_1270_p__$1$jscomp$inline_1273_props$jscomp$136$$, 
-  "className", null == $id$jscomp$inline_1272_old$jscomp$inline_1275$$ ? $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$ : [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$), " ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($id$jscomp$inline_1272_old$jscomp$inline_1275$$)].join("")));
+function $reagent$impl$template$native_element$$($jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $first$jscomp$7_first_child$jscomp$2$$) {
+  var $comp$jscomp$11_o$jscomp$inline_1005$$ = $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$.name, $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $first$jscomp$7_first_child$jscomp$2$$), $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ = null == $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ || 
+  $cljs$core$map_QMARK_$$($p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$);
+  $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ = $reagent$impl$template$convert_prop_value$$($JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ ? $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ : null);
+  var $id$jscomp$inline_1253_old$jscomp$inline_1256$$ = $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$.id;
+  $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ = null != $id$jscomp$inline_1253_old$jscomp$inline_1256$$ && null == (null == $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ ? null : $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$.id) ? $reagent$impl$template$oset$$($p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$, "id", $id$jscomp$inline_1253_old$jscomp$inline_1256$$) : $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$;
+  $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$ = $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$.className;
+  null == $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$ ? $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$ = $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ : ($id$jscomp$inline_1253_old$jscomp$inline_1256$$ = null == $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$ ? null : $p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$.className, $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$ = $reagent$impl$template$oset$$($p$jscomp$inline_1251_p__$1$jscomp$inline_1254_props$jscomp$136$$, 
+  "className", null == $id$jscomp$inline_1253_old$jscomp$inline_1256$$ ? $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$ : [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$), " ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($id$jscomp$inline_1253_old$jscomp$inline_1256$$)].join("")));
   $first$jscomp$7_first_child$jscomp$2$$ += $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ ? 1 : 0;
   a: {
     switch($comp$jscomp$11_o$jscomp$inline_1005$$) {
@@ -12544,11 +12593,11 @@ function $reagent$impl$template$native_element$$($jsprops$jscomp$3_parsed_temp__
   }
   if ($JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$) {
     return $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ = $cljs$core$PersistentVector$EMPTY_NODE$$, null == $reagent$impl$template$reagent_input_class$$ && ($reagent$impl$template$reagent_input_class$$ = $reagent$impl$component$create_class$$($reagent$impl$template$input_spec$$)), $comp$jscomp$11_o$jscomp$inline_1005$$ = new $cljs$core$PersistentVector$$(null, 5, 5, $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$, 
-    [$reagent$impl$template$reagent_input_class$$, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $comp$jscomp$11_o$jscomp$inline_1005$$, $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$, $first$jscomp$7_first_child$jscomp$2$$], null), $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$ = $cljs$core$meta$$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$), $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$ = $goog$isFunction$$($comp$jscomp$11_o$jscomp$inline_1005$$) ? new $cljs$core$MetaFn$$($comp$jscomp$11_o$jscomp$inline_1005$$, 
+    [$reagent$impl$template$reagent_input_class$$, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $comp$jscomp$11_o$jscomp$inline_1005$$, $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$, $first$jscomp$7_first_child$jscomp$2$$], null), $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$ = $cljs$core$meta$$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$), $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$ = $goog$isFunction$$($comp$jscomp$11_o$jscomp$inline_1005$$) ? new $cljs$core$MetaFn$$($comp$jscomp$11_o$jscomp$inline_1005$$, 
     $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$) : null == $comp$jscomp$11_o$jscomp$inline_1005$$ ? null : $cljs$core$_with_meta$$($comp$jscomp$11_o$jscomp$inline_1005$$, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$), $reagent$impl$template$as_element$$.$cljs$core$IFn$_invoke$arity$1$ ? $reagent$impl$template$as_element$$.$cljs$core$IFn$_invoke$arity$1$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$) : $reagent$impl$template$as_element$$.call(null, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$);
   }
   $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ = $reagent$impl$template$get_key$$($cljs$core$meta$$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$));
-  $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ = null == $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ ? $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$ : $reagent$impl$template$oset$$($jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1274$$, "key", $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$);
+  $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ = null == $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$ ? $jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$ : $reagent$impl$template$oset$$($jsprops$jscomp$3_parsed_temp__4659__auto__$jscomp$inline_1255$$, "key", $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$);
   return $reagent$impl$template$make_element$$.$cljs$core$IFn$_invoke$arity$4$ ? $reagent$impl$template$make_element$$.$cljs$core$IFn$_invoke$arity$4$($G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $comp$jscomp$11_o$jscomp$inline_1005$$, $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$, $first$jscomp$7_first_child$jscomp$2$$) : $reagent$impl$template$make_element$$.call(null, $G__13638_argv$jscomp$1_meta$jscomp$inline_1006$$, $comp$jscomp$11_o$jscomp$inline_1005$$, 
   $JSCompiler_inline_result$jscomp$145_JSCompiler_temp_const$jscomp$146_hasprops_key$jscomp$170_p$jscomp$98$$, $first$jscomp$7_first_child$jscomp$2$$);
 }
@@ -12575,51 +12624,51 @@ function $reagent$impl$template$vec_to_elem$$($temp__4661__auto___13635$jscomp$i
     if (!(0 < $cljs$core$count$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$))) {
       throw Error(["Assert failed: ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($reagent$impl$template$hiccup_err$cljs$0core$0IFn$0_invoke$0arity$0variadic$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, $cljs$core$prim_seq$cljs$0core$0IFn$0_invoke$0arity$02$$(["Hiccup form should not be empty"]))), "\n(pos? (count v))"].join(""));
     }
-    var $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 0);
-    if (!$reagent$impl$template$named_QMARK_$$($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) && "string" !== typeof $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ && !$cljs$core$ifn_QMARK_$$($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$)) {
+    var $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 0);
+    if (!$reagent$impl$template$named_QMARK_$$($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) && "string" !== typeof $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ && !$cljs$core$ifn_QMARK_$$($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$)) {
       throw Error(["Assert failed: ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($reagent$impl$template$hiccup_err$cljs$0core$0IFn$0_invoke$0arity$0variadic$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, $cljs$core$prim_seq$cljs$0core$0IFn$0_invoke$0arity$02$$(["Invalid Hiccup form"]))), "\n(valid-tag? tag)"].join(""));
     }
-    if ($reagent$impl$template$named_QMARK_$$($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) || "string" === typeof $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) {
-      $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $cljs$core$name$$($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$);
-      var $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ = $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.indexOf("\x3e");
-      switch($comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$) {
+    if ($reagent$impl$template$named_QMARK_$$($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) || "string" === typeof $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) {
+      $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $cljs$core$name$$($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$);
+      var $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ = $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.indexOf("\x3e");
+      switch($comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$) {
         case -1:
-          $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ = $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$;
-          $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $reagent$impl$template$tag_name_cache$$;
-          var $k$jscomp$inline_1278_tag$jscomp$inline_1282$$ = $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$;
-          $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.hasOwnProperty($k$jscomp$inline_1278_tag$jscomp$inline_1282$$) ? $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$[$k$jscomp$inline_1278_tag$jscomp$inline_1282$$] : 
+          $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ = $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$;
+          $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $reagent$impl$template$tag_name_cache$$;
+          var $k$jscomp$inline_1259_tag$jscomp$inline_1263$$ = $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$;
+          $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.hasOwnProperty($k$jscomp$inline_1259_tag$jscomp$inline_1263$$) ? $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$[$k$jscomp$inline_1259_tag$jscomp$inline_1263$$] : 
           null;
-          if (null == $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) {
-            $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$;
-            var $class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$ = $cljs$core$next$$($cljs$core$re_matches$$($reagent$impl$template$re_tag$$, $cljs$core$name$$($comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$)));
-            $k$jscomp$inline_1278_tag$jscomp$inline_1282$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$, 0);
-            var $id$jscomp$inline_1283$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$, 1);
-            $class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$, 2);
-            $class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$ = null == $class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$ ? null : $clojure$string$replace$$($class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$, /\./, " ");
-            if (!$cljs$core$truth_$$($k$jscomp$inline_1278_tag$jscomp$inline_1282$$)) {
-              throw Error(["Assert failed: ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$(["Invalid tag: '", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$), "'", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($reagent$impl$component$comp_name$$())].join("")), "\ntag"].join(""));
+          if (null == $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) {
+            $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$;
+            var $class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$ = $cljs$core$next$$($cljs$core$re_matches$$($reagent$impl$template$re_tag$$, $cljs$core$name$$($comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$)));
+            $k$jscomp$inline_1259_tag$jscomp$inline_1263$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$, 0);
+            var $id$jscomp$inline_1264$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$, 1);
+            $class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$, 2);
+            $class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$ = null == $class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$ ? null : $clojure$string$replace$$($class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$, /\./, " ");
+            if (!$cljs$core$truth_$$($k$jscomp$inline_1259_tag$jscomp$inline_1263$$)) {
+              throw Error(["Assert failed: ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$(["Invalid tag: '", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$), "'", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($reagent$impl$component$comp_name$$())].join("")), "\ntag"].join(""));
             }
-            $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $reagent$impl$template$tag_name_cache$$[$JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$] = {name:$k$jscomp$inline_1278_tag$jscomp$inline_1282$$, id:$id$jscomp$inline_1283$$, className:$class$$jscomp$inline_1284_class$__$1$jscomp$inline_1285_vec__13631$jscomp$inline_1281$$};
+            $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = $reagent$impl$template$tag_name_cache$$[$JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$] = {name:$k$jscomp$inline_1259_tag$jscomp$inline_1263$$, id:$id$jscomp$inline_1264$$, className:$class$$jscomp$inline_1265_class$__$1$jscomp$inline_1266_vec__13631$jscomp$inline_1262$$};
           }
-          return $reagent$impl$template$native_element$$($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$, $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 1);
+          return $reagent$impl$template$native_element$$($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$, $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 1);
         case 0:
-          $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 1);
-          if (!$cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$("\x3e", $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$)) {
+          $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 1);
+          if (!$cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$("\x3e", $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$)) {
             throw Error(["Assert failed: ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($reagent$impl$template$hiccup_err$cljs$0core$0IFn$0_invoke$0arity$0variadic$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, $cljs$core$prim_seq$cljs$0core$0IFn$0_invoke$0arity$02$$(["Invalid Hiccup tag"]))), '\n(\x3d "\x3e" n)'].join(""));
           }
-          if ("string" !== typeof $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ && !$cljs$core$fn_QMARK_$$($comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$)) {
+          if ("string" !== typeof $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ && !$cljs$core$fn_QMARK_$$($comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$)) {
             throw Error(["Assert failed: ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($reagent$impl$template$hiccup_err$cljs$0core$0IFn$0_invoke$0arity$0variadic$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, $cljs$core$prim_seq$cljs$0core$0IFn$0_invoke$0arity$02$$(["Expected React component in"]))), "\n(or (string? comp) (fn? comp))"].join(""));
           }
-          return $reagent$impl$template$native_element$$({name:$comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$}, $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 2);
+          return $reagent$impl$template$native_element$$({name:$comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$}, $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 2);
         default:
-          $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$ = new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.substring(0, $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$), 
-          $cljs$core$assoc$$.$cljs$core$IFn$_invoke$arity$3$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 0, $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.substring($comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ + 1))], null);
+          $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$ = new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.substring(0, $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$), 
+          $cljs$core$assoc$$.$cljs$core$IFn$_invoke$arity$3$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$, 0, $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.substring($comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ + 1))], null);
       }
     } else {
-      return $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ = $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.cljsReactClass, $JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = 
-      null == $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ ? $reagent$impl$component$fn_to_class$$($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) : $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$, 
-      $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$ = {argv:$temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$}, $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$ = $reagent$impl$template$key_from_vec$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$), null != $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$ && 
-      ($comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$.key = $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$), $reagent$impl$util$react$$.createElement($JSCompiler_temp$jscomp$1122_JSCompiler_temp_const$jscomp$1123_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1277_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$, $comp$jscomp$12_hiccup_tag$jscomp$inline_1280_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1288_x$jscomp$inline_1008$$);
+      return $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ = $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$.cljsReactClass, $JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$ = 
+      null == $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ ? $reagent$impl$component$fn_to_class$$($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$) : $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$, 
+      $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$ = {argv:$temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$}, $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$ = $reagent$impl$template$key_from_vec$$($temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$), null != $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$ && 
+      ($comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$.key = $temp__4661__auto___13635$jscomp$inline_1015_v$jscomp$110_v$jscomp$inline_1012$$), $reagent$impl$util$react$$.createElement($JSCompiler_temp$jscomp$1103_JSCompiler_temp_const$jscomp$1104_c$jscomp$inline_1013_n$jscomp$216_o$jscomp$inline_1258_tag$jscomp$19_temp__4659__auto__$jscomp$inline_1009$$, $comp$jscomp$12_hiccup_tag$jscomp$inline_1261_jsprops$jscomp$inline_1014_pos$jscomp$1_temp__4659__auto__$jscomp$inline_1269_x$jscomp$inline_1008$$);
     }
   }
 }
@@ -12713,7 +12762,7 @@ function $reagent$dom$re_render_component$$($comp$jscomp$15$$, $container$jscomp
 $reagent$impl$template$find_dom_node$$ = function($this$$jscomp$182$$) {
   return $reagent$dom$module$$().findDOMNode($this$$jscomp$182$$);
 };
-function $opt_object$jscomp$inline_1291$$() {
+function $opt_object$jscomp$inline_1272$$() {
   $reagent$ratom$flush_BANG_$$();
   $reagent$ratom$flush_BANG_$$();
   for (var $c__8484__auto___13684$jscomp$inline_1031_seq__13669_13673$jscomp$inline_1024_temp__4657__auto___13682$jscomp$inline_1029_v_13689$jscomp$inline_1035$$ = $cljs$core$seq$$($cljs$core$vals$$($cljs$core$_deref$$($reagent$dom$roots$$))), $G__13686$jscomp$inline_1033_chunk__13670_13674$jscomp$inline_1025_seq__13669_13683__$1$jscomp$inline_1030$$ = null, $G__13687$jscomp$inline_1034_count__13671_13675$jscomp$inline_1026$$ = 0, $G__13685$jscomp$inline_1032_i__13672_13676$jscomp$inline_1027$$ = 
@@ -12736,10 +12785,10 @@ function $opt_object$jscomp$inline_1291$$() {
   }
   return $JSCompiler_StaticMethods_run_funs$$($reagent$impl$batching$render_queue$$, "afterRender");
 }
-var $parts$jscomp$inline_1293$$ = ["reagent", "core", "force_update_all"], $cur$jscomp$inline_1294$$ = $goog$global$$;
-$parts$jscomp$inline_1293$$[0] in $cur$jscomp$inline_1294$$ || !$cur$jscomp$inline_1294$$.execScript || $cur$jscomp$inline_1294$$.execScript("var " + $parts$jscomp$inline_1293$$[0]);
-for (var $part$jscomp$inline_1295$$; $parts$jscomp$inline_1293$$.length && ($part$jscomp$inline_1295$$ = $parts$jscomp$inline_1293$$.shift());) {
-  $parts$jscomp$inline_1293$$.length || void 0 === $opt_object$jscomp$inline_1291$$ ? $cur$jscomp$inline_1294$$ = $cur$jscomp$inline_1294$$[$part$jscomp$inline_1295$$] && $cur$jscomp$inline_1294$$[$part$jscomp$inline_1295$$] !== Object.prototype[$part$jscomp$inline_1295$$] ? $cur$jscomp$inline_1294$$[$part$jscomp$inline_1295$$] : $cur$jscomp$inline_1294$$[$part$jscomp$inline_1295$$] = {} : $cur$jscomp$inline_1294$$[$part$jscomp$inline_1295$$] = $opt_object$jscomp$inline_1291$$;
+var $parts$jscomp$inline_1274$$ = ["reagent", "core", "force_update_all"], $cur$jscomp$inline_1275$$ = $goog$global$$;
+$parts$jscomp$inline_1274$$[0] in $cur$jscomp$inline_1275$$ || !$cur$jscomp$inline_1275$$.execScript || $cur$jscomp$inline_1275$$.execScript("var " + $parts$jscomp$inline_1274$$[0]);
+for (var $part$jscomp$inline_1276$$; $parts$jscomp$inline_1274$$.length && ($part$jscomp$inline_1276$$ = $parts$jscomp$inline_1274$$.shift());) {
+  $parts$jscomp$inline_1274$$.length || void 0 === $opt_object$jscomp$inline_1272$$ ? $cur$jscomp$inline_1275$$ = $cur$jscomp$inline_1275$$[$part$jscomp$inline_1276$$] && $cur$jscomp$inline_1275$$[$part$jscomp$inline_1276$$] !== Object.prototype[$part$jscomp$inline_1276$$] ? $cur$jscomp$inline_1275$$[$part$jscomp$inline_1276$$] : $cur$jscomp$inline_1275$$[$part$jscomp$inline_1276$$] = {} : $cur$jscomp$inline_1275$$[$part$jscomp$inline_1276$$] = $opt_object$jscomp$inline_1272$$;
 }
 ;var $secretary$core$t_secretary$0core17073$$, $secretary$core$route_matches$$ = function $secretary$core$route_matches$$($this$$jscomp$193$$, $route$jscomp$2$$) {
   if (null != $this$$jscomp$193$$ && null != $this$$jscomp$193$$.$secretary$core$IRouteMatches$route_matches$arity$2$) {
@@ -13095,52 +13144,31 @@ $cljs$core$PersistentVector$$.prototype.$secretary$core$IRenderRoute$render_rout
   }
   throw new $cljs$core$ExceptionInfo$$("Could not build route: invalid params", $invalid_seq__17141_validations__$1$jscomp$2$$, null);
 };
-$cljs$core$_STAR_print_fn_STAR_$$ = function() {
-  function $G__10413$jscomp$inline_1079$$($G__10413$jscomp$inline_1079$$) {
-    var $var_args$jscomp$inline_1081$$ = null;
-    if (0 < arguments.length) {
-      $var_args$jscomp$inline_1081$$ = 0;
-      for (var $G__10414__a$jscomp$inline_1084$$ = Array(arguments.length - 0); $var_args$jscomp$inline_1081$$ < $G__10414__a$jscomp$inline_1084$$.length;) {
-        $G__10414__a$jscomp$inline_1084$$[$var_args$jscomp$inline_1081$$] = arguments[$var_args$jscomp$inline_1081$$ + 0], ++$var_args$jscomp$inline_1081$$;
-      }
-      $var_args$jscomp$inline_1081$$ = new $cljs$core$IndexedSeq$$($G__10414__a$jscomp$inline_1084$$, 0, null);
-    }
-    return $G__10413__delegate$jscomp$inline_1078$$.call(this, $var_args$jscomp$inline_1081$$);
-  }
-  function $G__10413__delegate$jscomp$inline_1078$$($G__10413$jscomp$inline_1079$$) {
-    return console.log.apply(console, $cljs$core$into_array$cljs$0core$0IFn$0_invoke$0arity$02$$($G__10413$jscomp$inline_1079$$));
-  }
-  $G__10413$jscomp$inline_1079$$.$cljs$lang$maxFixedArity$ = 0;
-  $G__10413$jscomp$inline_1079$$.$cljs$lang$applyTo$ = function($G__10413$jscomp$inline_1079$$) {
-    $G__10413$jscomp$inline_1079$$ = $cljs$core$seq$$($G__10413$jscomp$inline_1079$$);
-    return $G__10413__delegate$jscomp$inline_1078$$($G__10413$jscomp$inline_1079$$);
-  };
-  $G__10413$jscomp$inline_1079$$.$cljs$core$IFn$_invoke$arity$variadic$ = $G__10413__delegate$jscomp$inline_1078$$;
-  return $G__10413$jscomp$inline_1079$$;
-}();
-$cljs$core$_STAR_print_err_fn_STAR_$$ = function() {
-  function $G__10416$jscomp$inline_1088$$($G__10416$jscomp$inline_1088$$) {
-    var $var_args$jscomp$inline_1090$$ = null;
-    if (0 < arguments.length) {
-      $var_args$jscomp$inline_1090$$ = 0;
-      for (var $G__10417__a$jscomp$inline_1093$$ = Array(arguments.length - 0); $var_args$jscomp$inline_1090$$ < $G__10417__a$jscomp$inline_1093$$.length;) {
-        $G__10417__a$jscomp$inline_1093$$[$var_args$jscomp$inline_1090$$] = arguments[$var_args$jscomp$inline_1090$$ + 0], ++$var_args$jscomp$inline_1090$$;
-      }
-      $var_args$jscomp$inline_1090$$ = new $cljs$core$IndexedSeq$$($G__10417__a$jscomp$inline_1093$$, 0, null);
-    }
-    return $G__10416__delegate$jscomp$inline_1087$$.call(this, $var_args$jscomp$inline_1090$$);
-  }
-  function $G__10416__delegate$jscomp$inline_1087$$($G__10416$jscomp$inline_1088$$) {
-    return console.error.apply(console, $cljs$core$into_array$cljs$0core$0IFn$0_invoke$0arity$02$$($G__10416$jscomp$inline_1088$$));
-  }
-  $G__10416$jscomp$inline_1088$$.$cljs$lang$maxFixedArity$ = 0;
-  $G__10416$jscomp$inline_1088$$.$cljs$lang$applyTo$ = function($G__10416$jscomp$inline_1088$$) {
-    $G__10416$jscomp$inline_1088$$ = $cljs$core$seq$$($G__10416$jscomp$inline_1088$$);
-    return $G__10416__delegate$jscomp$inline_1087$$($G__10416$jscomp$inline_1088$$);
-  };
-  $G__10416$jscomp$inline_1088$$.$cljs$core$IFn$_invoke$arity$variadic$ = $G__10416__delegate$jscomp$inline_1087$$;
-  return $G__10416$jscomp$inline_1088$$;
-}();
+$cljs$core$enable_console_print_BANG_$$();
+function $resume$resume$resume_page$$() {
+  return new $cljs$core$PersistentVector$$(null, 14, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$0resume$$, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0style$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0type$$, "text/css", $cljs$core$cst$0kw$0media$$, "print"], null), "@page {\n      size: auto;\n      margin: 0;\n    }"], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
+  [$cljs$core$cst$0kw$0style$$, "\n\n    .resume {\n      margin: 0 2%;\n    }\n\n    .resume h1,\n    .resume h2,\n    .resume h3,\n    .resume h4,\n    .resume h5,\n    .resume h6 {\n      margin-top: 0.25%;\n      margin-bottom: 0.5%;\n    }\n\n    .job_description_list {\n      border-left: 5px solid #2EAFAC;\n      padding-left: 30px\n    }\n\n    .underline {\n      text-decoration: underline;\n    }\n\n    /*\n    .print-only {\n        display: none;\n    }\n\n    @media print {\n        .no-print {\n            display: none;\n        }\n\n        .print-only{\n            display: block;\n        }\n}\n    */\n    "], 
+  null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h1$$, "Andrés Cuervo"], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$0contact_DASH_info$$, "acwervo@gmail.com | cwervo.com"], null), new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0hr$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
+  [$cljs$core$cst$0kw$0h2$$, "Education"], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, "Bachelor of Arts | Creative Writing, Computer Science (Oberlin College '17)"], null), new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0hr$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h2$$, "Experience"], 
+  null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, $cljs$core$map$$.$cljs$core$IFn$_invoke$arity$2$(function($p__17339$$) {
+    var $map__17340__$1$$ = null != $p__17339$$ && ($p__17339$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $p__17339$$.$cljs$core$ISeq$$) ? $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $p__17339$$) : $p__17339$$, $job_name$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17340__$1$$, $cljs$core$cst$0kw$0job_name$$), $date$jscomp$2$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17340__$1$$, $cljs$core$cst$0kw$0date$$), 
+    $title$jscomp$12$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17340__$1$$, $cljs$core$cst$0kw$0title$$), $description$jscomp$4$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17340__$1$$, $cljs$core$cst$0kw$0description$$);
+    return new $cljs$core$PersistentVector$$(null, 6, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0key$$, [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($job_name$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($title$jscomp$12$$)].join("")], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h3$$, $job_name$$], null), new $cljs$core$PersistentVector$$(null, 
+    2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h4$$, $title$jscomp$12$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0span$$, [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($cljs$core$cst$0kw$0start$$.$cljs$core$IFn$_invoke$arity$1$($date$jscomp$2$$)), "—", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($cljs$core$cst$0kw$0end$$.$cljs$core$IFn$_invoke$arity$1$($date$jscomp$2$$))].join("")], null), 
+    new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0ul$0job_description_list$$, $cljs$core$truth_$$($description$jscomp$4$$) ? $cljs$core$map$$.$cljs$core$IFn$_invoke$arity$2$(function() {
+      return function($p__17339$$) {
+        return new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0key$$, $p__17339$$], null), $p__17339$$], null);
+      };
+    }($p__17339$$, $map__17340__$1$$, $job_name$$, $date$jscomp$2$$, $title$jscomp$12$$, $description$jscomp$4$$), $description$jscomp$4$$) : null], null)], null);
+  }, new $cljs$core$PersistentVector$$(null, 4, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "Google (Adecco On-site)", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "02/2018", $cljs$core$cst$0kw$0end$$, "Current"], null), $cljs$core$cst$0kw$0title$$, "Prototyper", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
+  ["Converting designs for face-based augmented reality into production-ready prototypes, as well as creating new effects and tools for the creation of AR expereinces."], null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "CircleCI", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "08/2017", $cljs$core$cst$0kw$0end$$, "02/2018"], null), $cljs$core$cst$0kw$0title$$, "Software Engineer", $cljs$core$cst$0kw$0description$$, 
+  new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["As a contractor (01-05, 2017) worked with lead designer to implement new UI \x26 suggest/build UX improvements (web notifications, new site navigation hierarchy)", "Currently working on frontend migration from Clojurescript to React \x26 building new pricing UI"], null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "Brightlite Interactive", $cljs$core$cst$0kw$0date$$, 
+  new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "11/2017", $cljs$core$cst$0kw$0end$$, "01/2018"], null), $cljs$core$cst$0kw$0title$$, "AR UX Consultant", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["Made recommendations about physical layout, lighting conditions, and UX tradeoffs of AR markers", "Provided feedback on structuring \x26 editing the internals of Three \x26 AR.js project for optimal tracking"], 
+  null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "Homies.io", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "09/2017", $cljs$core$cst$0kw$0end$$, "11/2017"], null), $cljs$core$cst$0kw$0title$$, "VR Programmer", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["Built an A-FrameVR prototype of a webVR art gallery", "Loaded 360° videos \x26 metadata from a database \x26 created a multi-platform gallery to browse \x26 view the content"], 
+  null)], null)], null))], null), new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0hr$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h2$$, "Skills"], null), new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0span$0underline$$, 
+  "Languages \x26 frameworks:"], null), " Clojure \x26 ClojureScript (Om, Om.Next, Reagent, Rum), Javascript (ES6, React, Three.js, A-FrameVR, ReactVR), C++ (OpenFrameworks), Rust (nannou), C# (Unity), Python, Ruby, C, Java"], null)], null);
+}
+;$cljs$core$enable_console_print_BANG_$$();
 var $vr_test$core$registered_components$$ = $reagent$ratom$atom$$.$cljs$core$IFn$_invoke$arity$1$($cljs$core$List$EMPTY$$);
 function $vr_test$core$register_component$$($component_name$$, $component_map$$) {
   delete AFRAME.components[$component_name$$];
@@ -13230,37 +13258,37 @@ function $vr_test$core$load_script$$() {
   };
 }
 function $vr_test$core$make_cards$$($var_args$jscomp$381$$) {
-  for (var $args__8821__auto__$jscomp$35$$ = [], $len__8814__auto___17346$$ = arguments.length, $i__8815__auto___17347$$ = 0;;) {
-    if ($i__8815__auto___17347$$ < $len__8814__auto___17346$$) {
-      $args__8821__auto__$jscomp$35$$.push(arguments[$i__8815__auto___17347$$]), $i__8815__auto___17347$$ += 1;
+  for (var $args__8821__auto__$jscomp$35$$ = [], $len__8814__auto___17351$$ = arguments.length, $i__8815__auto___17352$$ = 0;;) {
+    if ($i__8815__auto___17352$$ < $len__8814__auto___17351$$) {
+      $args__8821__auto__$jscomp$35$$.push(arguments[$i__8815__auto___17352$$]), $i__8815__auto___17352$$ += 1;
     } else {
       break;
     }
   }
   return $vr_test$core$make_cards$cljs$0core$0IFn$0_invoke$0arity$0variadic$$(arguments[0], 1 < $args__8821__auto__$jscomp$35$$.length ? new $cljs$core$IndexedSeq$$($args__8821__auto__$jscomp$35$$.slice(1), 0, null) : null);
 }
-function $vr_test$core$make_cards$cljs$0core$0IFn$0_invoke$0arity$0variadic$$($info$jscomp$1$$, $p__17343$$) {
-  var $map__17344__$1$$ = null != $p__17343$$ && ($p__17343$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $p__17343$$.$cljs$core$ISeq$$) ? $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $p__17343$$) : $p__17343$$, $h_size$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$3$($map__17344__$1$$, $cljs$core$cst$0kw$0h_DASH_size$$, $cljs$core$cst$0kw$0h3$$), $color$jscomp$2$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$3$($map__17344__$1$$, 
-  $cljs$core$cst$0kw$0color$$, 240), $projects_QMARK_$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$3$($map__17344__$1$$, $cljs$core$cst$0kw$0projects_QMARK_$$, !1);
-  return new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0ul$0card_DASH_list$$, $cljs$core$map_indexed$cljs$0core$0IFn$0_invoke$0arity$02$$(function($info$jscomp$1$$, $p__17343$$, $map__17344__$1$$, $h_size$$, $color$jscomp$2$$) {
-    return function($info$jscomp$1$$, $p__17343$$) {
-      var $projects_QMARK_$$ = $cljs$core$cst$0kw$0title$$.$cljs$core$IFn$_invoke$arity$1$($p__17343$$);
-      $cljs$core$cst$0kw$0image$$.$cljs$core$IFn$_invoke$arity$1$($p__17343$$);
-      var $map__17344$jscomp$1$$ = $cljs$core$cst$0kw$0types$$.$cljs$core$IFn$_invoke$arity$1$($p__17343$$), $map__17344__$1$jscomp$1$$ = $cljs$core$PersistentVector$EMPTY_NODE$$, $h_size$jscomp$1$$ = new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0key$$, [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($map__17344$jscomp$1$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($projects_QMARK_$$)].join("")], null), $color$jscomp$3$$ = $cljs$core$PersistentVector$EMPTY_NODE$$, $projects_QMARK_$jscomp$1$$ = 
+function $vr_test$core$make_cards$cljs$0core$0IFn$0_invoke$0arity$0variadic$$($info$jscomp$1$$, $p__17348$$) {
+  var $map__17349__$1$$ = null != $p__17348$$ && ($p__17348$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $p__17348$$.$cljs$core$ISeq$$) ? $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $p__17348$$) : $p__17348$$, $h_size$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$3$($map__17349__$1$$, $cljs$core$cst$0kw$0h_DASH_size$$, $cljs$core$cst$0kw$0h3$$), $color$jscomp$2$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$3$($map__17349__$1$$, 
+  $cljs$core$cst$0kw$0color$$, 240), $projects_QMARK_$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$3$($map__17349__$1$$, $cljs$core$cst$0kw$0projects_QMARK_$$, !1);
+  return new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0ul$0card_DASH_list$$, $cljs$core$map_indexed$cljs$0core$0IFn$0_invoke$0arity$02$$(function($info$jscomp$1$$, $p__17348$$, $map__17349__$1$$, $h_size$$, $color$jscomp$2$$) {
+    return function($info$jscomp$1$$, $p__17348$$) {
+      var $projects_QMARK_$$ = $cljs$core$cst$0kw$0title$$.$cljs$core$IFn$_invoke$arity$1$($p__17348$$);
+      $cljs$core$cst$0kw$0image$$.$cljs$core$IFn$_invoke$arity$1$($p__17348$$);
+      var $map__17349$jscomp$1$$ = $cljs$core$cst$0kw$0types$$.$cljs$core$IFn$_invoke$arity$1$($p__17348$$), $map__17349__$1$jscomp$1$$ = $cljs$core$PersistentVector$EMPTY_NODE$$, $h_size$jscomp$1$$ = new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0key$$, [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($map__17349$jscomp$1$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($projects_QMARK_$$)].join("")], null), $color$jscomp$3$$ = $cljs$core$PersistentVector$EMPTY_NODE$$, $projects_QMARK_$jscomp$1$$ = 
       50 - 3 * $info$jscomp$1$$;
       $info$jscomp$1$$ = $projects_QMARK_$jscomp$1$$ - 15;
       $projects_QMARK_$jscomp$1$$ = ["hsl(", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($h_size$$), ", 70%, ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($projects_QMARK_$jscomp$1$$), "%)"].join("");
       $info$jscomp$1$$ = ["hsl(", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($h_size$$ + 3), ", 70%, ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($info$jscomp$1$$), "%)"].join("");
       $info$jscomp$1$$ = {background:["linear-gradient(180deg, ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($projects_QMARK_$jscomp$1$$), ", ", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($info$jscomp$1$$), ")"].join("")};
-      $projects_QMARK_$$ = new $cljs$core$PersistentVector$$(null, 5, 5, $color$jscomp$3$$, [$cljs$core$cst$0kw$0div$0card$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0style$$, $info$jscomp$1$$], null), $cljs$core$truth_$$($map__17344$jscomp$1$$) ? new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h6$0title_DASH_type$$, new $cljs$core$PersistentVector$$(null, 4, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0code$$, 
-      "[", $clojure$string$join$cljs$0core$0IFn$0_invoke$0arity$02$$(", ", $map__17344$jscomp$1$$), "]"], null)], null) : null, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$map__17344__$1$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0class$$, "title"], null), "" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($projects_QMARK_$$)], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$0card_DASH_description$$, 
-      $cljs$core$cst$0kw$0description$$.$cljs$core$IFn$_invoke$arity$1$($p__17343$$)], null)], null);
-      $p__17343$$ = $cljs$core$cst$0kw$0url$$.$cljs$core$IFn$_invoke$arity$1$($p__17343$$);
-      $p__17343$$ = $cljs$core$truth_$$($color$jscomp$2$$) ? $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($projects_QMARK_$$, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0a$0project_DASH_link$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0target$$, "_blank", $cljs$core$cst$0kw$0href$$, $p__17343$$], null), "\ud83d\udd87 Link to project ↝"], null)) : new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
-      [$cljs$core$cst$0kw$0a$0card_DASH_link$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0href$$, $p__17343$$], null), $projects_QMARK_$$], null);
-      return new $cljs$core$PersistentVector$$(null, 3, 5, $map__17344__$1$jscomp$1$$, [$cljs$core$cst$0kw$0li$$, $h_size$jscomp$1$$, $p__17343$$], null);
+      $projects_QMARK_$$ = new $cljs$core$PersistentVector$$(null, 5, 5, $color$jscomp$3$$, [$cljs$core$cst$0kw$0div$0card$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0style$$, $info$jscomp$1$$], null), $cljs$core$truth_$$($map__17349$jscomp$1$$) ? new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h6$0title_DASH_type$$, new $cljs$core$PersistentVector$$(null, 4, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0code$$, 
+      "[", $clojure$string$join$cljs$0core$0IFn$0_invoke$0arity$02$$(", ", $map__17349$jscomp$1$$), "]"], null)], null) : null, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$map__17349__$1$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0class$$, "title"], null), "" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($projects_QMARK_$$)], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$0card_DASH_description$$, 
+      $cljs$core$cst$0kw$0description$$.$cljs$core$IFn$_invoke$arity$1$($p__17348$$)], null)], null);
+      $p__17348$$ = $cljs$core$cst$0kw$0url$$.$cljs$core$IFn$_invoke$arity$1$($p__17348$$);
+      $p__17348$$ = $cljs$core$truth_$$($color$jscomp$2$$) ? $cljs$core$conj$$.$cljs$core$IFn$_invoke$arity$2$($projects_QMARK_$$, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0a$0project_DASH_link$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0target$$, "_blank", $cljs$core$cst$0kw$0href$$, $p__17348$$], null), "\ud83d\udd87 Link to project ↝"], null)) : new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
+      [$cljs$core$cst$0kw$0a$0card_DASH_link$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0href$$, $p__17348$$], null), $projects_QMARK_$$], null);
+      return new $cljs$core$PersistentVector$$(null, 3, 5, $map__17349__$1$jscomp$1$$, [$cljs$core$cst$0kw$0li$$, $h_size$jscomp$1$$, $p__17348$$], null);
     };
-  }($p__17343$$, $map__17344__$1$$, $h_size$$, $color$jscomp$2$$, $projects_QMARK_$$), $info$jscomp$1$$)], null);
+  }($p__17348$$, $map__17349__$1$$, $h_size$$, $color$jscomp$2$$, $projects_QMARK_$$), $info$jscomp$1$$)], null);
 }
 var $vr_test$core$page_toggle_button$$ = new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0button$0eye_DASH_button$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0title$$, "Show VR mode and make page content transparent", $cljs$core$cst$0kw$0onClick$$, function() {
   var $style$jscomp$1$$ = document.querySelector(".floating-page").style, $JSCompiler_inline_result$jscomp$160_v$jscomp$124$$ = $style$jscomp$1$$.visibility;
@@ -13281,77 +13309,54 @@ function $vr_test$core$home_page$$() {
   null), $vr_test$core$make_cards$$(new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [new $cljs$core$PersistentArrayMap$$(null, 3, [$cljs$core$cst$0kw$0title$$, "Projects \ud83d\udcbb\ud83d\uddc2✨", $cljs$core$cst$0kw$0url$$, "/projects", $cljs$core$cst$0kw$0description$$, "A collection of links to my some projects - a resumé/portfolio thing."], null), new $cljs$core$PersistentArrayMap$$(null, 3, [$cljs$core$cst$0kw$0title$$, "Talks \ud83d\udde3\ud83d\udd0a", 
   $cljs$core$cst$0kw$0url$$, "https://slides.cwervo.com", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0span$$, "Slides/videos of talks I've given."], null)], null), new $cljs$core$PersistentArrayMap$$(null, 3, [$cljs$core$cst$0kw$0title$$, "Contact ☎️\ud83d\udce3\ud83d\udcec", $cljs$core$cst$0kw$0url$$, "/contact", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
   [$cljs$core$cst$0kw$0span$$, "Say hi on the interwebs!"], null)], null)], null))], null), function() {
-    var $G__17354$$ = function() {
+    var $G__17359$$ = function() {
       return function() {
         return $cljs$core$List$EMPTY$$;
       };
-    }("//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"), $fexpr__17352$$ = $vr_test$core$load_script$$();
-    return $fexpr__17352$$.$cljs$core$IFn$_invoke$arity$2$ ? $fexpr__17352$$.$cljs$core$IFn$_invoke$arity$2$("//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js", $G__17354$$) : $fexpr__17352$$.call(null, "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js", $G__17354$$);
+    }("//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js"), $fexpr__17357$$ = $vr_test$core$load_script$$();
+    return $fexpr__17357$$.$cljs$core$IFn$_invoke$arity$2$ ? $fexpr__17357$$.$cljs$core$IFn$_invoke$arity$2$("//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js", $G__17359$$) : $fexpr__17357$$.call(null, "//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.0.0/dist/aframe-physics-system.min.js", $G__17359$$);
   }(), $vr_test$core$register_thing$$(), $vr_test$core$mouse_camera_rotation$$(), $vr_test$core$register_home_page_shader$$(), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0a_DASH_scene$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0a_DASH_entity$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0dangerouslySetInnerHTML$$, new $cljs$core$PersistentArrayMap$$(null, 
   1, [$cljs$core$cst$0kw$0__html$$, '\x3ca-entity mouse-camera-rotation\x3d"" /\x3e\x3ca-icosahedron custom-home-page-shader\x3d"color: #2EAFAC;" my-component\x3d"" position\x3d"0 1.6 0" scale\x3d"1 1 1"\x3e\x3c/a-icosahedron\x3e\x3ca-sky color\x3d"blue"\x3e\x3c/a-sky\x3e'], null)], null)], null)], null)], null);
 }
 function $vr_test$core$about_page$$() {
   return new $cljs$core$PersistentVector$$(null, 7, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0span_SHARP_topnote$$, "Go to ", new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0a$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0href$$, "/"], null), "the home page!"], null)], null), 
   function() {
-    var $G__17363$$ = function() {
+    var $G__17368$$ = function() {
       return function() {
         return $cljs$core$List$EMPTY$$;
       };
-    }("https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"), $fexpr__17361$$ = $vr_test$core$load_script$$();
-    return $fexpr__17361$$.$cljs$core$IFn$_invoke$arity$2$ ? $fexpr__17361$$.$cljs$core$IFn$_invoke$arity$2$("https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js", $G__17363$$) : $fexpr__17361$$.call(null, "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js", $G__17363$$);
+    }("https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"), $fexpr__17366$$ = $vr_test$core$load_script$$();
+    return $fexpr__17366$$.$cljs$core$IFn$_invoke$arity$2$ ? $fexpr__17366$$.$cljs$core$IFn$_invoke$arity$2$("https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js", $G__17368$$) : $fexpr__17366$$.call(null, "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js", $G__17368$$);
   }(), $vr_test$core$register_inc_on_click$$(), $vr_test$core$register_thing$$(), $vr_test$core$register_color_on_click$$(), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0a_DASH_scene$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0dangerouslySetInnerHTML$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0__html$$, '\x3ca-entity particle-system\x3d"preset: snow; color: #EF0000,#44CC00" position\x3d"0 2.25 -15"\x3e\x3c/a-entity\x3e\x3ca-box change-color-on-click\x3d"" color\x3d"black" increase-position-on-click\x3d"axis: y;" my-component\x3d"" position\x3d"1 0 -4" scale\x3d"0.5 2 0"\x3e\x3c/a-box\x3e\x3ca-camera\x3e\x3ca-cursor /\x3e\x3c/a-camera\x3e\x3ca-sky color\x3d"#2EAFAC"\x3e\x3c/a-sky\x3e'], 
   null)], null)], null)], null);
 }
-function $vr_test$core$resume_page$$() {
-  return new $cljs$core$PersistentVector$$(null, 14, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$0resume$$, new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0style$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0type$$, "text/css", $cljs$core$cst$0kw$0media$$, "print"], null), "@page {\n      size: auto;\n      margin: 0;\n    }"], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
-  [$cljs$core$cst$0kw$0style$$, "\n\n    .resume {\n      margin: 0 2%;\n    }\n\n    .resume h1,\n    .resume h2,\n    .resume h3,\n    .resume h4,\n    .resume h5,\n    .resume h6 {\n      margin-top: 0.25%;\n      margin-bottom: 0.5%;\n    }\n\n    .job_description_list {\n      border-left: 5px solid #2EAFAC;\n      padding-left: 30px\n    }\n\n    .underline {\n      text-decoration: underline;\n    }\n\n    /*\n    .print-only {\n        display: none;\n    }\n\n    @media print {\n        .no-print {\n            display: none;\n        }\n\n        .print-only{\n            display: block;\n        }\n}\n    */\n    "], 
-  null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h1$$, "Andrés Cuervo"], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$0contact_DASH_info$$, "acwervo@gmail.com | cwervo.com"], null), new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0hr$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
-  [$cljs$core$cst$0kw$0h2$$, "Education"], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, "Bachelor of Arts | Creative Writing, Computer Science (Oberlin College '17)"], null), new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0hr$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h2$$, "Experience"], 
-  null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, $cljs$core$map$$.$cljs$core$IFn$_invoke$arity$2$(function($p__17372$$) {
-    var $map__17373__$1$$ = null != $p__17372$$ && ($p__17372$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $p__17372$$.$cljs$core$ISeq$$) ? $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $p__17372$$) : $p__17372$$, $job_name$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17373__$1$$, $cljs$core$cst$0kw$0job_name$$), $date$jscomp$2$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17373__$1$$, $cljs$core$cst$0kw$0date$$), 
-    $title$jscomp$13$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17373__$1$$, $cljs$core$cst$0kw$0title$$), $description$jscomp$4$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17373__$1$$, $cljs$core$cst$0kw$0description$$);
-    return new $cljs$core$PersistentVector$$(null, 4, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h3$$, $job_name$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0span$$, [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($cljs$core$cst$0kw$0start$$.$cljs$core$IFn$_invoke$arity$1$($date$jscomp$2$$)), 
-    "—", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($cljs$core$cst$0kw$0end$$.$cljs$core$IFn$_invoke$arity$1$($date$jscomp$2$$))].join("")], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0ul$0job_description_list$$, $cljs$core$truth_$$($description$jscomp$4$$) ? $cljs$core$map$$.$cljs$core$IFn$_invoke$arity$2$(function() {
-      return function($p__17372$$) {
-        return new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$$, new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0key$$, $p__17372$$], null), $p__17372$$], null);
-      };
-    }($p__17372$$, $map__17373__$1$$, $job_name$$, $date$jscomp$2$$, $title$jscomp$13$$, $description$jscomp$4$$), $description$jscomp$4$$) : new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$$, "nope"], null)], null)], null);
-  }, new $cljs$core$PersistentVector$$(null, 5, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "CircleCI", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "08/2017", $cljs$core$cst$0kw$0end$$, "Current"], null), $cljs$core$cst$0kw$0title$$, "Software Engineer", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
-  ["As a contractor (01-05, 2017) worked with lead designer to implement new UI \x26 suggest/build UX improvements (web notifications, new site navigation hierarchy)", "Currently working on frontend migration from Clojurescript to React \x26 building new pricing UI"], null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "Brightlite Interactive", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "11/2017", 
-  $cljs$core$cst$0kw$0end$$, "01/2018"], null), $cljs$core$cst$0kw$0title$$, "AR UX Consultant", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["Made recommendations about physical layout, lighting conditions, and UX tradeoffs of AR markers", "Provided feedback on structuring \x26 editing the internals of Three \x26 AR.js project for optimal tracking"], null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, 
-  "Homies.io", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "09/2017", $cljs$core$cst$0kw$0end$$, "11/2017"], null), $cljs$core$cst$0kw$0title$$, "VR Programmer", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["Built an A-FrameVR prototype of a webVR art gallery", "Loaded 360° videos \x26 metadata from a database \x26 created a multi-platform gallery to browse \x26 view the content"], 
-  null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "Code Now", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "06/2015", $cljs$core$cst$0kw$0end$$, "08/2015"], null), $cljs$core$cst$0kw$0title$$, "Web Designer \x26 Developer", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["Overhauled the design, generation, and deployment of the curriculum website", 
-  "Taught Swift \x26 Ruby to high school students over the course of the summer, helped train new volunteer tutors"], null)], null), new $cljs$core$PersistentArrayMap$$(null, 4, [$cljs$core$cst$0kw$0job_name$$, "Oberlin Environmental Dashboard", $cljs$core$cst$0kw$0date$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0start$$, "08/2014", $cljs$core$cst$0kw$0end$$, "06/2016"], null), $cljs$core$cst$0kw$0title$$, "Designer \x26 Developer", $cljs$core$cst$0kw$0description$$, new $cljs$core$PersistentVector$$(null, 
-  1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, ["Help design and maintain environmentaldashboard.org using Wordpress and CSS"], null)], null)], null))], null), new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0hr$$], null), new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0h2$$, "Skills"], null), new $cljs$core$PersistentVector$$(null, 3, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, 
-  [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0span$0underline$$, "Languages \x26 frameworks:"], null), " Clojure \x26 ClojureScript (Om, Om.Next, Reagent, Rum), Javascript (ES6, React, Three.js, A-FrameVR, ReactVR), C++ (OpenFrameworks), Rust (nannou), C# (Unity), Python, Ruby, C, Java"], null)], null);
-}
 function $vr_test$core$hsl_test_page$$() {
   return new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0ul$$, function() {
-    return function $vr_test$core$hsl_test_page_$_iter__17375$$($s__17376$$) {
+    return function $vr_test$core$hsl_test_page_$_iter__17377$$($s__17378$$) {
       return new $cljs$core$LazySeq$$(null, function() {
         for (;;) {
-          var $s__17376__$2_temp__4657__auto__$jscomp$43$$ = $cljs$core$seq$$($s__17376$$);
-          if ($s__17376__$2_temp__4657__auto__$jscomp$43$$) {
-            if ($cljs$core$chunked_seq_QMARK_$$($s__17376__$2_temp__4657__auto__$jscomp$43$$)) {
-              var $JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$ = $cljs$core$_chunked_first$$($s__17376__$2_temp__4657__auto__$jscomp$43$$), $size__8452__auto__$jscomp$1$$ = $cljs$core$count$$($JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$), $b__17378_n$jscomp$217$$ = new $cljs$core$ChunkBuffer$$(Array($size__8452__auto__$jscomp$1$$), 0);
+          var $s__17378__$2_temp__4657__auto__$jscomp$43$$ = $cljs$core$seq$$($s__17378$$);
+          if ($s__17378__$2_temp__4657__auto__$jscomp$43$$) {
+            if ($cljs$core$chunked_seq_QMARK_$$($s__17378__$2_temp__4657__auto__$jscomp$43$$)) {
+              var $JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$ = $cljs$core$_chunked_first$$($s__17378__$2_temp__4657__auto__$jscomp$43$$), $size__8452__auto__$jscomp$1$$ = $cljs$core$count$$($JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$), $b__17380_n$jscomp$217$$ = new $cljs$core$ChunkBuffer$$(Array($size__8452__auto__$jscomp$1$$), 0);
               a: {
-                for (var $i__17377$jscomp$inline_1103$$ = 0;;) {
-                  if ($i__17377$jscomp$inline_1103$$ < $size__8452__auto__$jscomp$1$$) {
-                    var $n$jscomp$inline_1104_x$jscomp$inline_1367$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$($JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$, $i__17377$jscomp$inline_1103$$);
-                    $n$jscomp$inline_1104_x$jscomp$inline_1367$$ = new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$0test_DASH_hsl_DASH_box$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0key$$, $n$jscomp$inline_1104_x$jscomp$inline_1367$$, $cljs$core$cst$0kw$0style$$, {backgroundColor:["hsl(", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($n$jscomp$inline_1104_x$jscomp$inline_1367$$), ", 80%, 80%)"].join("")}], 
+                for (var $i__17379$jscomp$inline_1084$$ = 0;;) {
+                  if ($i__17379$jscomp$inline_1084$$ < $size__8452__auto__$jscomp$1$$) {
+                    var $n$jscomp$inline_1085_x$jscomp$inline_1348$$ = $cljs$core$_nth$$.$cljs$core$IFn$_invoke$arity$2$($JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$, $i__17379$jscomp$inline_1084$$);
+                    $n$jscomp$inline_1085_x$jscomp$inline_1348$$ = new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$0test_DASH_hsl_DASH_box$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0key$$, $n$jscomp$inline_1085_x$jscomp$inline_1348$$, $cljs$core$cst$0kw$0style$$, {backgroundColor:["hsl(", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($n$jscomp$inline_1085_x$jscomp$inline_1348$$), ", 80%, 80%)"].join("")}], 
                     null)], null);
-                    $b__17378_n$jscomp$217$$.add($n$jscomp$inline_1104_x$jscomp$inline_1367$$);
-                    $i__17377$jscomp$inline_1103$$ += 1;
+                    $b__17380_n$jscomp$217$$.add($n$jscomp$inline_1085_x$jscomp$inline_1348$$);
+                    $i__17379$jscomp$inline_1084$$ += 1;
                   } else {
                     $JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$ = !0;
                     break a;
                   }
                 }
               }
-              return $JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$ ? $cljs$core$chunk_cons$$($b__17378_n$jscomp$217$$.$chunk$(), $vr_test$core$hsl_test_page_$_iter__17375$$($cljs$core$_chunked_rest$$($s__17376__$2_temp__4657__auto__$jscomp$43$$))) : $cljs$core$chunk_cons$$($b__17378_n$jscomp$217$$.$chunk$(), null);
+              return $JSCompiler_inline_result$jscomp$161_c__8451__auto__$jscomp$1$$ ? $cljs$core$chunk_cons$$($b__17380_n$jscomp$217$$.$chunk$(), $vr_test$core$hsl_test_page_$_iter__17377$$($cljs$core$_chunked_rest$$($s__17378__$2_temp__4657__auto__$jscomp$43$$))) : $cljs$core$chunk_cons$$($b__17380_n$jscomp$217$$.$chunk$(), null);
             }
-            $b__17378_n$jscomp$217$$ = $cljs$core$first$$($s__17376__$2_temp__4657__auto__$jscomp$43$$);
-            return $cljs$core$cons$$(new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$0test_DASH_hsl_DASH_box$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0key$$, $b__17378_n$jscomp$217$$, $cljs$core$cst$0kw$0style$$, {backgroundColor:["hsl(", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($b__17378_n$jscomp$217$$), ", 80%, 80%)"].join("")}], null)], null), $vr_test$core$hsl_test_page_$_iter__17375$$($cljs$core$rest$$($s__17376__$2_temp__4657__auto__$jscomp$43$$)));
+            $b__17380_n$jscomp$217$$ = $cljs$core$first$$($s__17378__$2_temp__4657__auto__$jscomp$43$$);
+            return $cljs$core$cons$$(new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0li$0test_DASH_hsl_DASH_box$$, new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0key$$, $b__17380_n$jscomp$217$$, $cljs$core$cst$0kw$0style$$, {backgroundColor:["hsl(", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($b__17380_n$jscomp$217$$), ", 80%, 80%)"].join("")}], null)], null), $vr_test$core$hsl_test_page_$_iter__17377$$($cljs$core$rest$$($s__17378__$2_temp__4657__auto__$jscomp$43$$)));
           }
           return null;
         }
@@ -13392,120 +13397,120 @@ function $vr_test$core$contact_page$$() {
 }
 var $vr_test$core$page$$ = $reagent$ratom$atom$$.$cljs$core$IFn$_invoke$arity$1$(new $cljs$core$Var$$(function() {
   return $vr_test$core$home_page$$;
-}, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0home_DASH_page$$, "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 
-16, 1, 634, 634, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$home_page$$) ? $vr_test$core$home_page$$.$cljs$lang$test$ : null])));
+}, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0home_DASH_page$$, "src/cljs/vr_test/core.cljs", 
+16, 1, 637, 637, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$home_page$$) ? $vr_test$core$home_page$$.$cljs$lang$test$ : null])));
 function $vr_test$core$current_page$$() {
   return new $cljs$core$PersistentVector$$(null, 2, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$cst$0kw$0div$$, new $cljs$core$PersistentVector$$(null, 1, 5, $cljs$core$PersistentVector$EMPTY_NODE$$, [$cljs$core$_deref$$($vr_test$core$page$$)], null)], null);
 }
 $secretary$core$add_route_BANG_$$("/", function($params__17005__auto__$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$$) ? (null != $params__17005__auto__$$ && ($params__17005__auto__$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$home_page$$;
-  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0home_DASH_page$$, "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 
-  16, 1, 634, 634, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$home_page$$) ? $vr_test$core$home_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0home_DASH_page$$, "src/cljs/vr_test/core.cljs", 
+  16, 1, 637, 637, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$home_page$$) ? $vr_test$core$home_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$home_page$$;
-  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0home_DASH_page$$, "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 
-  16, 1, 634, 634, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$home_page$$) ? $vr_test$core$home_page$$.$cljs$lang$test$ : null]))) : null;
+  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_home_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0home_DASH_page$$, "src/cljs/vr_test/core.cljs", 
+  16, 1, 637, 637, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$home_page$$) ? $vr_test$core$home_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $secretary$core$add_route_BANG_$$("/projects/vr", function($params__17005__auto__$jscomp$1$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$jscomp$1$$) ? (null != $params__17005__auto__$jscomp$1$$ && ($params__17005__auto__$jscomp$1$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$jscomp$1$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$jscomp$1$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$vr_page$$;
-  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_vr_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0vr_DASH_page$$, "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 
-  14, 1, 953, 953, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$vr_page$$) ? $vr_test$core$vr_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$1$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_vr_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0vr_DASH_page$$, "src/cljs/vr_test/core.cljs", 
+  14, 1, 858, 858, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$vr_page$$) ? $vr_test$core$vr_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$1$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$vr_page$$;
-  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_vr_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0vr_DASH_page$$, "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 
-  14, 1, 953, 953, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$vr_page$$) ? $vr_test$core$vr_page$$.$cljs$lang$test$ : null]))) : null;
+  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_vr_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0vr_DASH_page$$, "src/cljs/vr_test/core.cljs", 
+  14, 1, 858, 858, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$vr_page$$) ? $vr_test$core$vr_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $secretary$core$add_route_BANG_$$("/projects", function($params__17005__auto__$jscomp$2$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$jscomp$2$$) ? (null != $params__17005__auto__$jscomp$2$$ && ($params__17005__auto__$jscomp$2$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$jscomp$2$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$jscomp$2$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$projects_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_projects_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0projects_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 20, 1, 835, 835, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$projects_page$$) ? $vr_test$core$projects_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$2$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+  "src/cljs/vr_test/core.cljs", 20, 1, 740, 740, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$projects_page$$) ? $vr_test$core$projects_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$2$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$projects_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_projects_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0projects_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 20, 1, 835, 835, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$projects_page$$) ? $vr_test$core$projects_page$$.$cljs$lang$test$ : null]))) : null;
+  "src/cljs/vr_test/core.cljs", 20, 1, 740, 740, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$projects_page$$) ? $vr_test$core$projects_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $secretary$core$add_route_BANG_$$("/contact", function($params__17005__auto__$jscomp$3$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$jscomp$3$$) ? (null != $params__17005__auto__$jscomp$3$$ && ($params__17005__auto__$jscomp$3$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$jscomp$3$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$jscomp$3$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$contact_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_contact_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0contact_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 19, 1, 960, 960, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$contact_page$$) ? $vr_test$core$contact_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$3$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+  "src/cljs/vr_test/core.cljs", 19, 1, 865, 865, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$contact_page$$) ? $vr_test$core$contact_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$3$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$contact_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_contact_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0contact_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 19, 1, 960, 960, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$contact_page$$) ? $vr_test$core$contact_page$$.$cljs$lang$test$ : null]))) : null;
+  "src/cljs/vr_test/core.cljs", 19, 1, 865, 865, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$contact_page$$) ? $vr_test$core$contact_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $secretary$core$add_route_BANG_$$("/about", function($params__17005__auto__$jscomp$4$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$jscomp$4$$) ? (null != $params__17005__auto__$jscomp$4$$ && ($params__17005__auto__$jscomp$4$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$jscomp$4$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$jscomp$4$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$about_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_about_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0about_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 17, 1, 702, 702, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$about_page$$) ? $vr_test$core$about_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$4$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+  "src/cljs/vr_test/core.cljs", 17, 1, 705, 705, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$about_page$$) ? $vr_test$core$about_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$4$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$about_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_about_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0about_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 17, 1, 702, 702, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$about_page$$) ? $vr_test$core$about_page$$.$cljs$lang$test$ : null]))) : null;
+  "src/cljs/vr_test/core.cljs", 17, 1, 705, 705, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$about_page$$) ? $vr_test$core$about_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $secretary$core$add_route_BANG_$$("/hsl-test-page", function($params__17005__auto__$jscomp$5$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$jscomp$5$$) ? (null != $params__17005__auto__$jscomp$5$$ && ($params__17005__auto__$jscomp$5$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$jscomp$5$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$jscomp$5$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$hsl_test_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_hsl_DASH_test_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0hsl_DASH_test_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 20, 1, 824, 824, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$hsl_test_page$$) ? $vr_test$core$hsl_test_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$5$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+  "src/cljs/vr_test/core.cljs", 20, 1, 729, 729, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$hsl_test_page$$) ? $vr_test$core$hsl_test_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$5$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
     return $vr_test$core$hsl_test_page$$;
   }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_hsl_DASH_test_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0hsl_DASH_test_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 20, 1, 824, 824, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$hsl_test_page$$) ? $vr_test$core$hsl_test_page$$.$cljs$lang$test$ : null]))) : null;
+  "src/cljs/vr_test/core.cljs", 20, 1, 729, 729, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$hsl_test_page$$) ? $vr_test$core$hsl_test_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $secretary$core$add_route_BANG_$$("/resume", function($params__17005__auto__$jscomp$6$$) {
   return $cljs$core$map_QMARK_$$($params__17005__auto__$jscomp$6$$) ? (null != $params__17005__auto__$jscomp$6$$ && ($params__17005__auto__$jscomp$6$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $params__17005__auto__$jscomp$6$$.$cljs$core$ISeq$$) && $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $params__17005__auto__$jscomp$6$$), $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
-    return $vr_test$core$resume_page$$;
-  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_resume_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0resume_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 18, 1, 726, 726, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$resume_page$$) ? $vr_test$core$resume_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$6$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
-    return $vr_test$core$resume_page$$;
-  }, $cljs$core$cst$0sym$0vr_DASH_test$0core_SLASH_resume_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0vr_DASH_test$0core$$, $cljs$core$cst$0sym$0resume_DASH_page$$, 
-  "/Users/andrescuervo/code/art/vr_clojure/reagent_aframe_app/src/cljs/vr_test/core.cljs", 18, 1, 726, 726, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($vr_test$core$resume_page$$) ? $vr_test$core$resume_page$$.$cljs$lang$test$ : null]))) : null;
+    return $resume$resume$resume_page$$;
+  }, $cljs$core$cst$0sym$0resume$0resume_SLASH_resume_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0resume$0resume$$, $cljs$core$cst$0sym$0resume_DASH_page$$, "src/cljs/resume/resume.cljs", 
+  18, 1, 12, 12, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($resume$resume$resume_page$$) ? $resume$resume$resume_page$$.$cljs$lang$test$ : null])))) : $cljs$core$vector_QMARK_$$($params__17005__auto__$jscomp$6$$) ? $cljs$core$reset_BANG_$$($vr_test$core$page$$, new $cljs$core$Var$$(function() {
+    return $resume$resume$resume_page$$;
+  }, $cljs$core$cst$0sym$0resume$0resume_SLASH_resume_DASH_page$$, $cljs$core$PersistentHashMap$fromArrays$$([$cljs$core$cst$0kw$0ns$$, $cljs$core$cst$0kw$0name$$, $cljs$core$cst$0kw$0file$$, $cljs$core$cst$0kw$0end_DASH_column$$, $cljs$core$cst$0kw$0column$$, $cljs$core$cst$0kw$0line$$, $cljs$core$cst$0kw$0end_DASH_line$$, $cljs$core$cst$0kw$0arglists$$, $cljs$core$cst$0kw$0doc$$, $cljs$core$cst$0kw$0test$$], [$cljs$core$cst$0sym$0resume$0resume$$, $cljs$core$cst$0sym$0resume_DASH_page$$, "src/cljs/resume/resume.cljs", 
+  18, 1, 12, 12, $cljs$core$list$$($cljs$core$PersistentVector$EMPTY$$), null, $cljs$core$truth_$$($resume$resume$resume_page$$) ? $resume$resume$resume_page$$.$cljs$lang$test$ : null]))) : null;
 });
 $cljs$core$_STAR_print_fn_STAR_$$ = function() {
-  function $G__17456$$($G__17456$$) {
+  function $G__17458$$($G__17458$$) {
     if (0 < arguments.length) {
-      for (var $var_args$jscomp$382$$ = 0, $G__17457__a$$ = Array(arguments.length - 0); $var_args$jscomp$382$$ < $G__17457__a$$.length;) {
-        $G__17457__a$$[$var_args$jscomp$382$$] = arguments[$var_args$jscomp$382$$ + 0], ++$var_args$jscomp$382$$;
+      for (var $var_args$jscomp$382$$ = 0, $G__17459__a$$ = Array(arguments.length - 0); $var_args$jscomp$382$$ < $G__17459__a$$.length;) {
+        $G__17459__a$$[$var_args$jscomp$382$$] = arguments[$var_args$jscomp$382$$ + 0], ++$var_args$jscomp$382$$;
       }
     }
     return null;
   }
-  $G__17456$$.$cljs$lang$maxFixedArity$ = 0;
-  $G__17456$$.$cljs$lang$applyTo$ = function($G__17456$$) {
-    $cljs$core$seq$$($G__17456$$);
+  $G__17458$$.$cljs$lang$maxFixedArity$ = 0;
+  $G__17458$$.$cljs$lang$applyTo$ = function($G__17458$$) {
+    $cljs$core$seq$$($G__17458$$);
     return null;
   };
-  $G__17456$$.$cljs$core$IFn$_invoke$arity$variadic$ = function() {
+  $G__17458$$.$cljs$core$IFn$_invoke$arity$variadic$ = function() {
     return null;
   };
-  return $G__17456$$;
+  return $G__17458$$;
 }();
-var $p__16984$jscomp$inline_1314$$ = new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0nav_DASH_handler$$, function($params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$) {
-  var $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ = $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$02$$($clojure$string$replace$$($params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$, $cljs$core$re_pattern$$(["^", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$("" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($secretary$core$get_config$$()))].join("")), 
+var $p__16984$jscomp$inline_1295$$ = new $cljs$core$PersistentArrayMap$$(null, 2, [$cljs$core$cst$0kw$0nav_DASH_handler$$, function($params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$) {
+  var $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ = $clojure$string$split$cljs$0core$0IFn$0_invoke$0arity$02$$($clojure$string$replace$$($params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$, $cljs$core$re_pattern$$(["^", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$("" + $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($secretary$core$get_config$$()))].join("")), 
   ""), /\?/);
-  $params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$, 0);
-  $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$, 1);
-  var $map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$ = $cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$("/", $cljs$core$first$$($params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$)) ? $params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$ : ["/", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$)].join("");
-  $params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$ = $cljs$core$truth_$$($action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$) ? new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0query_DASH_params$$, $secretary$core$decode_query_params$$($action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$)], 
+  $params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$, 0);
+  $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ = $cljs$core$nth$cljs$0core$0IFn$0_invoke$0arity$03$$($action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$, 1);
+  var $map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$ = $cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$("/", $cljs$core$first$$($params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$)) ? $params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$ : ["/", $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$)].join("");
+  $params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$ = $cljs$core$truth_$$($action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$) ? new $cljs$core$PersistentArrayMap$$(null, 1, [$cljs$core$cst$0kw$0query_DASH_params$$, $secretary$core$decode_query_params$$($action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$)], 
   null) : null;
-  $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ = $secretary$core$locate_route$$($map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$);
-  $map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$ = null != $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ && ($action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$.$cljs$core$ISeq$$) ? 
-  $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$) : $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$;
-  $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$, $cljs$core$cst$0kw$0action$$);
-  $map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$, $cljs$core$cst$0kw$0params$$);
-  $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ = $cljs$core$truth_$$($action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$) ? $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$ : $cljs$core$identity$$;
-  $params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$ = $cljs$core$merge$$.$cljs$core$IFn$_invoke$arity$variadic$($cljs$core$prim_seq$cljs$0core$0IFn$0_invoke$0arity$02$$([$map__17096__$1$jscomp$inline_1308_params$jscomp$inline_1310_uri_path__$1$jscomp$inline_1305$$, $params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$]));
-  return $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$.$cljs$core$IFn$_invoke$arity$1$ ? $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$.$cljs$core$IFn$_invoke$arity$1$($params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$) : $action$jscomp$inline_1309_action__$1$jscomp$inline_1311_map__17096$jscomp$inline_1307_query_string$jscomp$inline_1304_vec__17093$jscomp$inline_1302$$.call(null, 
-  $params__$1$jscomp$inline_1312_path$jscomp$inline_1106_query_params$jscomp$inline_1306_uri_path$jscomp$inline_1303$$);
-}, $cljs$core$cst$0kw$0path_DASH_exists_QMARK_$$, function($path$jscomp$inline_1107$$) {
-  return $secretary$core$locate_route$$($path$jscomp$inline_1107$$);
-}], null), $map__16985__$1$jscomp$inline_1315$$ = null != $p__16984$jscomp$inline_1314$$ && ($p__16984$jscomp$inline_1314$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $p__16984$jscomp$inline_1314$$.$cljs$core$ISeq$$) ? $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $p__16984$jscomp$inline_1314$$) : $p__16984$jscomp$inline_1314$$, $nav_handler$jscomp$inline_1316$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__16985__$1$jscomp$inline_1315$$, 
-$cljs$core$cst$0kw$0nav_DASH_handler$$), $path_exists_QMARK_$jscomp$inline_1317$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__16985__$1$jscomp$inline_1315$$, $cljs$core$cst$0kw$0path_DASH_exists_QMARK_$$), $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1318$$ = $accountant$core$history$$;
-0 != $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1318$$.$useFragment_$ && ($goog$events$unlisten$$($JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1318$$.$window_$, "hashchange", $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1318$$.$onHistoryEvent_$, !1, $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1318$$), $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1318$$.$useFragment_$ = !1);
+  $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ = $secretary$core$locate_route$$($map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$);
+  $map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$ = null != $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ && ($action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$.$cljs$core$ISeq$$) ? 
+  $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$) : $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$;
+  $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$, $cljs$core$cst$0kw$0action$$);
+  $map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$, $cljs$core$cst$0kw$0params$$);
+  $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ = $cljs$core$truth_$$($action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$) ? $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$ : $cljs$core$identity$$;
+  $params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$ = $cljs$core$merge$$.$cljs$core$IFn$_invoke$arity$variadic$($cljs$core$prim_seq$cljs$0core$0IFn$0_invoke$0arity$02$$([$map__17096__$1$jscomp$inline_1289_params$jscomp$inline_1291_uri_path__$1$jscomp$inline_1286$$, $params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$]));
+  return $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$.$cljs$core$IFn$_invoke$arity$1$ ? $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$.$cljs$core$IFn$_invoke$arity$1$($params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$) : $action$jscomp$inline_1290_action__$1$jscomp$inline_1292_map__17096$jscomp$inline_1288_query_string$jscomp$inline_1285_vec__17093$jscomp$inline_1283$$.call(null, 
+  $params__$1$jscomp$inline_1293_path$jscomp$inline_1087_query_params$jscomp$inline_1287_uri_path$jscomp$inline_1284$$);
+}, $cljs$core$cst$0kw$0path_DASH_exists_QMARK_$$, function($path$jscomp$inline_1088$$) {
+  return $secretary$core$locate_route$$($path$jscomp$inline_1088$$);
+}], null), $map__16985__$1$jscomp$inline_1296$$ = null != $p__16984$jscomp$inline_1295$$ && ($p__16984$jscomp$inline_1295$$.$cljs$lang$protocol_mask$partition0$$ & 64 || $cljs$core$PROTOCOL_SENTINEL$$ === $p__16984$jscomp$inline_1295$$.$cljs$core$ISeq$$) ? $cljs$core$apply$cljs$0core$0IFn$0_invoke$0arity$02$$($cljs$core$hash_map$$, $p__16984$jscomp$inline_1295$$) : $p__16984$jscomp$inline_1295$$, $nav_handler$jscomp$inline_1297$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__16985__$1$jscomp$inline_1296$$, 
+$cljs$core$cst$0kw$0nav_DASH_handler$$), $path_exists_QMARK_$jscomp$inline_1298$$ = $cljs$core$get$$.$cljs$core$IFn$_invoke$arity$2$($map__16985__$1$jscomp$inline_1296$$, $cljs$core$cst$0kw$0path_DASH_exists_QMARK_$$), $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1299$$ = $accountant$core$history$$;
+0 != $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1299$$.$useFragment_$ && ($goog$events$unlisten$$($JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1299$$.$window_$, "hashchange", $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1299$$.$onHistoryEvent_$, !1, $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1299$$), $JSCompiler_StaticMethods_setUseFragment$self$jscomp$inline_1299$$.$useFragment_$ = !1);
 $accountant$core$history$$.$pathPrefix_$ = "";
-var $JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1319$$ = $accountant$core$history$$;
-1 != $JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1319$$.$enabled_$ && ($JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1319$$.$enabled_$ = !0, $JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1319$$.dispatchEvent(new $goog$history$Event$$($JSCompiler_StaticMethods_getToken$$($JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1319$$))));
-$accountant$core$nav_handler$$ = $nav_handler$jscomp$inline_1316$$;
-$accountant$core$path_exists_QMARK_$$ = $path_exists_QMARK_$jscomp$inline_1317$$;
+var $JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1300$$ = $accountant$core$history$$;
+1 != $JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1300$$.$enabled_$ && ($JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1300$$.$enabled_$ = !0, $JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1300$$.dispatchEvent(new $goog$history$Event$$($JSCompiler_StaticMethods_getToken$$($JSCompiler_StaticMethods_setEnabled$self$jscomp$inline_1300$$))));
+$accountant$core$nav_handler$$ = $nav_handler$jscomp$inline_1297$$;
+$accountant$core$path_exists_QMARK_$$ = $path_exists_QMARK_$jscomp$inline_1298$$;
 (function($nav_handler$$) {
   var $navigation$$ = $accountant$core$listen$$(), $c__15059__auto__$jscomp$16$$ = $cljs$core$async$chan$cljs$0core$0IFn$0_invoke$0arity$03$$(1);
   $cljs$core$async$impl$dispatch$run$$(function($navigation$$, $c__15059__auto__$jscomp$16$$) {
@@ -13573,7 +13578,7 @@ $accountant$core$path_exists_QMARK_$$ = $path_exists_QMARK_$jscomp$inline_1317$$
       return $cljs$core$async$impl$ioc_helpers$run_state_machine_wrapped$$($navigation$jscomp$1$$);
     };
   }($c__15059__auto__$jscomp$16$$, $navigation$$));
-})($nav_handler$jscomp$inline_1316$$);
+})($nav_handler$jscomp$inline_1297$$);
 (function($path_exists_QMARK_$$) {
   var $history$jscomp$4$$ = $accountant$core$history$$, $G__16978$$ = document;
   return $goog$events$listen$$($G__16978$$, "click", function() {
@@ -13599,38 +13604,38 @@ $accountant$core$path_exists_QMARK_$$ = $path_exists_QMARK_$jscomp$inline_1317$$
       }()) ? (!$cljs$core$_EQ_$$.$cljs$core$IFn$_invoke$arity$2$($current_relative_href_href_node_loc$jscomp$1_meta_key_uri$jscomp$50$$, $alt_key_query$jscomp$10_relative_href$$) && $accountant$core$set_token_BANG_$$($history$jscomp$4$$, $alt_key_query$jscomp$10_relative_href$$, $e$jscomp$172$$), $G__16978$$.preventDefault()) : null;
     };
   }($G__16978$$, "click"));
-})($path_exists_QMARK_$jscomp$inline_1317$$);
-var $path$jscomp$inline_1321$$ = window.location.pathname, $query$jscomp$inline_1322$$ = window.location.search, $hash$jscomp$inline_1323$$ = window.location.hash;
+})($path_exists_QMARK_$jscomp$inline_1298$$);
+var $path$jscomp$inline_1302$$ = window.location.pathname, $query$jscomp$inline_1303$$ = window.location.search, $hash$jscomp$inline_1304$$ = window.location.hash;
 if ($cljs$core$truth_$$($accountant$core$nav_handler$$)) {
-  var $G__16992$jscomp$inline_1324$$ = [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($path$jscomp$inline_1321$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($query$jscomp$inline_1322$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($hash$jscomp$inline_1323$$)].join("");
-  $accountant$core$nav_handler$$.$cljs$core$IFn$_invoke$arity$1$ ? $accountant$core$nav_handler$$.$cljs$core$IFn$_invoke$arity$1$($G__16992$jscomp$inline_1324$$) : $accountant$core$nav_handler$$.call(null, $G__16992$jscomp$inline_1324$$);
+  var $G__16992$jscomp$inline_1305$$ = [$cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($path$jscomp$inline_1302$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($query$jscomp$inline_1303$$), $cljs$core$str$$.$cljs$core$IFn$_invoke$arity$1$($hash$jscomp$inline_1304$$)].join("");
+  $accountant$core$nav_handler$$.$cljs$core$IFn$_invoke$arity$1$ ? $accountant$core$nav_handler$$.$cljs$core$IFn$_invoke$arity$1$($G__16992$jscomp$inline_1305$$) : $accountant$core$nav_handler$$.call(null, $G__16992$jscomp$inline_1305$$);
 } else {
   console.error("can't dispatch-current until configure-navigation! called");
 }
-for (var $seq__17385_17389$jscomp$inline_1371$$ = $cljs$core$seq$$($cljs$core$_deref$$($vr_test$core$registered_components$$)), $chunk__17386_17390$jscomp$inline_1372$$ = null, $count__17387_17391$jscomp$inline_1373$$ = 0, $i__17388_17392$jscomp$inline_1374$$ = 0;;) {
-  if ($i__17388_17392$jscomp$inline_1374$$ < $count__17387_17391$jscomp$inline_1373$$) {
-    var $c_17393$jscomp$inline_1375$$ = $chunk__17386_17390$jscomp$inline_1372$$.$cljs$core$IIndexed$_nth$arity$2$(null, $i__17388_17392$jscomp$inline_1374$$);
-    delete AFRAME.components[$c_17393$jscomp$inline_1375$$];
-    console.log("➖ deleted component : ", $c_17393$jscomp$inline_1375$$);
-    $i__17388_17392$jscomp$inline_1374$$ += 1;
+for (var $seq__17387_17391$jscomp$inline_1352$$ = $cljs$core$seq$$($cljs$core$_deref$$($vr_test$core$registered_components$$)), $chunk__17388_17392$jscomp$inline_1353$$ = null, $count__17389_17393$jscomp$inline_1354$$ = 0, $i__17390_17394$jscomp$inline_1355$$ = 0;;) {
+  if ($i__17390_17394$jscomp$inline_1355$$ < $count__17389_17393$jscomp$inline_1354$$) {
+    var $c_17395$jscomp$inline_1356$$ = $chunk__17388_17392$jscomp$inline_1353$$.$cljs$core$IIndexed$_nth$arity$2$(null, $i__17390_17394$jscomp$inline_1355$$);
+    delete AFRAME.components[$c_17395$jscomp$inline_1356$$];
+    console.log("➖ deleted component : ", $c_17395$jscomp$inline_1356$$);
+    $i__17390_17394$jscomp$inline_1355$$ += 1;
   } else {
-    var $temp__4657__auto___17398$jscomp$inline_1376$$ = $cljs$core$seq$$($seq__17385_17389$jscomp$inline_1371$$);
-    if ($temp__4657__auto___17398$jscomp$inline_1376$$) {
-      var $seq__17385_17399__$1$jscomp$inline_1377$$ = $temp__4657__auto___17398$jscomp$inline_1376$$;
-      if ($cljs$core$chunked_seq_QMARK_$$($seq__17385_17399__$1$jscomp$inline_1377$$)) {
-        var $c__8484__auto___17400$jscomp$inline_1378$$ = $cljs$core$_chunked_first$$($seq__17385_17399__$1$jscomp$inline_1377$$), $G__17401$jscomp$inline_1379$$ = $cljs$core$_chunked_rest$$($seq__17385_17399__$1$jscomp$inline_1377$$), $G__17402$jscomp$inline_1380$$ = $c__8484__auto___17400$jscomp$inline_1378$$, $G__17403$jscomp$inline_1381$$ = $cljs$core$count$$($c__8484__auto___17400$jscomp$inline_1378$$);
-        $seq__17385_17389$jscomp$inline_1371$$ = $G__17401$jscomp$inline_1379$$;
-        $chunk__17386_17390$jscomp$inline_1372$$ = $G__17402$jscomp$inline_1380$$;
-        $count__17387_17391$jscomp$inline_1373$$ = $G__17403$jscomp$inline_1381$$;
+    var $temp__4657__auto___17400$jscomp$inline_1357$$ = $cljs$core$seq$$($seq__17387_17391$jscomp$inline_1352$$);
+    if ($temp__4657__auto___17400$jscomp$inline_1357$$) {
+      var $seq__17387_17401__$1$jscomp$inline_1358$$ = $temp__4657__auto___17400$jscomp$inline_1357$$;
+      if ($cljs$core$chunked_seq_QMARK_$$($seq__17387_17401__$1$jscomp$inline_1358$$)) {
+        var $c__8484__auto___17402$jscomp$inline_1359$$ = $cljs$core$_chunked_first$$($seq__17387_17401__$1$jscomp$inline_1358$$), $G__17403$jscomp$inline_1360$$ = $cljs$core$_chunked_rest$$($seq__17387_17401__$1$jscomp$inline_1358$$), $G__17404$jscomp$inline_1361$$ = $c__8484__auto___17402$jscomp$inline_1359$$, $G__17405$jscomp$inline_1362$$ = $cljs$core$count$$($c__8484__auto___17402$jscomp$inline_1359$$);
+        $seq__17387_17391$jscomp$inline_1352$$ = $G__17403$jscomp$inline_1360$$;
+        $chunk__17388_17392$jscomp$inline_1353$$ = $G__17404$jscomp$inline_1361$$;
+        $count__17389_17393$jscomp$inline_1354$$ = $G__17405$jscomp$inline_1362$$;
       } else {
-        var $c_17405$jscomp$inline_1382$$ = $cljs$core$first$$($seq__17385_17399__$1$jscomp$inline_1377$$);
-        delete AFRAME.components[$c_17405$jscomp$inline_1382$$];
-        console.log("➖ deleted component : ", $c_17405$jscomp$inline_1382$$);
-        $seq__17385_17389$jscomp$inline_1371$$ = $cljs$core$next$$($seq__17385_17399__$1$jscomp$inline_1377$$);
-        $chunk__17386_17390$jscomp$inline_1372$$ = null;
-        $count__17387_17391$jscomp$inline_1373$$ = 0;
+        var $c_17407$jscomp$inline_1363$$ = $cljs$core$first$$($seq__17387_17401__$1$jscomp$inline_1358$$);
+        delete AFRAME.components[$c_17407$jscomp$inline_1363$$];
+        console.log("➖ deleted component : ", $c_17407$jscomp$inline_1363$$);
+        $seq__17387_17391$jscomp$inline_1352$$ = $cljs$core$next$$($seq__17387_17401__$1$jscomp$inline_1358$$);
+        $chunk__17388_17392$jscomp$inline_1353$$ = null;
+        $count__17389_17393$jscomp$inline_1354$$ = 0;
       }
-      $i__17388_17392$jscomp$inline_1374$$ = 0;
+      $i__17390_17394$jscomp$inline_1355$$ = 0;
     } else {
       break;
     }
