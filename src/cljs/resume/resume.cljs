@@ -80,20 +80,20 @@
      [{:job_name "Google (Adecco On-site)"
        :date {:start "02/2018" :end "Current"}
        :title "Prototyper"
-       :description ["Converting designs for face-based augmented reality into production-ready prototypes, as well as creating new effects and tools for the creation of AR expereinces."]}
+       :description ["Converting designs for face-based augmented reality into production-ready prototypes, as well as creating new effects and tools for the creation of AR expereinces"]}
       {:job_name "CircleCI"
        :date {:start "08/2017" :end "02/2018"}
        :title "Software Engineer"
        :description ["As a contractor (01-05, 2017) worked with lead designer to implement new UI & suggest/build UX improvements (web notifications, new site navigation hierarchy)"
-                     "Currently working on frontend migration from Clojurescript to React & building new pricing UI"]}
+                     "Worked on frontend migration from Clojurescript to React & building new pricing UI"]}
       {:job_name "Brightlite Interactive"
        :date {:start "11/2017" :end "01/2018"}
-       :title "AR UX Consultant"
+       :title "WebAR UX Consultant"
        :description ["Made recommendations about physical layout, lighting conditions, and UX tradeoffs of AR markers"
                      "Provided feedback on structuring & editing the internals of Three & AR.js project for optimal tracking"]}
       {:job_name "Homies.io"
        :date {:start "09/2017" :end "11/2017"}
-       :title "VR Programmer"
+       :title "WebVR Programmer"
        :description ["Built an A-FrameVR prototype of a webVR art gallery"
                      "Loaded 360° videos & metadata from a database & created a multi-platform gallery to browse & view the content"]}
       ;; Cutting these last two down here to save space, may be relevant in the future though, or for CV!
@@ -109,5 +109,5 @@
       ])]
    [:hr]
    [:h2 "Skills"]
-   [:div [:span.underline "Languages & frameworks:"] " Clojure & ClojureScript (Om, Om.Next, Reagent, Rum), Javascript (ES6, React, Three.js, A-FrameVR, ReactVR), C++ (OpenFrameworks), Rust (nannou), C# (Unity), Python, Ruby, C, Java"]
+   [:div [:span.underline "Languages & frameworks:"] " C++ (OpenFrameworks), Javascript (ES6, React, Three.js, A-FrameVR, ReactVR), Clojure & ClojureScript (Om, Om.Next, Reagent, Rum), Rust (nannou), C# (Unity), Python, Ruby, C, Java"]
    ])
